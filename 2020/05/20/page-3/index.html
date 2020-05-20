@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="ch" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>C51单片机指令表 - Zer0 Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Zer0,"> 
+    <meta name="description" content="指令                               字节                周期                       动作说明 算数运算指令 1．ADD A,Rn ,"> 
+    <meta name="author" content="Zer0_Nos"> 
+    <link rel="alternative" href="atom.xml" title="Zer0 Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Zer0 Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">C51单片机指令表</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">C51单片机指令表</h1>
+        <div class="stuff">
+            <span>五月 20, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>指令                               字节                周期                       动作说明<br> 算数运算指令<br> 1．ADD A,Rn                 1                      1                       将累加器与寄存器的内容相加，结果存回累加器<br> 2．ADD A,direct           2                       1                       将累加器与直接地址的内容相加，结果存回累加器<br> 3．ADD A,@Ri              1                       1                       将累加器与间接地址的内容相加，结果存回累加器<br> 4．ADD A,#data          2                       1                        将累加器与常数相加，结果存回累加器<br> 5．ADDC A,Rn             1                       1                        将累加器与寄存器的内容及进位C相加，结果存回累加器<br> 6．ADDC A,direct        2                       1                        将累加器与直接地址的内容及进位C相加，结果存回累加器<br> 7．ADDC A,@Ri           1                        1                        将累加器与间接地址的内容及进位C相加，结果存回累加器<br> 8．ADDC A,#data        2                        1                        将累加器与常数及进位C相加，结果存回累加器<br> 9．SUBB A,Rn              1                        1                        将累加器的值减去寄存器的值减借位C，结果存回累加器<br> 10．SUBB A,direct       2                        1                        将累加器的值减直接地址的值减借位C，结果存回累加器<br> 11．SUBB A,@Ri          1                        1                        将累加器的值减间接地址的值减借位C，结果存回累加器<br> 12．SUBB A,#data      2                        1                        将累加器的值减常数值减借位C，结果存回累加器<br> 13．INC A                     1                        1                        将累加器的值加1<br> 14．INC Rn                   1                        1                        将寄存器的值加l<br> 15．INC direct             2                        1                        将直接地址的内容加1<br> 16．INC @Ri                1                        1                        将间接地址的内容加1<br> 17．INC DPTR              1                        1                        数据指针寄存器值加1<br> 说明：将16位的DPTR加1，当DPTR的低字节(DPL)从FFH溢出至00H时，会使高字节(DPH)加1，不影响任何标志位<br> 18．DEC A                   1                        1                        将累加器的值减1<br> 19．DEC Rn                 1                        1                        将寄存器的值减1<br> 20．DEC direct           2                        1                        将直接地址的内容减1<br> 21．DEC @Ri              1                        1                        将间接地址的内容减1<br> 22．MUL AB               1                        4                        将累加器的值与B寄存器的值相乘，乘积的低位字节存回累加器，高位字节 存回B寄存器<br> 说明：将累加器A和寄存器B内的无符号整数相乘，产生16位的积，低位字节存入A，高位字节存入B寄存器。如果积大于FFH，则溢出标志位(OV)被设定为1，而进位标志位为0<br> 23．DIV AB                   1                        4                        将累加器的值除以B寄存器的值，结果的商存回累加器，余数存回B寄存器<br> 说明：无符号的除法运算，将累加器A除以B寄存器的值，商存入A，余数存入B。执行本指令后，进位位(C)及溢出位(OV)被清除为0<br> 24．DA A                        1                        1                        将累加器A作十进制调整，<br> 若(A) 3-0&gt;9或(AC)=1，则(A) 3-0←(A)3-0+6<br> 若(A) 7-4&gt;9或 (C)=1，则(A) 7-4←(A)7-4+6<br> 逻辑运算指令<br> 25．ANL A,Rn              1                        1                        将累加器的值与寄存器的值做AND的逻辑判断，结果存回累加器<br> 26．ANL A,direct        2                        1                        将累加器的值与直接地址的内容做AND的逻辑判断，结果存回累加器<br> 27．ANL A,@Ri             1                        1                        将累加器的值与间接地址的内容做AND的逻辑判断，结果存回累加器<br> 28．ANL A,#data         2                        1                        将累加器的值与常数做AND的逻辑判断，结果存回累加器<br> 29．ANL direct,A        2                        1                        将直接地址的内容与累加器的值做AND的逻辑判断，结果存回该直接地址<br> 30．ANL direct,#data  3                        2                        将直接地址的内容与常数值做AND的逻辑判断，结果存回该直接地址<br> 31．ORL A,Rn              1                        1                        将累加器的值与寄存器的值做OR的逻辑判断，结果存回累加器<br> 32．ORL A,direct        2                        1                        将累加器的值与直接地址的内容做OR的逻辑判断，结果存回累加器<br> 33．ORL A,@Ri             1                        1                        将累加器的值与间接地址的内容做OR的逻辑判断，结果存回累加器<br> 34．ORL A,#data        2                        1                        将累加器的值与常数做OR的逻辑判断，结果存回累加器<br> 35．ORL direct,A        2                        1                        将直接地址的内容与累加器的值做OR的逻辑判断，结果存回该直接地址<br> 36．ORL direct,#data  3                        2                        将直接地址的内容与常数值做OR的逻辑判断，结果存回该直接地址<br> 37．XRL A,Rn              1                        1                        将累加器的值与寄存器的值做XOR的逻辑判断，结果存回累加器<br> 38．XRL A,direct        2                        1                        将累加器的值与直接地址的内容做XOR的逻辑判断，结果存回累加器<br> 39．XRL A,@Ri             1                        1                        将累加器的值与间接地扯的内容做XOR的逻辑判断，结果存回累加器<br> 40．XRL A,#data        2                        1                        将累加器的值与常数作XOR的逻辑判断，结果存回累加器<br> 41．XRL direct,A        2                        1                        将直接地址的内容与累加器的值做XOR的逻辑判断，结果存回该直接地址<br> 42．XRL direct,#data  3                        2                        将直接地址的内容与常数的值做XOR的逻辑判断，结果存回该直接地址<br> 43．CLR A                   1                        1                        清除累加器的值为0<br> 44．CPL A                   1                        1                        将累加器的值反相<br> 45．RL A                    1                        1                        将累加器的值左移一位<br> 46．RLC A                   1                        1                        将累加器含进位C左移一位<br> 47．RR A                    1                        1                        将累加器的值右移一位<br> 48．RRC A                   1                        1                        将累加器含进位C右移一位<br> 49．SWAP A               1                        1                        将累加器的高4位与低4位的内容交换。(A)3-0←(A)7-4<br> 数据转移指令<br> 50．MOV A,Rn              1                        1                        将寄存器的内容载入累加器<br> 51．MOV A,direct        2                        1                        将直接地址的内容载入累加器<br> 52．MOV A,@Ri             1                        1                        将间接地址的内容载入累加器<br> 53．MOV A,#data        2                        1                        将常数载入累加器<br> 54．MOV Rn，A           1                         1                         将累加器的内容载入寄存器<br> 55．MOV Rn,direct       2                         2                         将直接地址的内容载入寄存器<br> 56．MOV Rn,gdata        2                         1                         将常数载入寄存器<br> 57．MOV direct,A            2                         1                         将累加器的内容存入直接地址<br> 58．MOV direct,Rn       2                         2                         将寄存器的内容存入直接地址<br> 59．MOV direct1, direct2     3                         2                         将直接地址2的内容存入直接地址1<br> 60．MOV direct,@Ri           2                         2                         将间接地址的内容存入直接地址<br> 61．MOV direct,#data      3                         2                         将常数存入直接地址<br> 62．MOV @Ri,A             1                         1                         将累加器的内容存入某间接地址<br> 63．MOV @Ri,direct       2                         2                         将直接地址的内容存入某间接地址<br> 64．MOV @Ri,#data       2                         1                         将常数存入某间接地址<br> 65．MOV DPTR,#data16  3                         2                         将16位的常数存入数据指针寄存器<br> 66．MOVC A,@A+DPTR   1                         2                         (A) ←((A)+(DPTR))<br> 累加器的值再加数据指针寄存器的值为其所指定地址，将该地址的内容读入累加器<br> 67．MOVC A,@A+PC        1                         2                         (PC)←(PC)+1；(A)←((A)+(PC))累加器的值加程序计数器的值作为其所指定地址，将该地址的内容读入累加器<br> 68．MOVX A,@Ri             1                         2                         将间接地址所指定外部存储器的内容读入累加器(8位地址)<br> 69．MOVX A,@DPTR        1                         2                         将数据指针所指定外部存储器的内容读入累加器(16位地址)<br> 70．MOVX @Ri,A             1                         2                         将累加器的内容写入间接地址所指定的外部存储器(8位地址)<br> 71．MOVX @DPTR,A        1                         2                         将累加器的内容写入数据指针所指定的外部存储器(16位地址)<br> 72．PUSH direct                2                         2                         将直接地址的内容压入堆栈区<br> 73．POP direct                 2                         2                         从堆栈弹出该直接地址的内容<br> 74．XCH A,Rn                   1                         1                         将累加器的内容与寄存器的内容互换<br> 75．XCH A,direct             2                         1                         将累加器的值与直接地址的内容互换<br> 76．XCH A,@Ri                1                         1                         将累加器的值与间接地址的内容互换<br> 77．XCHD A,@Ri             1                         1                         将累加器的低4位与间接地址的低4位互换<br> 布尔代数运算<br> 78．CLR C                        1                         1                         清除进位C为0<br> 79．CLR bit                      2                         1                         清除直接地址的某位为0<br> 80．SETB C                       1                         1                         设定进位C为1<br> 81．SETB bit                    2                         1                         设定直接地址的某位为1<br> 82．CPL C                        1                         1                         将进位C的值反相<br> 83．CPL bit                      2                         1                         将直接地址的某位值反相<br> 84．ANL C,bit                 2                         2                         将进位C与直接地址的某位做AND的逻辑判断，结果存回进位C<br> 85．ANL C,/bit                 2                         2                         将进位C与直接地址的某位的反相值做AND的逻辑判断，结果存回进位C<br> 86．ORL C,bit                 2                           2                         将进位C与直接地址的某位做OR的逻辑判断，结果存回进位C<br> 87．ORL C,/bit                 2                        2                         将进位C与直接地址的某位的反相值做OR的逻辑判断，结果存回进位C<br> 88．MOV C,bit                 2                         1                         将直接地址的某位值存入进位C<br> 89．MOV bit,C                 2                         2                         将进位C的值存入直接地址的某位<br> 90．JC rel                           2                         2                         若进位C=1则跳至rel的相关地址<br> 91．JNC rel                      2                         2                         若进位C=0则跳至rel的相关地址<br> 92．JB bit,rel                     3                         2                         若直接地址的某位为1，则跳至rel的相关地址<br> 93．JNB bit,rel                3                         2                         若直接地址的某位为0，则跳至rel的相关地址<br> 94．JBC bit,rel                3                         2                         若直接地址的某位为1，则跳至rel的相关地址，并将该位值清除为0<br> 程序跳跃<br> 95．ACALL addr11         2                        2                        调用2K程序存储器范围内的子程序<br> 96．LCALL addr16         3                        2                        调用64K程序存储器范围内的子程序<br> 97．RET                            1                        2                        从子程序返回<br> 98．RETI                           1                        2                        从中断子程序返回<br> 99．AJMP addr11           2                         2                         绝对跳跃(2K内)<br> 100．LJMP addr16          3                         2                         长跳跃(64K内)<br> 101．SJMP rel                   2                         2                         短跳跃(2K内)-128～+127字节<br> 102．JMP @A+DPTR        1                         2                         跳至累加器的内容加数据指针所指的相关地址<br> 103．JZ rel                          2                         2                         累加器的内容为0，则跳至rel所指相关地址<br> 104．JNZ rel                       2                         2                         累加器的内容不为0，则跳至rel所指相关地址<br> 105．CJNE A,direct,rel      3                         2                         将累加器的内容与直接地址的内容比较，不相等则跳至rel所指的相关地址<br> 106．CJNE A,#data,rel       3                         2                         将累加器的内容与常数比较，若不相等则跳至rel所指的相关地址<br> 107．CJNE @Rn,#data,rel     3                         2                         将寄存器的内容与常数比较，若不相等则跳至rel所指的相关地址<br> 108．CJNE @Ri,#data,rel     3                         2                         将间接地址的内容与常数比较，若不相等则跳至rel所指的相关地址<br> 109．DJNZ Rn,rel                2                         2                         将寄存器的内容减1，不等于0则跳至rel所指的相关地址<br> 110．DJNZ direct,rel          3                          2                         将直接地址的内容减1，不等于0则跳至rel所指的相关地址<br> 111．NOP                         1                             1                         无动作</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
