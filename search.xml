@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Welcome to new World</title>
+    <url>/9999/10/10/My-New-Post/</url>
+    <content><![CDATA[<p>世界が平和でありますように</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Markdown基本语法</title>
+    <url>/2020/05/11/page-2/</url>
+    <content><![CDATA[<h1 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h1><p>在想要设置为标题的文字前面加#来表示<br> 一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。</p>
+<p>注：标准语法一般在#后跟个空格再写文字。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 这是一级标题</span><br><span class="line">## 这是二级标题</span><br><span class="line">### 这是三级标题</span><br><span class="line">#### 这是四级标题</span><br><span class="line">##### 这是五级标题</span><br><span class="line">###### 这是六级标题</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><h4 id="这是四级标题"><a href="#这是四级标题" class="headerlink" title="这是四级标题"></a>这是四级标题</h4><h5 id="这是五级标题"><a href="#这是五级标题" class="headerlink" title="这是五级标题"></a>这是五级标题</h5><h6 id="这是六级标题"><a href="#这是六级标题" class="headerlink" title="这是六级标题"></a>这是六级标题</h6><hr>
+<h1 id="二、字体"><a href="#二、字体" class="headerlink" title="二、字体"></a>二、字体</h1><ul>
+<li><h5 id="加粗"><a href="#加粗" class="headerlink" title="加粗"></a>加粗</h5></li>
+</ul>
+<p>要加粗的文字左右分别用两个*号包起来</p>
+<ul>
+<li><h5 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h5></li>
+</ul>
+<p>要倾斜的文字左右分别用一个*号包起来</p>
+<ul>
+<li><h5 id="斜体加粗"><a href="#斜体加粗" class="headerlink" title="斜体加粗"></a>斜体加粗</h5></li>
+</ul>
+<p>要倾斜和加粗的文字左右分别用三个*号包起来</p>
+<ul>
+<li><h5 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h5></li>
+</ul>
+<p>要加删除线的文字左右分别用两个~~号包起来</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">**这是加粗的文字**</span><br><span class="line">*这是倾斜的文字*&#96;</span><br><span class="line">***这是斜体加粗的文字***</span><br><span class="line">~~这是加删除线的文字~~</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><strong>这是加粗的文字</strong><br> <em>这是倾斜的文字</em><br> <strong><em>这是斜体加粗的文字\</em></strong><br> <del>这是加删除线的文字</del></p>
+<hr>
+<h1 id="三、引用"><a href="#三、引用" class="headerlink" title="三、引用"></a>三、引用</h1><p>在引用的文字前加&gt;即可。引用也可以嵌套，如加两个&gt;&gt;三个&gt;&gt;&gt;<br> n个…<br> 貌似可以一直加下去，但没神马卵用</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;这是引用的内容</span><br><span class="line">&gt;&gt;这是引用的内容</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;这是引用的内容</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<blockquote>
+<p>这是引用的内容</p>
+<blockquote>
+<p>这是引用的内容</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>这是引用的内容</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h1 id="四、分割线"><a href="#四、分割线" class="headerlink" title="四、分割线"></a>四、分割线</h1><p>三个或者三个以上的 - 或者 * 都可以。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">----</span><br><span class="line">***</span><br><span class="line">*****</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：<br> 可以看到，显示效果是一样的。</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<h1 id="五、图片"><a href="#五、图片" class="headerlink" title="五、图片"></a>五、图片</h1><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![图片alt](图片地址 &#39;&#39;图片title&#39;&#39;)</span><br><span class="line"></span><br><span class="line">图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![moon](https:&#x2F;&#x2F;pbs.twimg.com&#x2F;media&#x2F;EXq9Y9BUwAECKgv?format&#x3D;png&amp;name&#x3D;small &quot;123&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><img src="https://pbs.twimg.com/media/EXq9Y9BUwAECKgv?format=png&name=small" alt="moon" title="123"></p>
+<h1 id="六、超链接"><a href="#六、超链接" class="headerlink" title="六、超链接"></a>六、超链接</h1><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[超链接名](超链接地址 &quot;超链接title&quot;)</span><br><span class="line">title可加可不加</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[简书](http:&#x2F;&#x2F;jianshu.com)</span><br><span class="line">[百度](http:&#x2F;&#x2F;baidu.com)</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><a href="https://www.jianshu.com/u/1f5ac0cf6a8b" target="_blank" rel="noopener">简书</a><br> <a href="https://links.jianshu.com/go?to=http%3A%2F%2Fbaidu.com" target="_blank" rel="noopener">百度</a></p>
+<p>注：Markdown本身语法不支持链接在新页面中打开，如果想要在新页面中打开的话可以用html语言的a标签代替。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;超链接地址&quot; target&#x3D;&quot;_blank&quot;&gt;超链接名&lt;&#x2F;a&gt;</span><br><span class="line"></span><br><span class="line">示例</span><br><span class="line">&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;1f5ac0cf6a8b&quot; target&#x3D;&quot;_blank&quot;&gt;简书&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="七、列表"><a href="#七、列表" class="headerlink" title="七、列表"></a>七、列表</h1><h5 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h5><p>语法：<br> 无序列表用 - + * 任何一种都可以</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- 列表内容</span><br><span class="line">+ 列表内容</span><br><span class="line">* 列表内容</span><br><span class="line"></span><br><span class="line">注意：- + * 跟内容之间都要有一个空格</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<ul>
+<li>列表内容</li>
+<li>列表内容</li>
+<li>列表内容</li>
+</ul>
+<h5 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h5><p>语法：<br> 数字加点</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1. 列表内容</span><br><span class="line">2. 列表内容</span><br><span class="line">3. 列表内容</span><br><span class="line"></span><br><span class="line">注意：序号跟内容之间要有空格</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<ol>
+<li>列表内容</li>
+<li>列表内容</li>
+<li>列表内容</li>
+</ol>
+<h5 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h5><p><strong>上一级和下一级之间敲三个空格即可</strong></p>
+<ul>
+<li>一级无序列表内容<ul>
+<li>二级无序列表内容</li>
+<li>二级无序列表内容</li>
+<li>二级无序列表内容</li>
+</ul>
+</li>
+<li>一级无序列表内容<ol>
+<li>二级有序列表内容</li>
+<li>二级有序列表内容</li>
+<li>二级有序列表内容</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li>一级有序列表内容<ul>
+<li>二级无序列表内容</li>
+<li>二级无序列表内容</li>
+<li>二级无序列表内容</li>
+</ul>
+</li>
+<li>一级有序列表内容<ol>
+<li>二级有序列表内容</li>
+<li>二级有序列表内容</li>
+<li>二级有序列表内容</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h1 id="八、表格"><a href="#八、表格" class="headerlink" title="八、表格"></a>八、表格</h1><p>语法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">表头|表头|表头</span><br><span class="line">---|:--:|---:</span><br><span class="line">内容|内容|内容</span><br><span class="line">内容|内容|内容</span><br><span class="line"></span><br><span class="line">第二行分割表头和内容。</span><br><span class="line">- 有一个就行，为了对齐，多加了几个</span><br><span class="line">文字默认居左</span><br><span class="line">-两边加：表示文字居中</span><br><span class="line">-右边加：表示文字居右</span><br><span class="line">注：原生的语法两边都要用 | 包起来。此处省略</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">姓名|技能|排行</span><br><span class="line">--|:--:|--:</span><br><span class="line">刘备|哭|大哥</span><br><span class="line">关羽|打|二哥</span><br><span class="line">张飞|骂|三弟</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th align="center">技能</th>
+<th align="right">排行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>刘备</td>
+<td align="center">哭</td>
+<td align="right">大哥</td>
+</tr>
+<tr>
+<td>关羽</td>
+<td align="center">打</td>
+<td align="right">二哥</td>
+</tr>
+<tr>
+<td>张飞</td>
+<td align="center">骂</td>
+<td align="right">三弟</td>
+</tr>
+</tbody></table>
+<h1 id="九、代码"><a href="#九、代码" class="headerlink" title="九、代码"></a>九、代码</h1><p>语法：<br> 单行代码：代码之间分别用一个反引号包起来</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#96;代码内容&#96;</span><br></pre></td></tr></table></figure>
+
+<p>代码块：代码之间分别用三个反引号包起来，且两边的反引号单独占一行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(&#96;&#96;&#96;)</span><br><span class="line">  代码...</span><br><span class="line">  代码...</span><br><span class="line">  代码...</span><br><span class="line">(&#96;&#96;&#96;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：为了防止转译，前后三个反引号处加了小括号，实际是没有的。这里只是用来演示，实际中去掉两边小括号即可。</p>
+</blockquote>
+<p>示例：</p>
+<p>单行代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#96;create database hero;&#96;</span><br></pre></td></tr></table></figure>
+
+<p>代码块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(&#96;&#96;&#96;)</span><br><span class="line">    function fun()&#123;</span><br><span class="line">         echo &quot;这是一句非常牛逼的代码&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    fun();</span><br><span class="line">(&#96;&#96;&#96;)</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p>单行代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">create database hero;</span><br></pre></td></tr></table></figure>
+
+<p>代码块</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function fun()&#123;</span><br><span class="line">  echo &quot;这是一句非常牛逼的代码&quot;;</span><br><span class="line">&#125;</span><br><span class="line">fun();</span><br></pre></td></tr></table></figure>
+
+<h1 id="十、流程图"><a href="#十、流程图" class="headerlink" title="十、流程图"></a>十、流程图</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(&#96;&#96;&#96;)flow</span><br><span class="line">st&#x3D;&gt;start: 开始</span><br><span class="line">op&#x3D;&gt;operation: My Operation</span><br><span class="line">cond&#x3D;&gt;condition: Yes or No?</span><br><span class="line">e&#x3D;&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;(&#96;&#96;&#96;)</span><br></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">st&#x3D;&gt;start: 开始</span><br><span class="line">op&#x3D;&gt;operation: My Operation</span><br><span class="line">cond&#x3D;&gt;condition: Yes or No?</span><br><span class="line">e&#x3D;&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>C51单片机指令表</title>
+    <url>/2020/05/20/page-3/</url>
+    <content><![CDATA[<p>指令                               字节                周期                       动作说明<br> 算数运算指令<br> 1．ADD A,Rn                 1                      1                       将累加器与寄存器的内容相加，结果存回累加器<br> 2．ADD A,direct           2                       1                       将累加器与直接地址的内容相加，结果存回累加器<br> 3．ADD A,@Ri              1                       1                       将累加器与间接地址的内容相加，结果存回累加器<br> 4．ADD A,#data          2                       1                        将累加器与常数相加，结果存回累加器<br> 5．ADDC A,Rn             1                       1                        将累加器与寄存器的内容及进位C相加，结果存回累加器<br> 6．ADDC A,direct        2                       1                        将累加器与直接地址的内容及进位C相加，结果存回累加器<br> 7．ADDC A,@Ri           1                        1                        将累加器与间接地址的内容及进位C相加，结果存回累加器<br> 8．ADDC A,#data        2                        1                        将累加器与常数及进位C相加，结果存回累加器<br> 9．SUBB A,Rn              1                        1                        将累加器的值减去寄存器的值减借位C，结果存回累加器<br> 10．SUBB A,direct       2                        1                        将累加器的值减直接地址的值减借位C，结果存回累加器<br> 11．SUBB A,@Ri          1                        1                        将累加器的值减间接地址的值减借位C，结果存回累加器<br> 12．SUBB A,#data      2                        1                        将累加器的值减常数值减借位C，结果存回累加器<br> 13．INC A                     1                        1                        将累加器的值加1<br> 14．INC Rn                   1                        1                        将寄存器的值加l<br> 15．INC direct             2                        1                        将直接地址的内容加1<br> 16．INC @Ri                1                        1                        将间接地址的内容加1<br> 17．INC DPTR              1                        1                        数据指针寄存器值加1<br> 说明：将16位的DPTR加1，当DPTR的低字节(DPL)从FFH溢出至00H时，会使高字节(DPH)加1，不影响任何标志位<br> 18．DEC A                   1                        1                        将累加器的值减1<br> 19．DEC Rn                 1                        1                        将寄存器的值减1<br> 20．DEC direct           2                        1                        将直接地址的内容减1<br> 21．DEC @Ri              1                        1                        将间接地址的内容减1<br> 22．MUL AB               1                        4                        将累加器的值与B寄存器的值相乘，乘积的低位字节存回累加器，高位字节 存回B寄存器<br> 说明：将累加器A和寄存器B内的无符号整数相乘，产生16位的积，低位字节存入A，高位字节存入B寄存器。如果积大于FFH，则溢出标志位(OV)被设定为1，而进位标志位为0<br> 23．DIV AB                   1                        4                        将累加器的值除以B寄存器的值，结果的商存回累加器，余数存回B寄存器<br> 说明：无符号的除法运算，将累加器A除以B寄存器的值，商存入A，余数存入B。执行本指令后，进位位(C)及溢出位(OV)被清除为0<br> 24．DA A                        1                        1                        将累加器A作十进制调整，<br> 若(A) 3-0&gt;9或(AC)=1，则(A) 3-0←(A)3-0+6<br> 若(A) 7-4&gt;9或 (C)=1，则(A) 7-4←(A)7-4+6<br> 逻辑运算指令<br> 25．ANL A,Rn              1                        1                        将累加器的值与寄存器的值做AND的逻辑判断，结果存回累加器<br> 26．ANL A,direct        2                        1                        将累加器的值与直接地址的内容做AND的逻辑判断，结果存回累加器<br> 27．ANL A,@Ri             1                        1                        将累加器的值与间接地址的内容做AND的逻辑判断，结果存回累加器<br> 28．ANL A,#data         2                        1                        将累加器的值与常数做AND的逻辑判断，结果存回累加器<br> 29．ANL direct,A        2                        1                        将直接地址的内容与累加器的值做AND的逻辑判断，结果存回该直接地址<br> 30．ANL direct,#data  3                        2                        将直接地址的内容与常数值做AND的逻辑判断，结果存回该直接地址<br> 31．ORL A,Rn              1                        1                        将累加器的值与寄存器的值做OR的逻辑判断，结果存回累加器<br> 32．ORL A,direct        2                        1                        将累加器的值与直接地址的内容做OR的逻辑判断，结果存回累加器<br> 33．ORL A,@Ri             1                        1                        将累加器的值与间接地址的内容做OR的逻辑判断，结果存回累加器<br> 34．ORL A,#data        2                        1                        将累加器的值与常数做OR的逻辑判断，结果存回累加器<br> 35．ORL direct,A        2                        1                        将直接地址的内容与累加器的值做OR的逻辑判断，结果存回该直接地址<br> 36．ORL direct,#data  3                        2                        将直接地址的内容与常数值做OR的逻辑判断，结果存回该直接地址<br> 37．XRL A,Rn              1                        1                        将累加器的值与寄存器的值做XOR的逻辑判断，结果存回累加器<br> 38．XRL A,direct        2                        1                        将累加器的值与直接地址的内容做XOR的逻辑判断，结果存回累加器<br> 39．XRL A,@Ri             1                        1                        将累加器的值与间接地扯的内容做XOR的逻辑判断，结果存回累加器<br> 40．XRL A,#data        2                        1                        将累加器的值与常数作XOR的逻辑判断，结果存回累加器<br> 41．XRL direct,A        2                        1                        将直接地址的内容与累加器的值做XOR的逻辑判断，结果存回该直接地址<br> 42．XRL direct,#data  3                        2                        将直接地址的内容与常数的值做XOR的逻辑判断，结果存回该直接地址<br> 43．CLR A                   1                        1                        清除累加器的值为0<br> 44．CPL A                   1                        1                        将累加器的值反相<br> 45．RL A                    1                        1                        将累加器的值左移一位<br> 46．RLC A                   1                        1                        将累加器含进位C左移一位<br> 47．RR A                    1                        1                        将累加器的值右移一位<br> 48．RRC A                   1                        1                        将累加器含进位C右移一位<br> 49．SWAP A               1                        1                        将累加器的高4位与低4位的内容交换。(A)3-0←(A)7-4<br> 数据转移指令<br> 50．MOV A,Rn              1                        1                        将寄存器的内容载入累加器<br> 51．MOV A,direct        2                        1                        将直接地址的内容载入累加器<br> 52．MOV A,@Ri             1                        1                        将间接地址的内容载入累加器<br> 53．MOV A,#data        2                        1                        将常数载入累加器<br> 54．MOV Rn，A           1                         1                         将累加器的内容载入寄存器<br> 55．MOV Rn,direct       2                         2                         将直接地址的内容载入寄存器<br> 56．MOV Rn,gdata        2                         1                         将常数载入寄存器<br> 57．MOV direct,A            2                         1                         将累加器的内容存入直接地址<br> 58．MOV direct,Rn       2                         2                         将寄存器的内容存入直接地址<br> 59．MOV direct1, direct2     3                         2                         将直接地址2的内容存入直接地址1<br> 60．MOV direct,@Ri           2                         2                         将间接地址的内容存入直接地址<br> 61．MOV direct,#data      3                         2                         将常数存入直接地址<br> 62．MOV @Ri,A             1                         1                         将累加器的内容存入某间接地址<br> 63．MOV @Ri,direct       2                         2                         将直接地址的内容存入某间接地址<br> 64．MOV @Ri,#data       2                         1                         将常数存入某间接地址<br> 65．MOV DPTR,#data16  3                         2                         将16位的常数存入数据指针寄存器<br> 66．MOVC A,@A+DPTR   1                         2                         (A) ←((A)+(DPTR))<br> 累加器的值再加数据指针寄存器的值为其所指定地址，将该地址的内容读入累加器<br> 67．MOVC A,@A+PC        1                         2                         (PC)←(PC)+1；(A)←((A)+(PC))累加器的值加程序计数器的值作为其所指定地址，将该地址的内容读入累加器<br> 68．MOVX A,@Ri             1                         2                         将间接地址所指定外部存储器的内容读入累加器(8位地址)<br> 69．MOVX A,@DPTR        1                         2                         将数据指针所指定外部存储器的内容读入累加器(16位地址)<br> 70．MOVX @Ri,A             1                         2                         将累加器的内容写入间接地址所指定的外部存储器(8位地址)<br> 71．MOVX @DPTR,A        1                         2                         将累加器的内容写入数据指针所指定的外部存储器(16位地址)<br> 72．PUSH direct                2                         2                         将直接地址的内容压入堆栈区<br> 73．POP direct                 2                         2                         从堆栈弹出该直接地址的内容<br> 74．XCH A,Rn                   1                         1                         将累加器的内容与寄存器的内容互换<br> 75．XCH A,direct             2                         1                         将累加器的值与直接地址的内容互换<br> 76．XCH A,@Ri                1                         1                         将累加器的值与间接地址的内容互换<br> 77．XCHD A,@Ri             1                         1                         将累加器的低4位与间接地址的低4位互换<br> 布尔代数运算<br> 78．CLR C                        1                         1                         清除进位C为0<br> 79．CLR bit                      2                         1                         清除直接地址的某位为0<br> 80．SETB C                       1                         1                         设定进位C为1<br> 81．SETB bit                    2                         1                         设定直接地址的某位为1<br> 82．CPL C                        1                         1                         将进位C的值反相<br> 83．CPL bit                      2                         1                         将直接地址的某位值反相<br> 84．ANL C,bit                 2                         2                         将进位C与直接地址的某位做AND的逻辑判断，结果存回进位C<br> 85．ANL C,/bit                 2                         2                         将进位C与直接地址的某位的反相值做AND的逻辑判断，结果存回进位C<br> 86．ORL C,bit                 2                           2                         将进位C与直接地址的某位做OR的逻辑判断，结果存回进位C<br> 87．ORL C,/bit                 2                        2                         将进位C与直接地址的某位的反相值做OR的逻辑判断，结果存回进位C<br> 88．MOV C,bit                 2                         1                         将直接地址的某位值存入进位C<br> 89．MOV bit,C                 2                         2                         将进位C的值存入直接地址的某位<br> 90．JC rel                           2                         2                         若进位C=1则跳至rel的相关地址<br> 91．JNC rel                      2                         2                         若进位C=0则跳至rel的相关地址<br> 92．JB bit,rel                     3                         2                         若直接地址的某位为1，则跳至rel的相关地址<br> 93．JNB bit,rel                3                         2                         若直接地址的某位为0，则跳至rel的相关地址<br> 94．JBC bit,rel                3                         2                         若直接地址的某位为1，则跳至rel的相关地址，并将该位值清除为0<br> 程序跳跃<br> 95．ACALL addr11         2                        2                        调用2K程序存储器范围内的子程序<br> 96．LCALL addr16         3                        2                        调用64K程序存储器范围内的子程序<br> 97．RET                            1                        2                        从子程序返回<br> 98．RETI                           1                        2                        从中断子程序返回<br> 99．AJMP addr11           2                         2                         绝对跳跃(2K内)<br> 100．LJMP addr16          3                         2                         长跳跃(64K内)<br> 101．SJMP rel                   2                         2                         短跳跃(2K内)-128～+127字节<br> 102．JMP @A+DPTR        1                         2                         跳至累加器的内容加数据指针所指的相关地址<br> 103．JZ rel                          2                         2                         累加器的内容为0，则跳至rel所指相关地址<br> 104．JNZ rel                       2                         2                         累加器的内容不为0，则跳至rel所指相关地址<br> 105．CJNE A,direct,rel      3                         2                         将累加器的内容与直接地址的内容比较，不相等则跳至rel所指的相关地址<br> 106．CJNE A,#data,rel       3                         2                         将累加器的内容与常数比较，若不相等则跳至rel所指的相关地址<br> 107．CJNE @Rn,#data,rel     3                         2                         将寄存器的内容与常数比较，若不相等则跳至rel所指的相关地址<br> 108．CJNE @Ri,#data,rel     3                         2                         将间接地址的内容与常数比较，若不相等则跳至rel所指的相关地址<br> 109．DJNZ Rn,rel                2                         2                         将寄存器的内容减1，不等于0则跳至rel所指的相关地址<br> 110．DJNZ direct,rel          3                          2                         将直接地址的内容减1，不等于0则跳至rel所指的相关地址<br> 111．NOP                         1                             1                         无动作</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Shell基本语法</title>
+    <url>/2020/09/11/page-4/</url>
+    <content><![CDATA[<p>指向解释器 #!/bin/bash (可用其他解释器，不写时默认调用bash)</p>
+<p>打印 echo”输出内容”</p>
+<p>定义变量 例 i=0</p>
+<p>调用变量 例 echo $i</p>
+<p>运算     例 echo $[$a+$b] (推荐)</p>
+<p>​          echo $(($a+$b))</p>
+<p>​           expr $a + $b</p>
+<p>条件    例 [ $a = $b ] （条件非空为true，空为false，例 [ asd ] 为true）</p>
+<p>常用判断条件</p>
+<p>（1）整数间比较</p>
+<p>= 字符串比较</p>
+<p>-lt 小于（less than）</p>
+<p>-le 小于等于 （less equal）</p>
+<p>-eq 等于 （equal）</p>
+<p>-gt 大于（greater than） </p>
+<p>-ge 大于等于 （greater equal）</p>
+<p>-ne 不等于 （not equal）</p>
+<p>（2）文件权限判断</p>
+<p>  -r 有读权限 （read）</p>
+<p>  -w 有写权限 （write）</p>
+<p>  -x 有执行权限 （execute）</p>
+<p>（3）文件类型判断</p>
+<p>-f 文件存在且为常规文件（file）</p>
+<p>-e 文件存在（existence）</p>
+<p>-d 文件存在且为目录（directory）</p>
+<p>预定义变量：</p>
+<p>$HOME 家目录</p>
+<p>$PWD 当前目录</p>
+<p>$USER 当前用户</p>
+<p>$SHELL 当前解释器</p>
+<p>系统变量</p>
+<p>$n  （n为1-9,10以上用${n}）</p>
+<p>$#    变量个数</p>
+<p>例 $1 = args[0]</p>
+<p>  $# = args.length</p>
+<p>$*     所有参数（看作整体）</p>
+<p>$@   所有参数（单独区分）</p>
+<p>$?    状态码（0为正常运行）</p>
+<p>readonly 设置变量只读，不可改变</p>
+<p>unset 撤销变量（不可撤销readonly变量）</p>
+<p>if判断</p>
+<p>基本语法：</p>
+<p>if[ 判断判断式 ],then</p>
+<p> 程序</p>
+<p>fi</p>
+<p>或</p>
+<p>if[ 判断判断式 ]</p>
+<p> then</p>
+<p>  程序</p>
+<p>elif[ 判断判断式 ]</p>
+<p> then</p>
+<p>  程序</p>
+<p>else</p>
+<p> 程序</p>
+<p>fi</p>
+<p>case语句</p>
+<p>基本语法：</p>
+<p>case $变量名 in</p>
+<p>  “值1”)</p>
+<p>  如果变量值等于值1，执行程序1</p>
+<p>  ;;</p>
+<p>  “值2”)</p>
+<p>  如果变量值等于值2，执行程序2</p>
+<p>  ;;</p>
+<p>……省略</p>
+<p>  *)</p>
+<p>  如果变量值不为以上值，执行此程序</p>
+<p>  ;;</p>
+<p>esac</p>
+<p>for循环</p>
+<p>基本语法：</p>
+<p>for((初始值;循环控制条件;变量变化 ))</p>
+<p>  do</p>
+<p>​     程序</p>
+<p>  done</p>
+<p>基本语法2</p>
+<p>for 变量 in 值1 值2 值3…</p>
+<p>  do</p>
+<p>​     程序</p>
+<p>  done</p>
+<p>while循环</p>
+<p>基本语法：</p>
+<p>while[ 条件判断式 ]</p>
+<p>  do</p>
+<p>​     程序</p>
+<p>  done</p>
+<p>read读取控制台输入</p>
+<p>基本语法</p>
+<p>read(选项)(参数)</p>
+<p>选项：</p>
+<p>  -p 指定读取值时的提示符</p>
+<p>  -t 指定读取值时的等待时间</p>
+<p>函数</p>
+<p>基本语法：</p>
+<p>function functionname() (可省略function或括号的其中一个，不可同时省略)</p>
+<p>{</p>
+<p>  函数内容;</p>
+<p>}</p>
+<p>函数的参数调用</p>
+<p>例：</p>
+<p>function plus()</p>
+<p>{</p>
+<p>  echo$[$1+$2]</p>
+<p>}</p>
+<p>plus 1 2</p>
+<p><strong>Shell工具：</strong></p>
+<p>1.cut</p>
+<p>cut命令从文件的每一行剪切字节、字符、字段并输出</p>
+<p>基本用法：</p>
+<p>cut[选项参数] filename</p>
+<p>参数：</p>
+<p>-f 列号，提取第几列</p>
+<p>-d 分隔符，按照指定分隔符分割列</p>
+<p>-c 指定具体的字符（第几个字符）</p>
+<p>2.sed</p>
+<p>流处理编辑器，逐行处理输出，本身不会改变文件内容，除非使用重定向存储输出</p>
+<p>基本用法：</p>
+<p>sed[参数选项] ‘command’ filename</p>
+<p>参数：</p>
+<p>-e 直接在指令列模式上进行sed的动作编辑</p>
+<p>-i 直接编辑文件</p>
+<p>命令：（命令前接行号，可通过逗号划分多行，也可使用正则表达式）</p>
+<p>a 新增，在a后面可接字串没在下一行出现</p>
+<p>d 删除</p>
+<p>s 查找并替换（使用正则表达式划分 例sed ‘3s/原内容/替换内容/g’ g表示全局替换）</p>
+<p>正则规则：</p>
+<p>\ 转义</p>
+<p>^ 一行的开头</p>
+<p>  ^R表示以R开头的行</p>
+<p>$ 一行的结束</p>
+<p>  R$表示以R结尾的行</p>
+<p>* 表示上一个子式匹配0次或多次，贪心匹配</p>
+<p>  Zo* </p>
+<p>​       Z</p>
+<p>​       Zo</p>
+<p>​       Zooo</p>
+<p>. 匹配一个任意字符</p>
+<p>  .*匹配任意字符串</p>
+<p>[] 表示匹配某个范围内的字符</p>
+<p>  [a-z] 匹配一个a-z之间的字符</p>
+<p>   [a-z]* 匹配任意字母字符串</p>
+<p>（使用正则表达式需要用斜杠括起来）</p>
+<p>3.awk</p>
+<p>文本分析工具，把文本逐行读入，以空格为默认分隔符将每行切片，切开的部分再进行分析处理</p>
+<p>基本用法</p>
+<p>awk[选项参数] ‘pattem1{action1} pattem2{action2}…’ filename</p>
+<p>pattem:表示AWK在数据中查找的内容（匹配模式）</p>
+<p>action：在找到匹配内容时所执行的一系列命令</p>
+<p>参数：</p>
+<p>-F 指定输入文件拆分隔符</p>
+<p>-v 赋值一个用户定义变量</p>
+<p>BEGIN 数据到来之前先执行</p>
+<p>END 数据处理完毕后执行</p>
+<p>例：’BEGIN{print “BEGIN”}END{print”END”}’</p>
+<p>内置变量：</p>
+<p>FILENAME 文件名</p>
+<p>NR 已读记录数</p>
+<p>NF 浏览记录的域的个数（切割后，列的个数）</p>
+<p>4.sort</p>
+<p>将文件进行排序，并将结果标准输出</p>
+<p>基本语法：</p>
+<p>sort(选项)(参数)</p>
+<p>参数</p>
+<p>-n 依照数值大小排序</p>
+<p>-r 以相反顺序排序</p>
+<p>-t 设置排序时所用分隔字符</p>
+<p>-k 设定需要排序的列</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>社会工程学攻击解析</title>
+    <url>/2020/05/10/page-1/</url>
+    <content><![CDATA[<p>社会工程学攻击是一种通过对被攻击者心理弱点、本能反应、好奇心、信任、贪婪等心理陷阱所采取的诸如欺骗、伤害等危害手段，获取自身利益的手法。当黑客攻击与社会工程学攻击融为一体时，将根本不存在所谓安全的系统，所谓“No patch for stupid”</p>
+<p>1.对特定的环境实施渗透，是社工为了获取所需敏感信息的常用手段之一。黑客通过观察被攻击者对电子邮件的响应速度、重视程度以及与被攻击者相关的资料，如个人姓名、生日、电话号码、电子邮箱地址等，通过对搜集的信息进行综合利用，进而判断被攻击的账号密码等大致内容</p>
+<p>2.伪装欺骗也是社工的主要手段之一。电子邮件伪造、网络钓鱼等攻击手法均可实现伪造欺骗被攻击者，可实现诱惑被攻击者进入指定页面下载并运行恶意程序，或是要求被攻击者输入敏感账号密码等信息进行“验证”等，黑客利用被攻击者疏于防范的心理引诱用户进而实现伪装欺骗的目的</p>
+<p>3.说服是对互联网信息安全危害较大的一种社工方法。它要求被攻击者与攻击者达成某种一致，进而为黑客攻击过程提供各种便利条件，当被攻击者的利益与黑客的利益没有冲突时，甚至与黑客的利益一致时，该种手段就会非常有效</p>
+<p>4.黑客在实施社工的过程中，常会利用被攻击者对安全、漏洞、病毒等内容的敏感性，以权威机构的身份出现，散布安全警告、系统风险等消息，用危言耸听的伎俩恐吓、欺骗被攻击者，并声称不按照他们的方式去处理就会造成非常严重的危害和损失，借此实现对被攻击者敏感信息的获取</p>
+<p>5.社工手段高明的黑客需要精通心理学、人际关系学、行为学等知识和技能，善于利用人们的本能反应、好奇心、盲目信任、贪婪等弱点设置陷阱，实施欺骗，并控制他人为己服务。他们通常十分友善，讲究说话的艺术，知道如何借助机会去恭维他人，投其所好，使多数人友善地做出回应</p>
+]]></content>
+  </entry>
+</search>
