@@ -420,9 +420,4 @@
 <p>区别二：（原理的区别）CSRF：是利用网站A本身的漏洞，去请求网站A的api。XSS：是向网站 A 注入 JS代码，然后执行 JS 里的代码，篡改网站A的内容。</p>
 ]]></content>
   </entry>
-  <entry>
-    <title>page-9</title>
-    <url>/2020/09/27/page-9/</url>
-    <content><![CDATA[]]></content>
-  </entry>
 </search>
