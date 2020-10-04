@@ -1,0 +1,888 @@
+
+<!DOCTYPE html>
+<html lang="ch" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>linux常用命令(更新中) - Zer0 Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Zer0,"> 
+    <meta name="description" content="一 、命令的基本格式1.命令的提示符[root@localhost ~]# 
+
+[]：这是提示符的分隔符号，没有特殊含义。
+
+root：显示的是当前的登录用户，超哥现在使用的是root用户登录  。,"> 
+    <meta name="author" content="Zer0_Nos"> 
+    <link rel="alternative" href="atom.xml" title="Zer0 Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Zer0 Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">linux常用命令(更新中)</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">linux常用命令(更新中)</h1>
+        <div class="stuff">
+            <span>十月 04, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux%E8%BF%90%E7%BB%B4%E5%9F%BA%E7%A1%80/" rel="tag">linux运维基础</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="一-、命令的基本格式"><a href="#一-、命令的基本格式" class="headerlink" title="一 、命令的基本格式"></a>一 、命令的基本格式</h2><h3 id="1-命令的提示符"><a href="#1-命令的提示符" class="headerlink" title="1.命令的提示符"></a>1.命令的提示符</h3><p><code>[root@localhost ~]#</code> </p>
+<ul>
+<li><p>[]：这是提示符的分隔符号，没有特殊含义。</p>
+</li>
+<li><p>root：显示的是当前的登录用户，超哥现在使用的是root用户登录  。</p>
+</li>
+<li><p>@：分隔符号，没有特殊含义。</p>
+</li>
+<li><p>localhost：当前系统的简写主机名（完整主机名是localhost.localdomain）。</p>
+</li>
+<li><p>~：代表用户当前所在的目录，此例中用户当前所在的目录是家目录。</p>
+</li>
+<li><p>#：命令提示符。超级用户是#，普通用户是$ </p>
+</li>
+</ul>
+<h3 id="2-命令的基本格式"><a href="#2-命令的基本格式" class="headerlink" title="2.命令的基本格式"></a>2.命令的基本格式</h3><p><code>[root@localhost ~]# 命令[选项] [参数]</code> </p>
+<p>ls是最常见的目录操作命令，主要作用是显示目录下的内容。</p>
+<ul>
+<li><p>命令名称：ls。英文原意：list。所在路径：/bin/ls。</p>
+</li>
+<li><p>执行权限：所有用户。</p>
+</li>
+<li><p>功能描述：显示目录下的内容。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#ls [选项] [文件名或目录名] 选项：-a:        显示所有文件   </span><br><span class="line"></span><br><span class="line">--color&#x3D;when: 支持颜色输出，when的值默认是always（总显示颜色），也可以是                     never（从不显示颜色）和auto（自动）  </span><br><span class="line"></span><br><span class="line"> -d：显示目录信息，而不是目录下的文件  </span><br><span class="line"></span><br><span class="line"> -h：人性化显示，按照我们习惯的单位显示文件大小   </span><br><span class="line"></span><br><span class="line">-i：显示文件的i节点号   </span><br><span class="line"></span><br><span class="line">-l：长格式显示</span><br></pre></td></tr></table></figure>
+
+<p>举几个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls -l </span><br><span class="line">总用量 44 </span><br><span class="line">-rw-------. 1 root root  1207 1月    14 18:18 anaconda-ks.cfg </span><br><span class="line">#权限 引用计数 所有者 所属组 大小 文件 修改时间 文件名</span><br></pre></td></tr></table></figure>
+
+<p>我们已经知道“-l”选项用于  显示文件的详细信息，那么“-l”选项  显示的这7列分别 是什么含义？</p>
+<ul>
+<li><p>第一列：权限。具体权限的含义将在4.5节中讲解。</p>
+</li>
+<li><p>第二列：引用计数。文件的引用计数代表该文件的硬链接个数，而目录的引用计数代表该目录有多少个一级子目录。</p>
+</li>
+<li><p>第三列：所有者，也就是这个文件属于哪个用户。默认所有者是文件的建立用户</p>
+</li>
+<li><p>第四列：所属组。默认所属组是文件建立用户的有效组，一般情况下就是建立用户的所在组。</p>
+</li>
+<li><p>第五列：大小。默认单位是字节。</p>
+</li>
+<li><p>第六列：文件修改时间。文件状态修改时间或文件数据修改时间都会更改这个时间，注意这个时间不是文件的创建时间。</p>
+</li>
+<li><p>第七列：文件名。</p>
+<p>选项：是用于调整命令的功能的。</p>
+<p>参数：是命令的操作对象，如果省略参数，是因为有默认参数</p>
+</li>
+</ul>
+<h2 id="二、目录操作命令"><a href="#二、目录操作命令" class="headerlink" title="二、目录操作命令"></a>二、目录操作命令</h2><h3 id="1．ls命令"><a href="#1．ls命令" class="headerlink" title="1．ls命令"></a>1．ls命令</h3><p>见前一小节的内容。</p>
+<h3 id="2-cd命令"><a href="#2-cd命令" class="headerlink" title="2.cd命令"></a>2.cd命令</h3><p>cd是切换所在目录的命令，这个命令的基本信息如下。</p>
+<ul>
+<li><p>命令名称：cd。</p>
+</li>
+<li><p>英文原意：change directory。</p>
+</li>
+<li><p>所在路径：Shell内置命令。</p>
+</li>
+<li><p>执行权限：所有用户。</p>
+</li>
+<li><p>功能描述：切换所在目录。</p>
+<h4 id="2-1-cd命令的简化用法"><a href="#2-1-cd命令的简化用法" class="headerlink" title="2.1 cd命令的简化用法"></a>2.1 cd命令的简化用法</h4></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>特殊符号</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>~</td>
+<td>代表用户的家目录</td>
+</tr>
+<tr>
+<td>-</td>
+<td>代表上次所在目录</td>
+</tr>
+<tr>
+<td>.</td>
+<td>代表当前目录</td>
+</tr>
+<tr>
+<td>..</td>
+<td>代表上级目录</td>
+</tr>
+</tbody></table>
+<h4 id="2-2-绝对路径和相对路径"><a href="#2-2-绝对路径和相对路径" class="headerlink" title="2.2 绝对路径和相对路径"></a>2.2 绝对路径和相对路径</h4><p>绝对路径：以跟目录为参照物，从根目录开始，一级一级进入目录</p>
+<p>相对路径：以当前目录作为参照物，进行目录查找</p>
+<h3 id="3．pwd命令"><a href="#3．pwd命令" class="headerlink" title="3．pwd命令"></a>3．pwd命令</h3><p>pwd命令是查询所在目录的命令，基本信息如下：</p>
+<ul>
+<li><p>命令名称：pwd</p>
+</li>
+<li><p>英文原意：print name of current/working directory</p>
+</li>
+<li><p>所在路径：/bin/pwd</p>
+</li>
+<li><p>执行权限：所有用户。</p>
+</li>
+<li><p>功能描述：查询所在的工作目录。</p>
+</li>
+</ul>
+<h3 id="4．mkdir命令"><a href="#4．mkdir命令" class="headerlink" title="4．mkdir命令"></a>4．mkdir命令</h3><ul>
+<li><p>mkdir是创建目录的命令，其基本信息如下。</p>
+</li>
+<li><p>命令名称：mkdir。</p>
+</li>
+<li><p>英文原意：make directories。</p>
+</li>
+<li><p>所在路径：/bin/mkdir。执行权限：所有用户。</p>
+</li>
+<li><p>功能描述：创建空目录。</p>
+</li>
+</ul>
+<p>命令格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mkdir </span><br><span class="line">[选项] 目录名选项：   </span><br><span class="line">-p：递归建立所需目录</span><br></pre></td></tr></table></figure>
+
+<p>5．rmdir命令</p>
+<p>既然有建立目录的命令，就一定会有删除目录的命令</p>
+<p>rmdir，其基本信息如下。</p>
+<ul>
+<li><p>命令名称：rmdir。</p>
+</li>
+<li><p>英文原意：remove empty directories。</p>
+</li>
+<li><p>所在路径：/bin/rmdir。</p>
+</li>
+<li><p>执行权限：所有用户。</p>
+</li>
+<li><p>功能描述：删除空目录。</p>
+</li>
+</ul>
+<p>命令格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# rmdir </span><br><span class="line"></span><br><span class="line">[选项] 目录名选项：   </span><br><span class="line"></span><br><span class="line">-p：递归删除目录</span><br></pre></td></tr></table></figure>
+
+<p>rmdir命令的作用十分有限，因为只能删除空目录，所以一旦目录中有内容，就会报错。这个命令比较“笨”，所以我们不太常用。后续我们不论删除的是文件还是目录，都会使用rm命令</p>
+<h2 id="三、文件操作命令"><a href="#三、文件操作命令" class="headerlink" title="三、文件操作命令"></a>三、文件操作命令</h2><h3 id="1．touch命令"><a href="#1．touch命令" class="headerlink" title="1．touch命令"></a>1．touch命令</h3><p>创建空文件或修改文件时间，这个命令的基本信息如下。</p>
+<ul>
+<li><p>命令名称：touch。</p>
+</li>
+<li><p>英文原意：change file timestamps。</p>
+</li>
+<li><p>所在路径：/bin/touch。</p>
+</li>
+<li><p>执行权限：所有用户。</p>
+</li>
+<li><p>功能描述：修改文件的时间戳。</p>
+</li>
+</ul>
+<h3 id="2．stat命令"><a href="#2．stat命令" class="headerlink" title="2．stat命令"></a>2．stat命令</h3><ul>
+<li><p>stat是查看文件详细信息的命令，而且可以看到文件的这三个时间，其基本信息如下。</p>
+</li>
+<li><p>命令名称：stat。</p>
+</li>
+<li><p>英文原意：display file or file system status。</p>
+</li>
+<li><p>所在路径：/usr/bin/stat。</p>
+</li>
+<li><p>执行权限：所有用户。</p>
+</li>
+</ul>
+<p>功能描述：显示文件或文件系统的详细信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# stat  anaconda-ks.cfg </span><br><span class="line">文件：&quot;anaconda-ks.cfg&quot; 大小：1453      块：8          IO 块：4096   普通文件</span><br><span class="line">设备：803h&#x2F;2051d Inode：33574991    硬链接：1 </span><br><span class="line">权限：(0600&#x2F;-rw-------)  Uid：(    0&#x2F;    root)   Gid：(    0&#x2F;    root)</span><br><span class="line">环境：system_u:object_r:admin_home_t:s0 </span><br><span class="line">最近访问：2018-11-06 23:22:23.409038121 +0800 </span><br><span class="line">最近更改：2018-10-24 00:53:08.760018638 +0800 #数据修改时间</span><br><span class="line">最近改动：2018-10-24 00:53:08.760018638 +0800 #状态修改时间</span><br><span class="line">创建时间：-</span><br></pre></td></tr></table></figure>
+
+<h3 id="3．cat命令"><a href="#3．cat命令" class="headerlink" title="3．cat命令"></a>3．cat命令</h3><p>cat命令用来查看文件内容。这个命令的基本信息如下。</p>
+<ul>
+<li><p>命令名称：cat。</p>
+</li>
+<li><p>英文原意：concatenate files and print on the standard output。</p>
+</li>
+<li><p>所在路径：/bin/cat。</p>
+</li>
+<li><p>执行权限：所有用户。</p>
+</li>
+</ul>
+<p>功能描述：合并文件并打印输出到标准输出</p>
+<p>命令格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat </span><br><span class="line">[选项] 文件名选项：   -A：相当于-vET选项的整合，用于列出所有隐藏符号  </span><br><span class="line">-E：列出每行结尾的回车符$    </span><br><span class="line">-n：显示行号  </span><br><span class="line">-T：把Tab键用^I显示出来   </span><br><span class="line">-v：列出特殊字符</span><br></pre></td></tr></table></figure>
+
+<h3 id="4．more命令"><a href="#4．more命令" class="headerlink" title="4．more命令"></a>4．more命令</h3><p>more是分屏显示文件的命令，其基本信息如下。</p>
+<ul>
+<li><p>命令名称：more。</p>
+</li>
+<li><p>英文原意：file perusal filter for crt viewin。</p>
+</li>
+<li><p>所在路径：/bin/more。执行权限：所有用户。</p>
+</li>
+<li><p>功能描述：分屏显示文件内容。</p>
+</li>
+</ul>
+<p>more命令比较简单，一般不用什么选项，命令会打开一个交互界面，可以识别一些交互命令。常用的交互命令如下。</p>
+<ul>
+<li><p>空格键：向下翻页。</p>
+</li>
+<li><p>b：向上翻页。回车键：向下滚动一行。</p>
+</li>
+<li><p>/字符串：搜索指定的字符串。</p>
+</li>
+<li><p>q：退出  。</p>
+</li>
+</ul>
+<h3 id="5．less命令"><a href="#5．less命令" class="headerlink" title="5．less命令"></a>5．less命令</h3><p>less命令和more命令类似，只是more是分屏显示命令，而less是分行显示命令，其基本信息如下。</p>
+<ul>
+<li>命令名称：less。</li>
+<li>英文原意：opposite of more。</li>
+<li>所在路径：/usr/bin/less。</li>
+<li>执行权限：所有用户。</li>
+<li>功能描述：分行显示文件内容</li>
+</ul>
+<h3 id="6．head命令"><a href="#6．head命令" class="headerlink" title="6．head命令"></a>6．head命令</h3><p>head是用来显示文件开头的命令，其基本信息如下。</p>
+<p>命令名称：head。</p>
+<p>英文原意：output the first part of files。</p>
+<p>所在路径：/usr/bin/head。执行权限：所有用户。</p>
+<p>功能描述：显示文件开头的内容。</p>
+<p>命令格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# head [选项] 文件名</span><br><span class="line">选项：   -n 行数：从文件头开始，显示指定行数   </span><br><span class="line">-v：显示文件名</span><br></pre></td></tr></table></figure>
+
+<h3 id="7．tail命令"><a href="#7．tail命令" class="headerlink" title="7．tail命令"></a>7．tail命令</h3><p>既然有显示文件开头的命令，就会有显示文件结尾的命令。tail命令的基本信息如下。</p>
+<p>命令名称：tail。</p>
+<p>英文原意：output the last part of files。</p>
+<p>所在路径：/usr/bin/tail。</p>
+<p>执行权限：所有用户。</p>
+<p>功能描述：显示文件结尾的内容。</p>
+<p>命令格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# tail [选项] 文件名</span><br><span class="line">选项：   </span><br><span class="line">-n 行数：从文件结尾开始，显示指定行数   </span><br><span class="line">-f：监听文件的新增内容</span><br></pre></td></tr></table></figure>
+
+<h3 id="8．ln命令"><a href="#8．ln命令" class="headerlink" title="8．ln命令"></a>8．ln命令</h3><p>我们来看看ln命令的基本信息。</p>
+<p>命令名称：ln。</p>
+<p>英文原意：make links between file。</p>
+<p>所在路径：/bin/ln。执行权限：所有用户。</p>
+<p>功能描述：在文件之间建立链接。</p>
+<h4 id="8-1ln命令的基本格式如下："><a href="#8-1ln命令的基本格式如下：" class="headerlink" title="8.1ln命令的基本格式如下："></a>8.1ln命令的基本格式如下：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ln [选项] 源文件目标文件</span><br><span class="line">选项：   </span><br><span class="line">-s：建立软链接文件。如果不加“-s”选项，则建立硬链接文件   </span><br><span class="line">-f：强制。如果目标文件已经存在，则删除目标文件后再建立链接文件</span><br></pre></td></tr></table></figure>
+
+<p>如果创建硬链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch cangls </span><br><span class="line">[root@localhost ~]# ln &#x2F;root&#x2F;cangls &#x2F;tmp&#x2F; </span><br><span class="line">#建立硬链接文件，目标文件没有写文件名，会和原名一致</span><br><span class="line">#也就是&#x2F;root&#x2F;cangls和&#x2F;tmp&#x2F;cangls是硬链接文件</span><br></pre></td></tr></table></figure>
+
+<p>如果创建软链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# touch bols </span><br><span class="line">[root@localhost ~]# ln -s &#x2F;root&#x2F;bols  &#x2F;tmp&#x2F;</span><br><span class="line">#建立软链接文件</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-2-硬链接与软连接的特征"><a href="#8-2-硬链接与软连接的特征" class="headerlink" title="8.2 硬链接与软连接的特征"></a>8.2 硬链接与软连接的特征</h4><p>硬链接特征：</p>
+<ul>
+<li><p>源文件和硬链接文件拥有相同的Inode和Block</p>
+</li>
+<li><p>任意一个文件，另一个都改变</p>
+</li>
+<li><p>删除任意一个文件，另一个都能使用</p>
+</li>
+<li><p>硬链接标记不清，很难确认硬链接文件位置，不建议使用硬链接不能链接目录</p>
+</li>
+<li><p>硬链接不能跨分区</p>
+</li>
+</ul>
+<p>软链接特征：</p>
+<ul>
+<li><p>软链接和源文件拥有不同的Inode和Block</p>
+</li>
+<li><p>两个文件修改任意一个，另一个都改变</p>
+</li>
+<li><p>删除软链接，源文件不受影响；删除源文件，软链接不能使用</p>
+</li>
+<li><p>软链接没有实际数据，只保存源文件的Inode，不论源文件多大，软链接大小不变</p>
+</li>
+<li><p>软链接的权限是最大权限lrwxrwxrwx.，但是由于没有实际数据，最终访问时需要参考源文件权限</p>
+</li>
+<li><p>软链接可以链接目录</p>
+</li>
+<li><p>软链接可以跨分区</p>
+</li>
+<li><p>软链接特征明显，建议使用软连接</p>
+</li>
+</ul>
+<h2 id="四、目录和文件都能操作的命令"><a href="#四、目录和文件都能操作的命令" class="headerlink" title="四、目录和文件都能操作的命令"></a>四、目录和文件都能操作的命令</h2><h3 id="1．rm命令"><a href="#1．rm命令" class="headerlink" title="1．rm命令"></a>1．rm命令</h3><p>rm是强大的删除命令，不仅可以删除文件，也可以删除目录。这个命令的基本信息如下。</p>
+<ul>
+<li><p>命令名称：rm。</p>
+</li>
+<li><p>英文原意：remove files or directories。</p>
+</li>
+<li><p>所在路径：/bin/rm。</p>
+</li>
+<li><p>执行权限：所有用户。</p>
+</li>
+<li><p>功能描述：删除文件或目录。</p>
+</li>
+</ul>
+<p>命令格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# rm [选项] 文件或目录</span><br><span class="line">选项：   </span><br><span class="line">-f：强制删除（force）   </span><br><span class="line">-i：交互删除，在删除之前会询问用户</span><br><span class="line">-r：递归删除，可以删除目录（recursive）</span><br></pre></td></tr></table></figure>
+
+<h2 id="2．cp命令"><a href="#2．cp命令" class="headerlink" title="2．cp命令"></a>2．cp命令</h2><p>cp是用于复制的命令，其基本信息如下：</p>
+<ul>
+<li>命令名称：cp。</li>
+<li>英文原意：copy files and directories。</li>
+<li>所在路径：/bin/cp。</li>
+<li>执行权限：所有用户。</li>
+<li>功能描述：复制文件和目录 。</li>
+</ul>
+<p>命令格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cp [选项] 源文件目标文件</span><br><span class="line">选项：   -a：相当于-dpr选项的集合，这几个选项我们一一介绍   </span><br><span class="line">-d：如果源文件为软链接（对硬链接无效），则复制出的目标文件也为软链接   </span><br><span class="line">-i：询问，如果目标文件已经存在，则会询问是否覆盖   </span><br><span class="line">-p：复制后目标文件保留源文件的属性（包括所有者、所属组、权限和时间）   </span><br><span class="line">-r：递归复制，用于复制目录</span><br></pre></td></tr></table></figure>
+
+<h3 id="3．mv命令"><a href="#3．mv命令" class="headerlink" title="3．mv命令"></a>3．mv命令</h3><p>mv是用来剪切的命令，其基本信息如下。</p>
+<ul>
+<li>命令名称：mv。</li>
+<li>英文原意：move (rename) files。</li>
+<li>所在路径：/bin/mv。</li>
+<li>执行权限：所有用户。</li>
+<li>功能描述：移动文件或改名。</li>
+</ul>
+<p>命令格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# mv [选项] 源文件目标文件</span><br><span class="line">选项：  </span><br><span class="line">-f：强制覆盖，如果目标文件已经存在，则不询问，直接强制覆盖   </span><br><span class="line">-i：交互移动，如果目标文件已经存在，则询问用户是否覆盖（默认选项）   </span><br><span class="line">-v：显示详细信息</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、基本权限管理"><a href="#五、基本权限管理" class="headerlink" title="五、基本权限管理"></a>五、基本权限管理</h2><h3 id="1．权限的介绍"><a href="#1．权限的介绍" class="headerlink" title="1．权限的介绍"></a>1．权限的介绍</h3><p>权限位的含义</p>
+<p>前面讲解ls命令时，我们已经知道长格式显示的第一列就是文件的权限，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls -l install.log</span><br><span class="line">-rw-r--r--. 1 root root 24772 1月  14 18:17 install.log</span><br></pre></td></tr></table></figure>
+
+<p>第一列的权限位如果不计算最后的“.”（这个点的含义我们在后面解释），则共有10位，这10位权限位的含义如图所示</p>
+<p><img src="........%5Cpic%5Cqx.png" alt="qx"></p>
+<ul>
+<li><p>第1位代表文件类型。</p>
+<p>Linux不像Windows使用扩展名表示文件类型，而是使用权限位的第1位表示文件类型。虽然Linux文件的种类不像Windows中那么多，但是分类也不少，详细情况可以使用“info ls”命令查看。在这里只讲一些常见的文件类型。   </p>
+<ul>
+<li>“-”：普通文件。      </li>
+<li>“b”：块设备文件。这是一种特殊设备文件，存储设备都是这种文件，如分区文件/dev/sda1就是这种文件。</li>
+<li>“c”：字符设备文件。这也是特殊设备文件，输入设备一般都是这种文件，如鼠标、键盘等。</li>
+<li>“d”：目录文件。Linux中一切皆文件，所以目录也是文件的一种。</li>
+<li>“l”：软链接文件。- “p”：管道符文件。这是一种非常少见的特殊设备文件。</li>
+<li>“s”：套接字文件。这也是一种特殊设备文件，一些服务支持Socket访问，就会产生这样的文件。</li>
+</ul>
+</li>
+<li><p>第2～4位代表文件所有者的权限。</p>
+<ul>
+<li>r：代表read，是读取权限。</li>
+<li>w：代表write，是写权限。</li>
+<li>x：代表execute，是执行权限。</li>
+</ul>
+</li>
+</ul>
+<p>如果有字母，则代表拥有对应的权限；如果是“-”，则代表没有对应的权限。</p>
+<ul>
+<li><p>第5～7位代表文件所属组的权限，同样拥有“rwx”权限  。</p>
+</li>
+<li><p>第8～10位代表其他人的权限，同样拥有“rwx”权限。</p>
+</li>
+</ul>
+<h3 id="2．基本权限命令"><a href="#2．基本权限命令" class="headerlink" title="2．基本权限命令"></a>2．基本权限命令</h3><p>首先来看修改权限的命令chmod，其基本信息如下。</p>
+<ul>
+<li><p>命令名称：chmod。</p>
+</li>
+<li><p>英文原意：change file mode bits。</p>
+</li>
+<li><p>所在路径：/bin/chmod。</p>
+</li>
+<li><p>执行权限：所有用户。</p>
+</li>
+<li><p>功能描述：修改文件的权限模式。</p>
+</li>
+</ul>
+<h4 id="2-1．命令格式"><a href="#2-1．命令格式" class="headerlink" title="2.1．命令格式"></a>2.1．命令格式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chmod [选项] 权限模式文件名</span><br><span class="line">选项：   </span><br><span class="line">-R：递归设置权限，也就是给子目录中的所有文件设定权限</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2．权限模式"><a href="#2-2．权限模式" class="headerlink" title="2.2．权限模式"></a>2.2．权限模式</h4><p>chmod命令的权限模式的格式是“[ugoa][[+-=][perms]]”，也就是“[用户身份][[赋予方式][权限]]”的格式，我们来解释一下 。</p>
+<ul>
+<li><p>用户身份  。</p>
+<ul>
+<li><p>u：代表所有者（user）。</p>
+</li>
+<li><p>g：代表所属组（group）  。</p>
+</li>
+<li><p>o：代表其他人（other）。</p>
+</li>
+<li><p>a：代表全部身份（all）。</p>
+</li>
+</ul>
+</li>
+<li><p>赋予方式。</p>
+<ul>
+<li>+：加入权限。</li>
+<li>-：减去权限。</li>
+<li>=：设置权限。</li>
+</ul>
+</li>
+<li><p>权限。</p>
+<ul>
+<li><p>r：读取权限（read）。</p>
+</li>
+<li><p>w：写权限（write）。</p>
+</li>
+<li><p>x：执行权限（execute）。</p>
+</li>
+</ul>
+<h4 id="2-3．数字权限"><a href="#2-3．数字权限" class="headerlink" title="2.3．数字权限"></a>2.3．数字权限</h4></li>
+</ul>
+<p>数字权限的赋予方式是最简单的，但是不如之前的字母权限好记、直观。我们来看看这些数字权限的含义。</p>
+<ul>
+<li><p>4：代表“r”权限 。</p>
+</li>
+<li><p>2：代表“w”权限 。</p>
+</li>
+<li><p>1：代表“x”权限 。</p>
+<h4 id="2-4．常用权限"><a href="#2-4．常用权限" class="headerlink" title="2.4．常用权限"></a>2.4．常用权限</h4></li>
+</ul>
+<p>数字权限的赋予方式更加简单，但是需要用户对这几个数字更加熟悉。其实常用权限也并不多，只有如下几个。</p>
+<ul>
+<li>644：这是文件的基本权限，代表所有者拥有读、写权限，而所属组和其他人拥有只读权限。</li>
+<li>755：这是文件的执行权限和目录的基本权限，代表所有者拥有读、写和执行权限，而所属组和其他人拥有读和执行权限。</li>
+<li>777：这是最大权限。在实际的生产服务器中，要尽力避免给文件或目录赋予这样的权限，这会造成一定的安全隐患。</li>
+</ul>
+<h3 id="3．基本权限的作用"><a href="#3．基本权限的作用" class="headerlink" title="3．基本权限的作用"></a>3．基本权限的作用</h3><h4 id="3-1．权限含义的解释首先，-读、写、执行权限对文件和目录的作用是不同的。"><a href="#3-1．权限含义的解释首先，-读、写、执行权限对文件和目录的作用是不同的。" class="headerlink" title="3.1．权限含义的解释首先，  读、写、执行权限对文件和目录的作用是不同的。"></a>3.1．权限含义的解释首先，  读、写、执行权限对文件和目录的作用是不同的。</h4><ul>
+<li><p>权限对文件的作用。</p>
+<ul>
+<li>读（r）：对文件有读（r）权限，代表可以读取文件中的数据。如果把权限对应到命令上，那么一旦对文件有读（r）权限，就可以对文件执行cat、more、less、head、tail等文件查看命令。</li>
+<li>写（w）：对文件有写（w）权限，代表可以修改文件中的数据。如果把权限对应到命令上，那么一旦对文件有写（w）权限，就可以对文件执行vim、echo等修改文件数据的命令。注意：对文件有写权限，是不能删除文件本身的，只能修改文件中的数据。如果要想删除文件，则需要对文件的上级目录拥有写权限。</li>
+<li>执行（x）：对文件有执行（x）权限，代表文件拥有了执行权限，可以运行。在Linux中，只要文件有执行（x）权限，这个文件就是执行文件了。只是这个文件到底能不能正确执行，不仅需要执行（x）权限，还要看文件中的代码是不是正确的语言代码。对文件来说，执行（x）权限是最高权限。</li>
+</ul>
+</li>
+<li><p>权限对目录的作用。</p>
+<ul>
+<li>读（r）：对目录有读（r）权限，代表可以查看目录下的内容，也就是可以查看目录下有哪些子文件和子目录。如果把权限对应到命令上，那么一旦对目录拥有了读（r）权限，就可以在目录下执行ls命令，查看目录下的内容了。</li>
+<li>写（w）：对目录有写（r）权限，代表可以修改目录下的数据，也就是可以在目录中新建、删除、复制、剪切子文件或子目录。如果把权限对应到命令上，那么一旦对目录拥有了写（w）权限，就可以在目录下执行touch、rm、cp、mv命令。对目录来说，写（w）权限是最高权限。</li>
+<li>执行（x）：目录是不能运行的，那么对目录拥有执行（x）权限，代表可以进入目录。如果把权限对应到命令上，那么一旦对目录拥有了执行（x）权限，就可以对目录执行cd命令，进入目录。</li>
+</ul>
+<h4 id="3-2．目录的可用权限目录的可用权限其实只有以下几个。"><a href="#3-2．目录的可用权限目录的可用权限其实只有以下几个。" class="headerlink" title="3.2．目录的可用权限目录的可用权限其实只有以下几个。"></a>3.2．目录的可用权限目录的可用权限其实只有以下几个。</h4></li>
+<li><p>0：任何  权限都不赋予。</p>
+</li>
+<li><p>5：基本的目录浏览和进入权限。</p>
+</li>
+<li><p>7：完全权限。</p>
+</li>
+</ul>
+<h3 id="4．所有者和所属组命令"><a href="#4．所有者和所属组命令" class="headerlink" title="4．所有者和所属组命令"></a>4．所有者和所属组命令</h3><h4 id="4-1．chown命令"><a href="#4-1．chown命令" class="headerlink" title="4.1．chown命令"></a>4.1．chown命令</h4><p>chown是修改文件和目录的所有者和所属组的命令，  其基本信息如下。</p>
+<ul>
+<li>命令名称：chown。</li>
+<li>英文原意：change file owner and group。</li>
+<li>所在路径：/bin/chown。执行权限：所有用户。</li>
+<li>功能描述：修改文件和目录 的所有者和所属组。</li>
+</ul>
+<p>命令格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chown [选项] 所有者:所属组文件或目录</span><br><span class="line">选项：  </span><br><span class="line">-R：递归设置权限，也就是给子目录中的所有文件设置权限</span><br></pre></td></tr></table></figure>
+
+<p>普通用户不能修改文件的所有者，哪怕自己是这个文件的所有者也不行。普通用户可以修改所有者是自己的文件的权限。</p>
+<h4 id="4-2．chgrp命令"><a href="#4-2．chgrp命令" class="headerlink" title="4.2．chgrp命令"></a>4.2．chgrp命令</h4><p>chgrp是修改文件和目录的所属组的命令，其基本信息如下。</p>
+<ul>
+<li>命令名称：chgrp。</li>
+<li>英文原意：change group ownership。</li>
+<li>所在路径：/bin/chgrp。</li>
+<li>执行权限：所有用户。</li>
+<li>功能描述：修改文件和目录的所属</li>
+</ul>
+<h3 id="5．umask默认权限"><a href="#5．umask默认权限" class="headerlink" title="5．umask默认权限"></a>5．umask默认权限</h3><h4 id="5-1-查看系统的umask权限"><a href="#5-1-查看系统的umask权限" class="headerlink" title="5.1 查看系统的umask权限"></a>5.1 查看系统的umask权限</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# umask </span><br><span class="line">0022 </span><br><span class="line">#用八进制数值显示umask权限</span><br><span class="line">[root@localhost ~]# umask -S </span><br><span class="line">u&#x3D;rwx,g&#x3D;rx,o&#x3D;rx </span><br><span class="line">#用字母表示文件和目录的初始权限</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2-umask权限的计算方法"><a href="#5-2-umask权限的计算方法" class="headerlink" title="5.2 umask权限的计算方法"></a>5.2 umask权限的计算方法</h4><p>我们需要先了解一下新建文件和目录的默认最大权限。</p>
+<ul>
+<li>对文件来讲，新建文件的默认最大权限是666，没有执行（x）权限。这是因为执行权限对文件来讲比较危险，不能在新建文件的时候默认赋予，而必须通过用户手工赋予。</li>
+<li>对目录来讲，新建目录的默认最大权限是777。这是因为对目录而言，执行（x）权限仅仅代表进入目录，所以即使建立新文件时直接默认赋予，也没有什么危险。</li>
+</ul>
+<p>按照官方的标准算法，umask默认权限需要使用二进制进行逻辑与和逻辑非联合运算才可以得到正确的新建文件和目录的默认权限。这种方法既不好计算，也不好理解。我们在这里还是按照权限字母来讲解umask权限的计算方法。我们就按照默认的umask值是022来分别计算一下新建文件和目录的默认权限吧。</p>
+<ul>
+<li>文件的默认权限最大只能是666，而umask的值是022“-rw-rw-rw-”减去“—–w–w-”等于“-rw-r–r—”</li>
+<li>目录的默认权限最大可以是777，而umask的值是022“drwxrwxrwx”减去“d—-w–w-”等于“drwx-r-xr-x”</li>
+</ul>
+<h5 id="注意：umask默认权限的计算绝不是数字直接相减。"><a href="#注意：umask默认权限的计算绝不是数字直接相减。" class="headerlink" title="注意：umask默认权限的计算绝不是数字直接相减。"></a>注意：umask默认权限的计算绝不是数字直接相减。</h5><p>例如umask是033呢？</p>
+<ul>
+<li>文件的默认权限最大只能是666，而umask的值是033“-rw-rw-rw-”减去“—–wx-wx”等于“-rw-r– r—”</li>
+</ul>
+<h2 id="六、帮助命令"><a href="#六、帮助命令" class="headerlink" title="六、帮助命令"></a>六、帮助命令</h2><h3 id="1．man命令"><a href="#1．man命令" class="headerlink" title="1．man命令"></a>1．man命令</h3><p>man是最常见的帮助命令，也是Linux最主要的帮助命令，其基本信息如下。</p>
+<ul>
+<li>命令名称：man。</li>
+<li>英文原意：format and display the on-line manual pages。</li>
+<li>所在路径：/usr/bin/man。</li>
+<li>执行权限：所有用户。</li>
+<li>功能描述：显示联机帮助手册。</li>
+</ul>
+<p>命令格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# man [选项] 命令</span><br><span class="line">选项：   </span><br><span class="line">-f：查看命令拥有哪个级别的帮助   </span><br><span class="line">-k：查看和命令相关的所有帮助</span><br></pre></td></tr></table></figure>
+
+<p>man命令的快捷键</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>上箭头</td>
+<td>向上移动一行</td>
+</tr>
+<tr>
+<td>下箭头</td>
+<td>向下移动一行</td>
+</tr>
+<tr>
+<td>PgUp</td>
+<td>向上翻一页</td>
+</tr>
+<tr>
+<td>PgDn</td>
+<td>向下翻一页</td>
+</tr>
+<tr>
+<td>g</td>
+<td>移动到第一页</td>
+</tr>
+<tr>
+<td>G</td>
+<td>移动到最后一页</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>/字符串</td>
+<td>从当前页向下搜索字符串</td>
+</tr>
+<tr>
+<td>?字符串</td>
+<td>从当前页向上搜索字符串</td>
+</tr>
+<tr>
+<td>n</td>
+<td>当搜索字符串时，可以使用n键找到下一个字符串</td>
+</tr>
+<tr>
+<td>N</td>
+<td>当搜索字符串时，使用N键反向查询字符串。也就是说，如果使用“/字符串”方式搜索，则N键表示向上搜索字符串；如果使用“?字符串”方式搜索，则N键表示 向下搜索字符串</td>
+</tr>
+</tbody></table>
+<p>man命令的帮助级别</p>
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>普通用户可以执行的系统命令和可执行文件的帮助</td>
+</tr>
+<tr>
+<td>2</td>
+<td>内核可以调用的函数和工具的帮助</td>
+</tr>
+<tr>
+<td>3</td>
+<td>C语言函数的帮助</td>
+</tr>
+<tr>
+<td>4</td>
+<td>设备和特殊文件的帮助</td>
+</tr>
+<tr>
+<td>5</td>
+<td>配置文件的帮助</td>
+</tr>
+<tr>
+<td>6</td>
+<td>游戏的帮助（个人版的Linux中是有游戏的）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>杂项的帮助</td>
+</tr>
+<tr>
+<td>8</td>
+<td>超级用户可以执行的系统命令的帮助</td>
+</tr>
+<tr>
+<td>9</td>
+<td>内核的帮助</td>
+</tr>
+</tbody></table>
+<p>man    -f    命令或     whatis    命令</p>
+<p>#查看命令拥有哪个级别的帮助</p>
+<p>man    -k    命令或    apropos命令</p>
+<p>#查看和命令相关的所有帮助</p>
+<h3 id="2．info命令"><a href="#2．info命令" class="headerlink" title="2．info命令"></a>2．info命令</h3><p>info命令的帮助信息是一套完整的资料，每个单独命令的帮助信息只是这套完整资料中的某一个小章节。</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>上箭头</td>
+<td>向上移动一行</td>
+</tr>
+<tr>
+<td>下箭头</td>
+<td>向下移动一行</td>
+</tr>
+<tr>
+<td>PgUp</td>
+<td>向上翻一页</td>
+</tr>
+<tr>
+<td>PgDn</td>
+<td>向下翻一页</td>
+</tr>
+<tr>
+<td>Tab</td>
+<td>在有“*”符 号的节点间进行切换</td>
+</tr>
+<tr>
+<td>回车</td>
+<td>进入有“*”符号的子页面，查看详细帮助信息</td>
+</tr>
+<tr>
+<td>u</td>
+<td>进入上一层信息（回车是进入下一层信息）</td>
+</tr>
+<tr>
+<td>n</td>
+<td>进入下一小节信息</td>
+</tr>
+<tr>
+<td>p</td>
+<td>进入上一小节信息</td>
+</tr>
+<tr>
+<td>?</td>
+<td>查看帮助信息</td>
+</tr>
+<tr>
+<td>q</td>
+<td>退出info信息</td>
+</tr>
+</tbody></table>
+<h3 id="3．help命令"><a href="#3．help命令" class="headerlink" title="3．help命令"></a>3．help命令</h3><p>help只能获取Shell内置命令的帮助help命令的基本信息如下。</p>
+<ul>
+<li><p>命令名称：help。</p>
+</li>
+<li><p>英文原意：help。</p>
+</li>
+<li><p>所在路径：Shell内置命令。</p>
+</li>
+<li><p>执行权限：所有用户。</p>
+</li>
+<li><p>功能描述：显示Shell内置命令的帮助。可以使用type命令来区分内置命令与外部命令。shell是Linux的命令解释器。</p>
+</li>
+</ul>
+<h3 id="4．–help选项"><a href="#4．–help选项" class="headerlink" title="4．–help选项"></a>4．–help选项</h3><p>绝大多数命令都可以使用“–help”选项来查看帮助，这也是一种获取帮助的方法。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# ls --help</span><br></pre></td></tr></table></figure>
+
+<p> 这种方法非常简单，输出的帮助信息基本上是man命令的信息简要版。对于这4种常见的  获取帮助的方法，大家可以按照自己的习惯任意使</p>
+<h2 id="七、搜索命令"><a href="#七、搜索命令" class="headerlink" title="七、搜索命令"></a>七、搜索命令</h2><h3 id="1．whereis命令"><a href="#1．whereis命令" class="headerlink" title="1．whereis命令"></a>1．whereis命令</h3><p>whereis是搜索系统命令的命令（像绕口令一样），也就是说，whereis命令不能搜索普通文件，而只能搜索系统命令。whereis命令的基本信息如下。</p>
+<ul>
+<li>命令名称：whereis。</li>
+<li>英文原意：locate the binary, source, and manual page files for a command。</li>
+<li>所在路径：/usr/bin/whereis。执行权限：所有用户。</li>
+<li>功能描述：查找二进制命令、源文件和帮助文档的命令。</li>
+</ul>
+<h3 id="2．which命令"><a href="#2．which命令" class="headerlink" title="2．which命令"></a>2．which命令</h3><p>which也是搜索  系统命令的命令。和whereis命令的区别在于：</p>
+<ul>
+<li><p>whereis命令可以  在查找 到二进制命令的同时，查找到帮助文档的位置；</p>
+</li>
+<li><p>而which命令在查找到二进制命令的同时，如果这个命令有别名，则还可以找到别名命令。</p>
+</li>
+</ul>
+<p>which命令的基本信息如下</p>
+<ul>
+<li>命令名称：which。</li>
+<li>英文原意：shows the full path of (shell) commands。</li>
+<li>所在路径：/usr/bin/which。</li>
+<li>执行权限：所有用户。</li>
+<li>功能描述：列出命令的所在路径。</li>
+</ul>
+<h3 id="3．locate命令"><a href="#3．locate命令" class="headerlink" title="3．locate命令"></a>3．locate命令</h3><h4 id="3-1基本用法"><a href="#3-1基本用法" class="headerlink" title="3.1基本用法"></a>3.1基本用法</h4><p>locate命令才是可以按照文件名搜索普通文件的命令。</p>
+<ul>
+<li>优点：按照数据库搜索，搜索速度快，消耗资源小。数据库位置/var/lib/mlocate/mlocate.db，可以使用updatedb命令强制更新数据库。</li>
+<li>缺点：只能按照文件名来搜索文件，而不能执行更复杂的搜索，比如按照权限、大小、修改时间等搜索文件。</li>
+</ul>
+<p>locate命令的基本信息如下。</p>
+<ul>
+<li><p>命令名称：locate。</p>
+</li>
+<li><p>英文原意：find files by name。</p>
+</li>
+<li><p>所在路径：/usr/bin/locate。</p>
+</li>
+<li><p>执行权限：所有用户。</p>
+</li>
+<li><p>功能描述：按照文件名搜索文件。</p>
+<h4 id="3-2配置文件"><a href="#3-2配置文件" class="headerlink" title="3.2配置文件"></a>3.2配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vi &#x2F;etc&#x2F;updatedb.conf </span><br><span class="line">PRUNE_BIND_MOUNTS &#x3D; &quot;yes&quot; </span><br><span class="line">#开启搜索限制，也就是让这个配置文件生效</span><br><span class="line">PRUNEFS &#x3D; &quot;......&quot; </span><br><span class="line">#在locate执行搜索时，禁止搜索这些文件系统类型</span><br><span class="line">PRUNENAMES &#x3D; &quot;......&quot; </span><br><span class="line">#在locate执行搜索时，禁止搜索带有这些扩展名的文件</span><br><span class="line">PRUNEPATHS &#x3D; &quot;......&quot; </span><br><span class="line">#在locate执行搜索时，禁止搜索这些系统目录</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="4．find命令"><a href="#4．find命令" class="headerlink" title="4．find命令"></a>4．find命令</h3><p>find命令的基本信息如下。</p>
+<ul>
+<li><p>命令名称：find。</p>
+</li>
+<li><p>英文原意：search for files in a directory hierarchy。</p>
+</li>
+<li><p>所在路径：/bin/find。</p>
+</li>
+<li><p>执行权限：所有用户。</p>
+</li>
+<li><p>功能描述：在目录中搜索文件。</p>
+<h4 id="4-1按照文件名搜索"><a href="#4-1按照文件名搜索" class="headerlink" title="4.1按照文件名搜索"></a>4.1按照文件名搜索</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find 搜索路径[选项] 搜索内容</span><br><span class="line">选项：   </span><br><span class="line">-name：按照文件名搜索   </span><br><span class="line">-iname：按照文件名搜索，不区分文件名大小写   </span><br><span class="line">-inum：按照inode号搜索</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-2．按照文件大小搜索"><a href="#4-2．按照文件大小搜索" class="headerlink" title="4.2．按照文件大小搜索"></a>4.2．按照文件大小搜索</h4></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find 搜索路径[选项] 搜索内容</span><br><span class="line">选项：   </span><br><span class="line">-size [+|-]大小：按照指定大小搜索文件</span><br></pre></td></tr></table></figure>
+
+<p>这里的“+”的意思是搜索比指定大小还要大的文件，“-”的意思是搜索比指定大小还要小的文件。</p>
+<p>find命令的单位：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# man find        </span><br><span class="line">-size n[cwbkMG]              </span><br><span class="line">File uses n units of space.  The following suffixes can be used:               </span><br><span class="line">&#39;b&#39;    for 512-byte blocks (this is the default if no suffix is used) #这是默认单位，如果单位为b或不写单位，则按照512 Byte搜索              </span><br><span class="line">&#39;c&#39;    for bytes     #搜索单位是c，按照字节搜索              </span><br><span class="line">&#39;w&#39;    for two-byte words #搜索单位是w，按照双字节（中文）搜索              </span><br><span class="line">&#39;k&#39;    for Kilobytes (units of 1024 bytes)     #按照KB单位搜索，必须是小写的k               </span><br><span class="line">&#39;M&#39;    for Megabytes (units of 1048576 bytes) #按照MB单位搜索，必须是大写的M               </span><br><span class="line">&#39;G&#39;    for Gigabytes (units of 1073741824 bytes)     #按照GB单位搜索，必须是大写的G</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-3按照修改时间搜索"><a href="#4-3按照修改时间搜索" class="headerlink" title="4.3按照修改时间搜索"></a>4.3按照修改时间搜索</h4><p>Linux中的文件有访问时间（atime）、数据修改时间（mtime）、状态修改时间（ctime）这三个时间，我们也可以按照时间来搜索文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# find 搜索路径[选项] 搜索内容</span><br><span class="line">选项：   </span><br><span class="line">-atime [+|-]时间：按照文件访问时间搜索   </span><br><span class="line">-mtime [+|-]时间：按照文件数据修改时间搜索   </span><br><span class="line">-ctime [+|-]时间：按照文件状态修改时间搜索</span><br></pre></td></tr></table></figure>
+
+<p>这三个时间的区别我们在stat命令中已经解释过了，这里用mtime数据修改时间来举例，重点说说“[+-]”时间的含义。</p>
+<ul>
+<li>-5：代表5天内修改的文件。</li>
+<li>5：代表前5～6天那一天修改的文件。</li>
+<li>+5：代表6天前修改的文件。</li>
+</ul>
+<p>我们画一个时间轴，来解释一下</p>
+<p><img src="........%5Cpic%5Css.png" alt="ss"></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
