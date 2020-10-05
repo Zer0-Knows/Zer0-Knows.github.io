@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Zer0 Blog</title>
+    <title>运维学习建议 - Zer0 Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Zer0,"> 
-    
+    <meta name="description" content="一、学习Linux的注意事项1.Linux严格区分大小写Linux是严格区分大小写的，这一点和Windows不一样，所以操作时要注意区分大小写的不同，包括文件名和目录名、命令、命令选项、配置文件设置,"> 
     <meta name="author" content="Zer0_Nos"> 
     <link rel="alternative" href="atom.xml" title="Zer0 Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -33,16 +33,36 @@
 <body class="loading">
     <span id="config-title" style="display:none">Zer0 Blog</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">运维学习建议</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
     </div>
+    <div class="scrollbar"></div>
+</div>
+
     <div class="section">
         <div class="article">
-            <div class="main">
-                <div class="content">
-                
-                        <h2 id="一、学习Linux的注意事项"><a href="#一、学习Linux的注意事项" class="headerlink" title="一、学习Linux的注意事项"></a>一、学习Linux的注意事项</h2><h3 id="1-Linux严格区分大小写"><a href="#1-Linux严格区分大小写" class="headerlink" title="1.Linux严格区分大小写"></a>1.Linux严格区分大小写</h3><p>Linux是严格区分大小写的，这一点和Windows不一样，所以操作时要注意区分大小写的不同，包括文件名和目录名、命令、命令选项、配置文件设置选项等。</p>
+    <div class='main'>
+        <h1 class="title">运维学习建议</h1>
+        <div class="stuff">
+            <span>十月 04, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux%E8%BF%90%E7%BB%B4%E5%9F%BA%E7%A1%80/" rel="tag">linux运维基础</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="一、学习Linux的注意事项"><a href="#一、学习Linux的注意事项" class="headerlink" title="一、学习Linux的注意事项"></a>一、学习Linux的注意事项</h2><h3 id="1-Linux严格区分大小写"><a href="#1-Linux严格区分大小写" class="headerlink" title="1.Linux严格区分大小写"></a>1.Linux严格区分大小写</h3><p>Linux是严格区分大小写的，这一点和Windows不一样，所以操作时要注意区分大小写的不同，包括文件名和目录名、命令、命令选项、配置文件设置选项等。</p>
 <h3 id="2-Linux一切皆文件"><a href="#2-Linux一切皆文件" class="headerlink" title="2. Linux一切皆文件"></a>2. Linux一切皆文件</h3><p>Linux中所有内容都是以文件的形式保存和管理的，硬件设备也是文件，这和Windows完全不同，Windows是通过设备管理器来管理硬件的。Linux的设备文件保存在/dev/目录中，硬盘文件是/dev/sd[a-p]，光盘文件是/dev/hdc等。</p>
 <h3 id="3-Linux不靠扩展名区分文件类型"><a href="#3-Linux不靠扩展名区分文件类型" class="headerlink" title="3.Linux不靠扩展名区分文件类型"></a>3.Linux不靠扩展名区分文件类型</h3><p>Windows是依赖扩展名区分文件类型的，比如，“.txt”是文本文件、“.exe”是执行文件、“.ini”是配置文件、“.mp4”是小电影等。但Linux不是靠扩展名区分文件类型的，而是靠权限位标识来确定文件类型的，而且文件类型的种类也不像Windows下那么多，常见的文件类型只有普通文件、目录、链接文件、块设备文件、字符设备文件等几种。Linux的可执行文件不过就是普通文件被赋予了可执行权限而已。</p>
 <p>但Linux中的一些特殊文件还是要求写“扩展名”的，但是大家小心，并不是Linux一定要靠扩展名来识别文件类型，写这些扩展名是为了帮助管理员来区分不同的文件类型。这样的文件扩展名主要有以下几种。</p>
@@ -215,13 +235,36 @@
 <h3 id="6．合理分配权限"><a href="#6．合理分配权限" class="headerlink" title="6．合理分配权限"></a>6．合理分配权限</h3><p>服务器管理有一个最简单的原则：给予用户最小的权限。</p>
 <h3 id="7．定期备份重要数据和日志"><a href="#7．定期备份重要数据和日志" class="headerlink" title="7．定期备份重要数据和日志"></a>7．定期备份重要数据和日志</h3><p>备份的基本原则：不要把鸡蛋放在同一个篮子里</p>
 
-                
-                </div>
-            </div>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                </ul>
+            
         </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
     </div>
+    
 </div>
 
+
+    </div>
+</div>
 </body>
 
 
