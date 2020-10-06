@@ -7,6 +7,203 @@
 ]]></content>
   </entry>
   <entry>
+    <title>社会工程学攻击解析</title>
+    <url>/2020/05/10/page-1/</url>
+    <content><![CDATA[<p>社会工程学攻击是一种通过对被攻击者心理弱点、本能反应、好奇心、信任、贪婪等心理陷阱所采取的诸如欺骗、伤害等危害手段，获取自身利益的手法。当黑客攻击与社会工程学攻击融为一体时，将根本不存在所谓安全的系统，所谓“No patch for stupid”</p>
+<p>1.对特定的环境实施渗透，是社工为了获取所需敏感信息的常用手段之一。黑客通过观察被攻击者对电子邮件的响应速度、重视程度以及与被攻击者相关的资料，如个人姓名、生日、电话号码、电子邮箱地址等，通过对搜集的信息进行综合利用，进而判断被攻击的账号密码等大致内容</p>
+<p>2.伪装欺骗也是社工的主要手段之一。电子邮件伪造、网络钓鱼等攻击手法均可实现伪造欺骗被攻击者，可实现诱惑被攻击者进入指定页面下载并运行恶意程序，或是要求被攻击者输入敏感账号密码等信息进行“验证”等，黑客利用被攻击者疏于防范的心理引诱用户进而实现伪装欺骗的目的</p>
+<p>3.说服是对互联网信息安全危害较大的一种社工方法。它要求被攻击者与攻击者达成某种一致，进而为黑客攻击过程提供各种便利条件，当被攻击者的利益与黑客的利益没有冲突时，甚至与黑客的利益一致时，该种手段就会非常有效</p>
+<p>4.黑客在实施社工的过程中，常会利用被攻击者对安全、漏洞、病毒等内容的敏感性，以权威机构的身份出现，散布安全警告、系统风险等消息，用危言耸听的伎俩恐吓、欺骗被攻击者，并声称不按照他们的方式去处理就会造成非常严重的危害和损失，借此实现对被攻击者敏感信息的获取</p>
+<p>5.社工手段高明的黑客需要精通心理学、人际关系学、行为学等知识和技能，善于利用人们的本能反应、好奇心、盲目信任、贪婪等弱点设置陷阱，实施欺骗，并控制他人为己服务。他们通常十分友善，讲究说话的艺术，知道如何借助机会去恭维他人，投其所好，使多数人友善地做出回应</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>运维学习建议</title>
+    <url>/2020/10/04/linux1/</url>
+    <content><![CDATA[<h2 id="一、学习Linux的注意事项"><a href="#一、学习Linux的注意事项" class="headerlink" title="一、学习Linux的注意事项"></a>一、学习Linux的注意事项</h2><h3 id="1-Linux严格区分大小写"><a href="#1-Linux严格区分大小写" class="headerlink" title="1.Linux严格区分大小写"></a>1.Linux严格区分大小写</h3><p>Linux是严格区分大小写的，这一点和Windows不一样，所以操作时要注意区分大小写的不同，包括文件名和目录名、命令、命令选项、配置文件设置选项等。</p>
+<h3 id="2-Linux一切皆文件"><a href="#2-Linux一切皆文件" class="headerlink" title="2. Linux一切皆文件"></a>2. Linux一切皆文件</h3><p>Linux中所有内容都是以文件的形式保存和管理的，硬件设备也是文件，这和Windows完全不同，Windows是通过设备管理器来管理硬件的。Linux的设备文件保存在/dev/目录中，硬盘文件是/dev/sd[a-p]，光盘文件是/dev/hdc等。</p>
+<h3 id="3-Linux不靠扩展名区分文件类型"><a href="#3-Linux不靠扩展名区分文件类型" class="headerlink" title="3.Linux不靠扩展名区分文件类型"></a>3.Linux不靠扩展名区分文件类型</h3><p>Windows是依赖扩展名区分文件类型的，比如，“.txt”是文本文件、“.exe”是执行文件、“.ini”是配置文件、“.mp4”是小电影等。但Linux不是靠扩展名区分文件类型的，而是靠权限位标识来确定文件类型的，而且文件类型的种类也不像Windows下那么多，常见的文件类型只有普通文件、目录、链接文件、块设备文件、字符设备文件等几种。Linux的可执行文件不过就是普通文件被赋予了可执行权限而已。</p>
+<p>但Linux中的一些特殊文件还是要求写“扩展名”的，但是大家小心，并不是Linux一定要靠扩展名来识别文件类型，写这些扩展名是为了帮助管理员来区分不同的文件类型。这样的文件扩展名主要有以下几种。</p>
+<ul>
+<li><p>压缩包：Linux下常见的压缩文件名有<em>.gz、</em>.bz2、<em>.zip、</em> . t a r. g z、<em>.tar.bz2、</em>.tgz等。为什么压缩包一定要写扩展名呢？其实很好理解，如果不写清楚扩展名，那么管理员不容易判断压缩包的格式，虽然有命令可以帮助判断，但是直观一点更加方便。另外，就算没写扩展名，在Linux中一样可以解压缩，不影响使用。</p>
+</li>
+<li><p>二进制软件包：CentOS中所使用的二进制安装包是RPM包，所有的RPM包都用“.rpm”扩展名结尾，目的同样是让管理员一目了然。</p>
+</li>
+<li><p>程序文件：Shell脚本一般用“<em>.sh”扩展名结尾，其他还有用“</em>.c”扩展名结尾的C语言文件等。</p>
+</li>
+<li><p>网页文件：网页文件一般使用“<em>.html”“</em>.php”等结尾，不过这是网页服务器的要求，而不是Linux的要求。</p>
+</li>
+</ul>
+<h3 id="4．Linux中所有的存储设备都必须在挂载之后才能使用"><a href="#4．Linux中所有的存储设备都必须在挂载之后才能使用" class="headerlink" title="4．Linux中所有的存储设备都必须在挂载之后才能使用"></a>4．Linux中所有的存储设备都必须在挂载之后才能使用</h3><p>Linux中所有的存储设备都有自己的设备文件名，这些设备文件必须在挂载之后才能使用，包括硬盘、U盘和光盘。挂载其实就是给这些存储设备分配盘符，只不过Windows中的盘符用英文字母表示 ，而Linux中的盘符则是一个已经建立的空目录。我们把这些空目录叫作挂载点（可以理解为Windows的盘符），把设备文件（如/dev/sdb）和挂载点（已经建立的空目录）连接的过程叫作挂载</p>
+<h3 id="5．Windows下的程序不能直接在Linux中使用"><a href="#5．Windows下的程序不能直接在Linux中使用" class="headerlink" title="5．Windows下的程序不能直接在Linux中使用"></a>5．Windows下的程序不能直接在Linux中使用</h3><p>Linux和Windows是不同的操作系统，可以安装和使用的软件也是不同的，所以能够在Windows中安装的软件是不能在Linux中安装的。有好处吗？当然有，那就是能够感染Windows的病毒和木马都对Linux无效。有坏处吗？也有，那就是所有的软件要想在Linux中安装，必须单独开发针对Linux的版本，或者依赖模拟器软件运行。很多软件也会同时推出针对Windows和Linux的版本，如大家熟悉的即时通信软件QQ。</p>
+<h2 id="二、服务器管理建议"><a href="#二、服务器管理建议" class="headerlink" title="二、服务器管理建议"></a>二、服务器管理建议</h2><h3 id="1．了解Linux目录结构"><a href="#1．了解Linux目录结构" class="headerlink" title="1．了解Linux目录结构"></a>1．了解Linux目录结构</h3><table>
+<thead>
+<tr>
+<th>目录名</th>
+<th>目录的作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/bin/</td>
+<td>存放系统命令的目录，普通用户和超级用户都可以执行。是/usr/bin/目录的软链接</td>
+</tr>
+<tr>
+<td>/sbin/</td>
+<td>存放系统  命令的目录，只有超级用户才可以执行。是/usr/sbin/目录的软链接</td>
+</tr>
+<tr>
+<td>/usr/bin/</td>
+<td>存放系统命令的目录，普通用户和超级用户都可以执行</td>
+</tr>
+<tr>
+<td>/usr/sbin/</td>
+<td>存放系统  命令的目录，只有超级用户才可以执</td>
+</tr>
+<tr>
+<td>/boot/</td>
+<td>系统启动目录，保存与系统启动相关的文件，如内核文件和启动引导程序（grub）文件等</td>
+</tr>
+<tr>
+<td>/dev/</td>
+<td>设备文件保存位置</td>
+</tr>
+<tr>
+<td>/etc/</td>
+<td>配置文件保存位置。系统内所有采用默认安装方式（rpm安装）的服务配置文件全部保存在此目录中，如用户信息、服务的启动脚本、常用服务的配置文件等</td>
+</tr>
+<tr>
+<td>/home/</td>
+<td>普通用户的家目录。在创建用户时，每个用户要有一个默认登录和保存自己数据的位置，就是用户的家目录，所有普通用户的宿主目录是在/home/下建立一个和用户名相同的目录。如用户user1的家目录就是/home/user1/</td>
+</tr>
+<tr>
+<td>/lib/</td>
+<td>系统调用的函数库保存位置。是/usr/lib/的软链接</td>
+</tr>
+<tr>
+<td>/lib64/</td>
+<td>64位函数库保存位置。是/usr/lib64/的软链接</td>
+</tr>
+<tr>
+<td>/lost+found/</td>
+<td>当系统意外崩溃或机器意外关机，而产生一些文件碎片放在这里。当系统启动的过程中fsck工具会检查这里，并修复已经损坏的文件系统。这个目录只在每个分区中出现，例如/lost+found就是根分区的备份恢复目录，/boot/lost+found就是/boot分区的备份恢复目录</td>
+</tr>
+<tr>
+<td>/media/</td>
+<td>挂载目录。系统建议是用来挂载媒体设备的，如软盘和光盘</td>
+</tr>
+<tr>
+<td>/misc/</td>
+<td>挂载目录。系统建议用来挂载NFS服务的共享目录。我们在刚刚已经解释了挂载，童鞋们应该知道只要是一个已经建立的空目录就可以作为挂载点。那么系统虽然准备了三个默认挂载目录/media、/mnt、/misc，但是到底在哪个目录中挂载什么设备都可以由管理员自己决定。如/mnt/cdrom挂载光盘，/mnt/usb挂载U盘，这都是可以的</td>
+</tr>
+<tr>
+<td>/mnt/</td>
+<td>挂载目录。早期Linux中只有这一个挂载目录，并没有细分。现在系统建议这个目录用来挂载额外的设备，如U盘、移动硬盘和其他操作系统的分区</td>
+</tr>
+<tr>
+<td>/opt/</td>
+<td>第三方安装的软件保存位置。这个目录是放置和安装其他软件的位置，手工安装的源码包软件都可以安装到这个目录中。/usr/local/目录也可以用来安装软件</td>
+</tr>
+<tr>
+<td>/proc/</td>
+<td>虚拟文件系统。该目录中的数据并不保存在硬盘上，而是保存到内存中。主要保存系统的内核、进程、外部设备状态和网络状态等。如/proc/cpuinfo是保存CPU信息的，/proc/devices是保存设备驱动的列表的，/proc/filesystems是保存文件系统列表的，/proc/net是保存网络协议信息的…..</td>
+</tr>
+<tr>
+<td>/sys/</td>
+<td>虚拟文件系统。和/proc/目录相似，该目录中的数据都保存在内存中，主要保存与内核相关的信息</td>
+</tr>
+<tr>
+<td>/root/</td>
+<td>root的宿主目录。普通用户宿主目录在/home/下，root宿主目录直接在“/”下</td>
+</tr>
+<tr>
+<td>/run/</td>
+<td>系统运行时产生的数据，如ssid，pid等相关数据。/var/run/是此目录的软链接</td>
+</tr>
+<tr>
+<td>/srv/</td>
+<td>服务数据目录。一些系统服务启动之后，可以在这个目录中保存所需要的数据</td>
+</tr>
+<tr>
+<td>/tmp/</td>
+<td>临时目录。系统存放临时文件的目录，在该目录下，所有用户都可以访问和写入。我们建议此目录中不能保存重要数据，最好每次开机都把该目录清空</td>
+</tr>
+<tr>
+<td>/usr/</td>
+<td>系统软件资源目录。注意usr不是user的缩写，而是“UNIX Software Resource”的缩写，所以不是存放用户数据的目录，而是存放系统软件资源的目录。系统中安装的软件大多数保存在这里</td>
+</tr>
+<tr>
+<td>/usr/lib/</td>
+<td>应用程序调用的函数库保存位置</td>
+</tr>
+<tr>
+<td>/usr/local/</td>
+<td>手工安装的软件保存位置。我们一般建议源码包软件安装在这个位置</td>
+</tr>
+<tr>
+<td>/usr/share/</td>
+<td>应用程序的资源文件保存位置，如帮助文档、说明文档和字体目录</td>
+</tr>
+<tr>
+<td>/usr/src/</td>
+<td>源码包保存位置。我们手工下载的源码包和内核源码包都可以保存到这里。不过我更习惯把手工下载的源码包保存到/usr/local/src/目录中，把内核源码保存到/usr/src/kernels/目录中</td>
+</tr>
+<tr>
+<td>/usr/src/kernels/</td>
+<td>内核源码保存位置</td>
+</tr>
+<tr>
+<td>/var/</td>
+<td>动态数据保存位置。主要保存缓存、日志以及软件运行所产生的文件</td>
+</tr>
+<tr>
+<td>/var/www/html/</td>
+<td>RPM包安装的Apache的网页主目录</td>
+</tr>
+<tr>
+<td>/var/lib/</td>
+<td>程序运行中需要调用或改变的数据保存位置。如MySQL的数据库保存在/var/lib/mysql/目录中</td>
+</tr>
+<tr>
+<td>/var/log/</td>
+<td>系统日志保存位置</td>
+</tr>
+<tr>
+<td>/var/run/</td>
+<td>一些服务和程序运行后，它们的PID（进程ID）保存位置。是/run/目录的软链接</td>
+</tr>
+<tr>
+<td>/var/spool/</td>
+<td>放置队列数据的目录。就是排队等待其他程序使用的数据，比如邮件队列和打印队列</td>
+</tr>
+<tr>
+<td>/var/spool/mail/</td>
+<td>新收到的邮件队列保存位置。系统新收到的邮件会保存在此目录中</td>
+</tr>
+<tr>
+<td>/var/spool/cron/</td>
+<td>系统的定时任务队列保存位置。系统的计划任务会保存在这里</td>
+</tr>
+</tbody></table>
+<h3 id="2-远程服务器关机及重启时的注意事项"><a href="#2-远程服务器关机及重启时的注意事项" class="headerlink" title="2.远程服务器关机及重启时的注意事项"></a>2.远程服务器关机及重启时的注意事项</h3><p>为什么远程服务器不能关机呢？很简单，远程服务器没有放置在本地，关机后，谁可以帮你按开机电源键启动服务器？虽然计算机技术日新月异，但是像插入电源和开机这样的工作还是需要手工进行的。如果服务器在远程，一旦关机，就只能求助托管机房的管理人员帮你开机了。远程服务器重启时需要注意两点。</p>
+<h4 id="2-1远程服务器在重启前，要中止正在执行的服务"><a href="#2-1远程服务器在重启前，要中止正在执行的服务" class="headerlink" title="2.1远程服务器在重启前，要中止正在执行的服务"></a>2.1远程服务器在重启前，要中止正在执行的服务</h4><p>计算机的硬盘最怕在高速存储时断电或重启，非常容易造成硬盘损坏。所以，在重启前先中止你的服务，甚至可以考虑暂时断开对外提供服务的网络。可能你会觉得服务器有这么娇贵吗？我的笔记本电脑经常强行关机，也没有发现硬盘损坏啊？这是因为你的个人计算机没有很多人访问，强制断电时硬盘并没有进行数据交换。小心驶得万年船！</p>
+<h4 id="2-2重启命令的选用"><a href="#2-2重启命令的选用" class="headerlink" title="2.2重启命令的选用"></a>2.2重启命令的选用</h4><p>Linux可以识别的重启命令有很多条，但是建议大家使用“shutdown -r now”命令重启。这条命令在重启时会正常保存和中止服务器中正在运行的程序，是安全重启命令。而且最好在重启前执行几次“sync”命令，这条命令是数据同步命令，可以让暂时保存在内存中的数据同步到硬盘上。</p>
+<h3 id="3．不要在服务器访问高峰运行高负载命令"><a href="#3．不要在服务器访问高峰运行高负载命令" class="headerlink" title="3．不要在服务器访问高峰运行高负载命令"></a>3．不要在服务器访问高峰运行高负载命令</h3><p>这一点大家很好理解，在服务器访问高峰，如果使用一些对服务器压力较大的命令，则有可能会造成服务器响应缓慢甚至死机。哪些命令是高负载命令呢？其实，如果大家使用过Windows操作系统，则也会留意到一些操作会给计算机带来较大的运算压力，道理都是一样的，如复制大量的数据、压缩或者解压缩大文件、大范围的硬盘搜索等。什么时间算作访问高峰期呢？我们一般认为17:00—24:00算作访问高峰期。当然，每台服务器具体提供的服务不同，访问高峰期有时也会有所出入。比如，服务器主要是供美国人民访问的，那就要考虑时差的问题；或者服务器提供的服务很特殊，访问高峰期可能也不同。一般我们建议在凌晨4:00—5:00执行这些命令。那是不是说我们需要在凌晨上班？当然不是，这谁受得了啊？我们可以使用系统的计划任务，让操作自动在指定的时间段执行。</p>
+<h3 id="4．远程配置防火墙时不要把自己踢出服务器"><a href="#4．远程配置防火墙时不要把自己踢出服务器" class="headerlink" title="4．远程配置防火墙时不要把自己踢出服务器"></a>4．远程配置防火墙时不要把自己踢出服务器</h3><p>简单来讲，防火墙就是根据数据包自身的参数来判断是否允许数据包通过的网络设备。我们的服务器要想在公网中安全地使用，就需要使用防火墙过滤有害的数据包。但是在配置防火墙时，如果管理员对防火墙不是很熟悉，则有可能把自己的正常访问数据包和有害数据包全部过滤掉，导致自己也无法正常登录服务器，如防火墙关闭了远程连接的SSH服务的端口。防火墙配置完全是靠手工命令完成的，配置规则和配置命令相对也比较复杂，万一设置的时候心不在焉，悲剧就发生了。如何避免这种尴尬的情况发生呢？最好的方法当然是在服务器本地配置防火墙，这样就算不小心把自己的远程登录给过滤了，还可以通过本机登录来进行恢复。如果服务器已经在远程登录了，要配置防火墙，那么最好在本地测试完善后再进行上传，这样会把发生故障的概率降到最低。虽然在本地测试好了，但是传到远程服务器上时仍有可能发生问题。这里想到一个笨办法：如果需要远程配置防火墙，那么先写一个系统定时任务，让它每5分钟清空一下防火墙规则，就算写错了也还有反悔的机会，等测试没有问题了再删除这个系统定时任务</p>
+<h3 id="5．指定合理的密码规范并定期更新"><a href="#5．指定合理的密码规范并定期更新" class="headerlink" title="5．指定合理的密码规范并定期更新"></a>5．指定合理的密码规范并定期更新</h3><p>前面我们介绍了设置密码需要遵守复杂性、易记忆性和时效性的三原则，这里就不再重复解释了。</p>
+<h3 id="6．合理分配权限"><a href="#6．合理分配权限" class="headerlink" title="6．合理分配权限"></a>6．合理分配权限</h3><p>服务器管理有一个最简单的原则：给予用户最小的权限。</p>
+<h3 id="7．定期备份重要数据和日志"><a href="#7．定期备份重要数据和日志" class="headerlink" title="7．定期备份重要数据和日志"></a>7．定期备份重要数据和日志</h3><p>备份的基本原则：不要把鸡蛋放在同一个篮子里</p>
+]]></content>
+      <tags>
+        <tag>linux运维基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C51单片机指令表</title>
+    <url>/2020/05/20/page-3/</url>
+    <content><![CDATA[<p>指令                               字节                周期                       动作说明<br> 算数运算指令<br> 1．ADD A,Rn                 1                      1                       将累加器与寄存器的内容相加，结果存回累加器<br> 2．ADD A,direct           2                       1                       将累加器与直接地址的内容相加，结果存回累加器<br> 3．ADD A,@Ri              1                       1                       将累加器与间接地址的内容相加，结果存回累加器<br> 4．ADD A,#data          2                       1                        将累加器与常数相加，结果存回累加器<br> 5．ADDC A,Rn             1                       1                        将累加器与寄存器的内容及进位C相加，结果存回累加器<br> 6．ADDC A,direct        2                       1                        将累加器与直接地址的内容及进位C相加，结果存回累加器<br> 7．ADDC A,@Ri           1                        1                        将累加器与间接地址的内容及进位C相加，结果存回累加器<br> 8．ADDC A,#data        2                        1                        将累加器与常数及进位C相加，结果存回累加器<br> 9．SUBB A,Rn              1                        1                        将累加器的值减去寄存器的值减借位C，结果存回累加器<br> 10．SUBB A,direct       2                        1                        将累加器的值减直接地址的值减借位C，结果存回累加器<br> 11．SUBB A,@Ri          1                        1                        将累加器的值减间接地址的值减借位C，结果存回累加器<br> 12．SUBB A,#data      2                        1                        将累加器的值减常数值减借位C，结果存回累加器<br> 13．INC A                     1                        1                        将累加器的值加1<br> 14．INC Rn                   1                        1                        将寄存器的值加l<br> 15．INC direct             2                        1                        将直接地址的内容加1<br> 16．INC @Ri                1                        1                        将间接地址的内容加1<br> 17．INC DPTR              1                        1                        数据指针寄存器值加1<br> 说明：将16位的DPTR加1，当DPTR的低字节(DPL)从FFH溢出至00H时，会使高字节(DPH)加1，不影响任何标志位<br> 18．DEC A                   1                        1                        将累加器的值减1<br> 19．DEC Rn                 1                        1                        将寄存器的值减1<br> 20．DEC direct           2                        1                        将直接地址的内容减1<br> 21．DEC @Ri              1                        1                        将间接地址的内容减1<br> 22．MUL AB               1                        4                        将累加器的值与B寄存器的值相乘，乘积的低位字节存回累加器，高位字节 存回B寄存器<br> 说明：将累加器A和寄存器B内的无符号整数相乘，产生16位的积，低位字节存入A，高位字节存入B寄存器。如果积大于FFH，则溢出标志位(OV)被设定为1，而进位标志位为0<br> 23．DIV AB                   1                        4                        将累加器的值除以B寄存器的值，结果的商存回累加器，余数存回B寄存器<br> 说明：无符号的除法运算，将累加器A除以B寄存器的值，商存入A，余数存入B。执行本指令后，进位位(C)及溢出位(OV)被清除为0<br> 24．DA A                        1                        1                        将累加器A作十进制调整，<br> 若(A) 3-0&gt;9或(AC)=1，则(A) 3-0←(A)3-0+6<br> 若(A) 7-4&gt;9或 (C)=1，则(A) 7-4←(A)7-4+6<br> 逻辑运算指令<br> 25．ANL A,Rn              1                        1                        将累加器的值与寄存器的值做AND的逻辑判断，结果存回累加器<br> 26．ANL A,direct        2                        1                        将累加器的值与直接地址的内容做AND的逻辑判断，结果存回累加器<br> 27．ANL A,@Ri             1                        1                        将累加器的值与间接地址的内容做AND的逻辑判断，结果存回累加器<br> 28．ANL A,#data         2                        1                        将累加器的值与常数做AND的逻辑判断，结果存回累加器<br> 29．ANL direct,A        2                        1                        将直接地址的内容与累加器的值做AND的逻辑判断，结果存回该直接地址<br> 30．ANL direct,#data  3                        2                        将直接地址的内容与常数值做AND的逻辑判断，结果存回该直接地址<br> 31．ORL A,Rn              1                        1                        将累加器的值与寄存器的值做OR的逻辑判断，结果存回累加器<br> 32．ORL A,direct        2                        1                        将累加器的值与直接地址的内容做OR的逻辑判断，结果存回累加器<br> 33．ORL A,@Ri             1                        1                        将累加器的值与间接地址的内容做OR的逻辑判断，结果存回累加器<br> 34．ORL A,#data        2                        1                        将累加器的值与常数做OR的逻辑判断，结果存回累加器<br> 35．ORL direct,A        2                        1                        将直接地址的内容与累加器的值做OR的逻辑判断，结果存回该直接地址<br> 36．ORL direct,#data  3                        2                        将直接地址的内容与常数值做OR的逻辑判断，结果存回该直接地址<br> 37．XRL A,Rn              1                        1                        将累加器的值与寄存器的值做XOR的逻辑判断，结果存回累加器<br> 38．XRL A,direct        2                        1                        将累加器的值与直接地址的内容做XOR的逻辑判断，结果存回累加器<br> 39．XRL A,@Ri             1                        1                        将累加器的值与间接地扯的内容做XOR的逻辑判断，结果存回累加器<br> 40．XRL A,#data        2                        1                        将累加器的值与常数作XOR的逻辑判断，结果存回累加器<br> 41．XRL direct,A        2                        1                        将直接地址的内容与累加器的值做XOR的逻辑判断，结果存回该直接地址<br> 42．XRL direct,#data  3                        2                        将直接地址的内容与常数的值做XOR的逻辑判断，结果存回该直接地址<br> 43．CLR A                   1                        1                        清除累加器的值为0<br> 44．CPL A                   1                        1                        将累加器的值反相<br> 45．RL A                    1                        1                        将累加器的值左移一位<br> 46．RLC A                   1                        1                        将累加器含进位C左移一位<br> 47．RR A                    1                        1                        将累加器的值右移一位<br> 48．RRC A                   1                        1                        将累加器含进位C右移一位<br> 49．SWAP A               1                        1                        将累加器的高4位与低4位的内容交换。(A)3-0←(A)7-4<br> 数据转移指令<br> 50．MOV A,Rn              1                        1                        将寄存器的内容载入累加器<br> 51．MOV A,direct        2                        1                        将直接地址的内容载入累加器<br> 52．MOV A,@Ri             1                        1                        将间接地址的内容载入累加器<br> 53．MOV A,#data        2                        1                        将常数载入累加器<br> 54．MOV Rn，A           1                         1                         将累加器的内容载入寄存器<br> 55．MOV Rn,direct       2                         2                         将直接地址的内容载入寄存器<br> 56．MOV Rn,gdata        2                         1                         将常数载入寄存器<br> 57．MOV direct,A            2                         1                         将累加器的内容存入直接地址<br> 58．MOV direct,Rn       2                         2                         将寄存器的内容存入直接地址<br> 59．MOV direct1, direct2     3                         2                         将直接地址2的内容存入直接地址1<br> 60．MOV direct,@Ri           2                         2                         将间接地址的内容存入直接地址<br> 61．MOV direct,#data      3                         2                         将常数存入直接地址<br> 62．MOV @Ri,A             1                         1                         将累加器的内容存入某间接地址<br> 63．MOV @Ri,direct       2                         2                         将直接地址的内容存入某间接地址<br> 64．MOV @Ri,#data       2                         1                         将常数存入某间接地址<br> 65．MOV DPTR,#data16  3                         2                         将16位的常数存入数据指针寄存器<br> 66．MOVC A,@A+DPTR   1                         2                         (A) ←((A)+(DPTR))<br> 累加器的值再加数据指针寄存器的值为其所指定地址，将该地址的内容读入累加器<br> 67．MOVC A,@A+PC        1                         2                         (PC)←(PC)+1；(A)←((A)+(PC))累加器的值加程序计数器的值作为其所指定地址，将该地址的内容读入累加器<br> 68．MOVX A,@Ri             1                         2                         将间接地址所指定外部存储器的内容读入累加器(8位地址)<br> 69．MOVX A,@DPTR        1                         2                         将数据指针所指定外部存储器的内容读入累加器(16位地址)<br> 70．MOVX @Ri,A             1                         2                         将累加器的内容写入间接地址所指定的外部存储器(8位地址)<br> 71．MOVX @DPTR,A        1                         2                         将累加器的内容写入数据指针所指定的外部存储器(16位地址)<br> 72．PUSH direct                2                         2                         将直接地址的内容压入堆栈区<br> 73．POP direct                 2                         2                         从堆栈弹出该直接地址的内容<br> 74．XCH A,Rn                   1                         1                         将累加器的内容与寄存器的内容互换<br> 75．XCH A,direct             2                         1                         将累加器的值与直接地址的内容互换<br> 76．XCH A,@Ri                1                         1                         将累加器的值与间接地址的内容互换<br> 77．XCHD A,@Ri             1                         1                         将累加器的低4位与间接地址的低4位互换<br> 布尔代数运算<br> 78．CLR C                        1                         1                         清除进位C为0<br> 79．CLR bit                      2                         1                         清除直接地址的某位为0<br> 80．SETB C                       1                         1                         设定进位C为1<br> 81．SETB bit                    2                         1                         设定直接地址的某位为1<br> 82．CPL C                        1                         1                         将进位C的值反相<br> 83．CPL bit                      2                         1                         将直接地址的某位值反相<br> 84．ANL C,bit                 2                         2                         将进位C与直接地址的某位做AND的逻辑判断，结果存回进位C<br> 85．ANL C,/bit                 2                         2                         将进位C与直接地址的某位的反相值做AND的逻辑判断，结果存回进位C<br> 86．ORL C,bit                 2                           2                         将进位C与直接地址的某位做OR的逻辑判断，结果存回进位C<br> 87．ORL C,/bit                 2                        2                         将进位C与直接地址的某位的反相值做OR的逻辑判断，结果存回进位C<br> 88．MOV C,bit                 2                         1                         将直接地址的某位值存入进位C<br> 89．MOV bit,C                 2                         2                         将进位C的值存入直接地址的某位<br> 90．JC rel                           2                         2                         若进位C=1则跳至rel的相关地址<br> 91．JNC rel                      2                         2                         若进位C=0则跳至rel的相关地址<br> 92．JB bit,rel                     3                         2                         若直接地址的某位为1，则跳至rel的相关地址<br> 93．JNB bit,rel                3                         2                         若直接地址的某位为0，则跳至rel的相关地址<br> 94．JBC bit,rel                3                         2                         若直接地址的某位为1，则跳至rel的相关地址，并将该位值清除为0<br> 程序跳跃<br> 95．ACALL addr11         2                        2                        调用2K程序存储器范围内的子程序<br> 96．LCALL addr16         3                        2                        调用64K程序存储器范围内的子程序<br> 97．RET                            1                        2                        从子程序返回<br> 98．RETI                           1                        2                        从中断子程序返回<br> 99．AJMP addr11           2                         2                         绝对跳跃(2K内)<br> 100．LJMP addr16          3                         2                         长跳跃(64K内)<br> 101．SJMP rel                   2                         2                         短跳跃(2K内)-128～+127字节<br> 102．JMP @A+DPTR        1                         2                         跳至累加器的内容加数据指针所指的相关地址<br> 103．JZ rel                          2                         2                         累加器的内容为0，则跳至rel所指相关地址<br> 104．JNZ rel                       2                         2                         累加器的内容不为0，则跳至rel所指相关地址<br> 105．CJNE A,direct,rel      3                         2                         将累加器的内容与直接地址的内容比较，不相等则跳至rel所指的相关地址<br> 106．CJNE A,#data,rel       3                         2                         将累加器的内容与常数比较，若不相等则跳至rel所指的相关地址<br> 107．CJNE @Rn,#data,rel     3                         2                         将寄存器的内容与常数比较，若不相等则跳至rel所指的相关地址<br> 108．CJNE @Ri,#data,rel     3                         2                         将间接地址的内容与常数比较，若不相等则跳至rel所指的相关地址<br> 109．DJNZ Rn,rel                2                         2                         将寄存器的内容减1，不等于0则跳至rel所指的相关地址<br> 110．DJNZ direct,rel          3                          2                         将直接地址的内容减1，不等于0则跳至rel所指的相关地址<br> 111．NOP                         1                             1                         无动作</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Markdown基本语法</title>
     <url>/2020/05/11/page-2/</url>
     <content><![CDATA[<h1 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h1><p>在想要设置为标题的文字前面加#来表示<br> 一个#是一级标题，二个#是二级标题，以此类推。支持六级标题。</p>
@@ -199,13 +396,8 @@
 
 <h1 id="十、流程图"><a href="#十、流程图" class="headerlink" title="十、流程图"></a>十、流程图</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(&#96;&#96;&#96;)flow</span><br><span class="line">st&#x3D;&gt;start: 开始</span><br><span class="line">op&#x3D;&gt;operation: My Operation</span><br><span class="line">cond&#x3D;&gt;condition: Yes or No?</span><br><span class="line">e&#x3D;&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;(&#96;&#96;&#96;)</span><br></pre></td></tr></table></figure>
 
-<p>效果如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">st&#x3D;&gt;start: 开始</span><br><span class="line">op&#x3D;&gt;operation: My Operation</span><br><span class="line">cond&#x3D;&gt;condition: Yes or No?</span><br><span class="line">e&#x3D;&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line">&amp;</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
-    <title>C51单片机指令表</title>
-    <url>/2020/05/20/page-3/</url>
-    <content><![CDATA[<p>指令                               字节                周期                       动作说明<br> 算数运算指令<br> 1．ADD A,Rn                 1                      1                       将累加器与寄存器的内容相加，结果存回累加器<br> 2．ADD A,direct           2                       1                       将累加器与直接地址的内容相加，结果存回累加器<br> 3．ADD A,@Ri              1                       1                       将累加器与间接地址的内容相加，结果存回累加器<br> 4．ADD A,#data          2                       1                        将累加器与常数相加，结果存回累加器<br> 5．ADDC A,Rn             1                       1                        将累加器与寄存器的内容及进位C相加，结果存回累加器<br> 6．ADDC A,direct        2                       1                        将累加器与直接地址的内容及进位C相加，结果存回累加器<br> 7．ADDC A,@Ri           1                        1                        将累加器与间接地址的内容及进位C相加，结果存回累加器<br> 8．ADDC A,#data        2                        1                        将累加器与常数及进位C相加，结果存回累加器<br> 9．SUBB A,Rn              1                        1                        将累加器的值减去寄存器的值减借位C，结果存回累加器<br> 10．SUBB A,direct       2                        1                        将累加器的值减直接地址的值减借位C，结果存回累加器<br> 11．SUBB A,@Ri          1                        1                        将累加器的值减间接地址的值减借位C，结果存回累加器<br> 12．SUBB A,#data      2                        1                        将累加器的值减常数值减借位C，结果存回累加器<br> 13．INC A                     1                        1                        将累加器的值加1<br> 14．INC Rn                   1                        1                        将寄存器的值加l<br> 15．INC direct             2                        1                        将直接地址的内容加1<br> 16．INC @Ri                1                        1                        将间接地址的内容加1<br> 17．INC DPTR              1                        1                        数据指针寄存器值加1<br> 说明：将16位的DPTR加1，当DPTR的低字节(DPL)从FFH溢出至00H时，会使高字节(DPH)加1，不影响任何标志位<br> 18．DEC A                   1                        1                        将累加器的值减1<br> 19．DEC Rn                 1                        1                        将寄存器的值减1<br> 20．DEC direct           2                        1                        将直接地址的内容减1<br> 21．DEC @Ri              1                        1                        将间接地址的内容减1<br> 22．MUL AB               1                        4                        将累加器的值与B寄存器的值相乘，乘积的低位字节存回累加器，高位字节 存回B寄存器<br> 说明：将累加器A和寄存器B内的无符号整数相乘，产生16位的积，低位字节存入A，高位字节存入B寄存器。如果积大于FFH，则溢出标志位(OV)被设定为1，而进位标志位为0<br> 23．DIV AB                   1                        4                        将累加器的值除以B寄存器的值，结果的商存回累加器，余数存回B寄存器<br> 说明：无符号的除法运算，将累加器A除以B寄存器的值，商存入A，余数存入B。执行本指令后，进位位(C)及溢出位(OV)被清除为0<br> 24．DA A                        1                        1                        将累加器A作十进制调整，<br> 若(A) 3-0&gt;9或(AC)=1，则(A) 3-0←(A)3-0+6<br> 若(A) 7-4&gt;9或 (C)=1，则(A) 7-4←(A)7-4+6<br> 逻辑运算指令<br> 25．ANL A,Rn              1                        1                        将累加器的值与寄存器的值做AND的逻辑判断，结果存回累加器<br> 26．ANL A,direct        2                        1                        将累加器的值与直接地址的内容做AND的逻辑判断，结果存回累加器<br> 27．ANL A,@Ri             1                        1                        将累加器的值与间接地址的内容做AND的逻辑判断，结果存回累加器<br> 28．ANL A,#data         2                        1                        将累加器的值与常数做AND的逻辑判断，结果存回累加器<br> 29．ANL direct,A        2                        1                        将直接地址的内容与累加器的值做AND的逻辑判断，结果存回该直接地址<br> 30．ANL direct,#data  3                        2                        将直接地址的内容与常数值做AND的逻辑判断，结果存回该直接地址<br> 31．ORL A,Rn              1                        1                        将累加器的值与寄存器的值做OR的逻辑判断，结果存回累加器<br> 32．ORL A,direct        2                        1                        将累加器的值与直接地址的内容做OR的逻辑判断，结果存回累加器<br> 33．ORL A,@Ri             1                        1                        将累加器的值与间接地址的内容做OR的逻辑判断，结果存回累加器<br> 34．ORL A,#data        2                        1                        将累加器的值与常数做OR的逻辑判断，结果存回累加器<br> 35．ORL direct,A        2                        1                        将直接地址的内容与累加器的值做OR的逻辑判断，结果存回该直接地址<br> 36．ORL direct,#data  3                        2                        将直接地址的内容与常数值做OR的逻辑判断，结果存回该直接地址<br> 37．XRL A,Rn              1                        1                        将累加器的值与寄存器的值做XOR的逻辑判断，结果存回累加器<br> 38．XRL A,direct        2                        1                        将累加器的值与直接地址的内容做XOR的逻辑判断，结果存回累加器<br> 39．XRL A,@Ri             1                        1                        将累加器的值与间接地扯的内容做XOR的逻辑判断，结果存回累加器<br> 40．XRL A,#data        2                        1                        将累加器的值与常数作XOR的逻辑判断，结果存回累加器<br> 41．XRL direct,A        2                        1                        将直接地址的内容与累加器的值做XOR的逻辑判断，结果存回该直接地址<br> 42．XRL direct,#data  3                        2                        将直接地址的内容与常数的值做XOR的逻辑判断，结果存回该直接地址<br> 43．CLR A                   1                        1                        清除累加器的值为0<br> 44．CPL A                   1                        1                        将累加器的值反相<br> 45．RL A                    1                        1                        将累加器的值左移一位<br> 46．RLC A                   1                        1                        将累加器含进位C左移一位<br> 47．RR A                    1                        1                        将累加器的值右移一位<br> 48．RRC A                   1                        1                        将累加器含进位C右移一位<br> 49．SWAP A               1                        1                        将累加器的高4位与低4位的内容交换。(A)3-0←(A)7-4<br> 数据转移指令<br> 50．MOV A,Rn              1                        1                        将寄存器的内容载入累加器<br> 51．MOV A,direct        2                        1                        将直接地址的内容载入累加器<br> 52．MOV A,@Ri             1                        1                        将间接地址的内容载入累加器<br> 53．MOV A,#data        2                        1                        将常数载入累加器<br> 54．MOV Rn，A           1                         1                         将累加器的内容载入寄存器<br> 55．MOV Rn,direct       2                         2                         将直接地址的内容载入寄存器<br> 56．MOV Rn,gdata        2                         1                         将常数载入寄存器<br> 57．MOV direct,A            2                         1                         将累加器的内容存入直接地址<br> 58．MOV direct,Rn       2                         2                         将寄存器的内容存入直接地址<br> 59．MOV direct1, direct2     3                         2                         将直接地址2的内容存入直接地址1<br> 60．MOV direct,@Ri           2                         2                         将间接地址的内容存入直接地址<br> 61．MOV direct,#data      3                         2                         将常数存入直接地址<br> 62．MOV @Ri,A             1                         1                         将累加器的内容存入某间接地址<br> 63．MOV @Ri,direct       2                         2                         将直接地址的内容存入某间接地址<br> 64．MOV @Ri,#data       2                         1                         将常数存入某间接地址<br> 65．MOV DPTR,#data16  3                         2                         将16位的常数存入数据指针寄存器<br> 66．MOVC A,@A+DPTR   1                         2                         (A) ←((A)+(DPTR))<br> 累加器的值再加数据指针寄存器的值为其所指定地址，将该地址的内容读入累加器<br> 67．MOVC A,@A+PC        1                         2                         (PC)←(PC)+1；(A)←((A)+(PC))累加器的值加程序计数器的值作为其所指定地址，将该地址的内容读入累加器<br> 68．MOVX A,@Ri             1                         2                         将间接地址所指定外部存储器的内容读入累加器(8位地址)<br> 69．MOVX A,@DPTR        1                         2                         将数据指针所指定外部存储器的内容读入累加器(16位地址)<br> 70．MOVX @Ri,A             1                         2                         将累加器的内容写入间接地址所指定的外部存储器(8位地址)<br> 71．MOVX @DPTR,A        1                         2                         将累加器的内容写入数据指针所指定的外部存储器(16位地址)<br> 72．PUSH direct                2                         2                         将直接地址的内容压入堆栈区<br> 73．POP direct                 2                         2                         从堆栈弹出该直接地址的内容<br> 74．XCH A,Rn                   1                         1                         将累加器的内容与寄存器的内容互换<br> 75．XCH A,direct             2                         1                         将累加器的值与直接地址的内容互换<br> 76．XCH A,@Ri                1                         1                         将累加器的值与间接地址的内容互换<br> 77．XCHD A,@Ri             1                         1                         将累加器的低4位与间接地址的低4位互换<br> 布尔代数运算<br> 78．CLR C                        1                         1                         清除进位C为0<br> 79．CLR bit                      2                         1                         清除直接地址的某位为0<br> 80．SETB C                       1                         1                         设定进位C为1<br> 81．SETB bit                    2                         1                         设定直接地址的某位为1<br> 82．CPL C                        1                         1                         将进位C的值反相<br> 83．CPL bit                      2                         1                         将直接地址的某位值反相<br> 84．ANL C,bit                 2                         2                         将进位C与直接地址的某位做AND的逻辑判断，结果存回进位C<br> 85．ANL C,/bit                 2                         2                         将进位C与直接地址的某位的反相值做AND的逻辑判断，结果存回进位C<br> 86．ORL C,bit                 2                           2                         将进位C与直接地址的某位做OR的逻辑判断，结果存回进位C<br> 87．ORL C,/bit                 2                        2                         将进位C与直接地址的某位的反相值做OR的逻辑判断，结果存回进位C<br> 88．MOV C,bit                 2                         1                         将直接地址的某位值存入进位C<br> 89．MOV bit,C                 2                         2                         将进位C的值存入直接地址的某位<br> 90．JC rel                           2                         2                         若进位C=1则跳至rel的相关地址<br> 91．JNC rel                      2                         2                         若进位C=0则跳至rel的相关地址<br> 92．JB bit,rel                     3                         2                         若直接地址的某位为1，则跳至rel的相关地址<br> 93．JNB bit,rel                3                         2                         若直接地址的某位为0，则跳至rel的相关地址<br> 94．JBC bit,rel                3                         2                         若直接地址的某位为1，则跳至rel的相关地址，并将该位值清除为0<br> 程序跳跃<br> 95．ACALL addr11         2                        2                        调用2K程序存储器范围内的子程序<br> 96．LCALL addr16         3                        2                        调用64K程序存储器范围内的子程序<br> 97．RET                            1                        2                        从子程序返回<br> 98．RETI                           1                        2                        从中断子程序返回<br> 99．AJMP addr11           2                         2                         绝对跳跃(2K内)<br> 100．LJMP addr16          3                         2                         长跳跃(64K内)<br> 101．SJMP rel                   2                         2                         短跳跃(2K内)-128～+127字节<br> 102．JMP @A+DPTR        1                         2                         跳至累加器的内容加数据指针所指的相关地址<br> 103．JZ rel                          2                         2                         累加器的内容为0，则跳至rel所指相关地址<br> 104．JNZ rel                       2                         2                         累加器的内容不为0，则跳至rel所指相关地址<br> 105．CJNE A,direct,rel      3                         2                         将累加器的内容与直接地址的内容比较，不相等则跳至rel所指的相关地址<br> 106．CJNE A,#data,rel       3                         2                         将累加器的内容与常数比较，若不相等则跳至rel所指的相关地址<br> 107．CJNE @Rn,#data,rel     3                         2                         将寄存器的内容与常数比较，若不相等则跳至rel所指的相关地址<br> 108．CJNE @Ri,#data,rel     3                         2                         将间接地址的内容与常数比较，若不相等则跳至rel所指的相关地址<br> 109．DJNZ Rn,rel                2                         2                         将寄存器的内容减1，不等于0则跳至rel所指的相关地址<br> 110．DJNZ direct,rel          3                          2                         将直接地址的内容减1，不等于0则跳至rel所指的相关地址<br> 111．NOP                         1                             1                         无动作</p>
+<p>效果如下</p>
+<p><img src="data:image/png;base64,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" alt=""></p>
 ]]></content>
   </entry>
   <entry>
@@ -378,17 +570,6 @@
 <p>-r 以相反顺序排序</p>
 <p>-t 设置排序时所用分隔字符</p>
 <p>-k 设定需要排序的列</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>社会工程学攻击解析</title>
-    <url>/2020/05/10/page-1/</url>
-    <content><![CDATA[<p>社会工程学攻击是一种通过对被攻击者心理弱点、本能反应、好奇心、信任、贪婪等心理陷阱所采取的诸如欺骗、伤害等危害手段，获取自身利益的手法。当黑客攻击与社会工程学攻击融为一体时，将根本不存在所谓安全的系统，所谓“No patch for stupid”</p>
-<p>1.对特定的环境实施渗透，是社工为了获取所需敏感信息的常用手段之一。黑客通过观察被攻击者对电子邮件的响应速度、重视程度以及与被攻击者相关的资料，如个人姓名、生日、电话号码、电子邮箱地址等，通过对搜集的信息进行综合利用，进而判断被攻击的账号密码等大致内容</p>
-<p>2.伪装欺骗也是社工的主要手段之一。电子邮件伪造、网络钓鱼等攻击手法均可实现伪造欺骗被攻击者，可实现诱惑被攻击者进入指定页面下载并运行恶意程序，或是要求被攻击者输入敏感账号密码等信息进行“验证”等，黑客利用被攻击者疏于防范的心理引诱用户进而实现伪装欺骗的目的</p>
-<p>3.说服是对互联网信息安全危害较大的一种社工方法。它要求被攻击者与攻击者达成某种一致，进而为黑客攻击过程提供各种便利条件，当被攻击者的利益与黑客的利益没有冲突时，甚至与黑客的利益一致时，该种手段就会非常有效</p>
-<p>4.黑客在实施社工的过程中，常会利用被攻击者对安全、漏洞、病毒等内容的敏感性，以权威机构的身份出现，散布安全警告、系统风险等消息，用危言耸听的伎俩恐吓、欺骗被攻击者，并声称不按照他们的方式去处理就会造成非常严重的危害和损失，借此实现对被攻击者敏感信息的获取</p>
-<p>5.社工手段高明的黑客需要精通心理学、人际关系学、行为学等知识和技能，善于利用人们的本能反应、好奇心、盲目信任、贪婪等弱点设置陷阱，实施欺骗，并控制他人为己服务。他们通常十分友善，讲究说话的艺术，知道如何借助机会去恭维他人，投其所好，使多数人友善地做出回应</p>
 ]]></content>
   </entry>
   <entry>
@@ -1756,186 +1937,6 @@
 
 <p>安装就完成了，已经可以挂载和使用Windows的NTFS分区了。不过需要注意挂载分区时的文件系统不是ntfs，而是ntfs   -3g。挂载命令如下：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# mount -t ntfs-3g 分区设备 文件名 挂载点</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">[root@localhost ~]# mount –t ntfs-3g /dev/sdb1 /mnt/wi</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>linux运维基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>运维学习建议</title>
-    <url>/2020/10/04/linux1/</url>
-    <content><![CDATA[<h2 id="一、学习Linux的注意事项"><a href="#一、学习Linux的注意事项" class="headerlink" title="一、学习Linux的注意事项"></a>一、学习Linux的注意事项</h2><h3 id="1-Linux严格区分大小写"><a href="#1-Linux严格区分大小写" class="headerlink" title="1.Linux严格区分大小写"></a>1.Linux严格区分大小写</h3><p>Linux是严格区分大小写的，这一点和Windows不一样，所以操作时要注意区分大小写的不同，包括文件名和目录名、命令、命令选项、配置文件设置选项等。</p>
-<h3 id="2-Linux一切皆文件"><a href="#2-Linux一切皆文件" class="headerlink" title="2. Linux一切皆文件"></a>2. Linux一切皆文件</h3><p>Linux中所有内容都是以文件的形式保存和管理的，硬件设备也是文件，这和Windows完全不同，Windows是通过设备管理器来管理硬件的。Linux的设备文件保存在/dev/目录中，硬盘文件是/dev/sd[a-p]，光盘文件是/dev/hdc等。</p>
-<h3 id="3-Linux不靠扩展名区分文件类型"><a href="#3-Linux不靠扩展名区分文件类型" class="headerlink" title="3.Linux不靠扩展名区分文件类型"></a>3.Linux不靠扩展名区分文件类型</h3><p>Windows是依赖扩展名区分文件类型的，比如，“.txt”是文本文件、“.exe”是执行文件、“.ini”是配置文件、“.mp4”是小电影等。但Linux不是靠扩展名区分文件类型的，而是靠权限位标识来确定文件类型的，而且文件类型的种类也不像Windows下那么多，常见的文件类型只有普通文件、目录、链接文件、块设备文件、字符设备文件等几种。Linux的可执行文件不过就是普通文件被赋予了可执行权限而已。</p>
-<p>但Linux中的一些特殊文件还是要求写“扩展名”的，但是大家小心，并不是Linux一定要靠扩展名来识别文件类型，写这些扩展名是为了帮助管理员来区分不同的文件类型。这样的文件扩展名主要有以下几种。</p>
-<ul>
-<li><p>压缩包：Linux下常见的压缩文件名有<em>.gz、</em>.bz2、<em>.zip、</em> . t a r. g z、<em>.tar.bz2、</em>.tgz等。为什么压缩包一定要写扩展名呢？其实很好理解，如果不写清楚扩展名，那么管理员不容易判断压缩包的格式，虽然有命令可以帮助判断，但是直观一点更加方便。另外，就算没写扩展名，在Linux中一样可以解压缩，不影响使用。</p>
-</li>
-<li><p>二进制软件包：CentOS中所使用的二进制安装包是RPM包，所有的RPM包都用“.rpm”扩展名结尾，目的同样是让管理员一目了然。</p>
-</li>
-<li><p>程序文件：Shell脚本一般用“<em>.sh”扩展名结尾，其他还有用“</em>.c”扩展名结尾的C语言文件等。</p>
-</li>
-<li><p>网页文件：网页文件一般使用“<em>.html”“</em>.php”等结尾，不过这是网页服务器的要求，而不是Linux的要求。</p>
-</li>
-</ul>
-<h3 id="4．Linux中所有的存储设备都必须在挂载之后才能使用"><a href="#4．Linux中所有的存储设备都必须在挂载之后才能使用" class="headerlink" title="4．Linux中所有的存储设备都必须在挂载之后才能使用"></a>4．Linux中所有的存储设备都必须在挂载之后才能使用</h3><p>Linux中所有的存储设备都有自己的设备文件名，这些设备文件必须在挂载之后才能使用，包括硬盘、U盘和光盘。挂载其实就是给这些存储设备分配盘符，只不过Windows中的盘符用英文字母表示 ，而Linux中的盘符则是一个已经建立的空目录。我们把这些空目录叫作挂载点（可以理解为Windows的盘符），把设备文件（如/dev/sdb）和挂载点（已经建立的空目录）连接的过程叫作挂载</p>
-<h3 id="5．Windows下的程序不能直接在Linux中使用"><a href="#5．Windows下的程序不能直接在Linux中使用" class="headerlink" title="5．Windows下的程序不能直接在Linux中使用"></a>5．Windows下的程序不能直接在Linux中使用</h3><p>Linux和Windows是不同的操作系统，可以安装和使用的软件也是不同的，所以能够在Windows中安装的软件是不能在Linux中安装的。有好处吗？当然有，那就是能够感染Windows的病毒和木马都对Linux无效。有坏处吗？也有，那就是所有的软件要想在Linux中安装，必须单独开发针对Linux的版本，或者依赖模拟器软件运行。很多软件也会同时推出针对Windows和Linux的版本，如大家熟悉的即时通信软件QQ。</p>
-<h2 id="二、服务器管理建议"><a href="#二、服务器管理建议" class="headerlink" title="二、服务器管理建议"></a>二、服务器管理建议</h2><h3 id="1．了解Linux目录结构"><a href="#1．了解Linux目录结构" class="headerlink" title="1．了解Linux目录结构"></a>1．了解Linux目录结构</h3><table>
-<thead>
-<tr>
-<th>目录名</th>
-<th>目录的作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>/bin/</td>
-<td>存放系统命令的目录，普通用户和超级用户都可以执行。是/usr/bin/目录的软链接</td>
-</tr>
-<tr>
-<td>/sbin/</td>
-<td>存放系统  命令的目录，只有超级用户才可以执行。是/usr/sbin/目录的软链接</td>
-</tr>
-<tr>
-<td>/usr/bin/</td>
-<td>存放系统命令的目录，普通用户和超级用户都可以执行</td>
-</tr>
-<tr>
-<td>/usr/sbin/</td>
-<td>存放系统  命令的目录，只有超级用户才可以执</td>
-</tr>
-<tr>
-<td>/boot/</td>
-<td>系统启动目录，保存与系统启动相关的文件，如内核文件和启动引导程序（grub）文件等</td>
-</tr>
-<tr>
-<td>/dev/</td>
-<td>设备文件保存位置</td>
-</tr>
-<tr>
-<td>/etc/</td>
-<td>配置文件保存位置。系统内所有采用默认安装方式（rpm安装）的服务配置文件全部保存在此目录中，如用户信息、服务的启动脚本、常用服务的配置文件等</td>
-</tr>
-<tr>
-<td>/home/</td>
-<td>普通用户的家目录。在创建用户时，每个用户要有一个默认登录和保存自己数据的位置，就是用户的家目录，所有普通用户的宿主目录是在/home/下建立一个和用户名相同的目录。如用户user1的家目录就是/home/user1/</td>
-</tr>
-<tr>
-<td>/lib/</td>
-<td>系统调用的函数库保存位置。是/usr/lib/的软链接</td>
-</tr>
-<tr>
-<td>/lib64/</td>
-<td>64位函数库保存位置。是/usr/lib64/的软链接</td>
-</tr>
-<tr>
-<td>/lost+found/</td>
-<td>当系统意外崩溃或机器意外关机，而产生一些文件碎片放在这里。当系统启动的过程中fsck工具会检查这里，并修复已经损坏的文件系统。这个目录只在每个分区中出现，例如/lost+found就是根分区的备份恢复目录，/boot/lost+found就是/boot分区的备份恢复目录</td>
-</tr>
-<tr>
-<td>/media/</td>
-<td>挂载目录。系统建议是用来挂载媒体设备的，如软盘和光盘</td>
-</tr>
-<tr>
-<td>/misc/</td>
-<td>挂载目录。系统建议用来挂载NFS服务的共享目录。我们在刚刚已经解释了挂载，童鞋们应该知道只要是一个已经建立的空目录就可以作为挂载点。那么系统虽然准备了三个默认挂载目录/media、/mnt、/misc，但是到底在哪个目录中挂载什么设备都可以由管理员自己决定。如/mnt/cdrom挂载光盘，/mnt/usb挂载U盘，这都是可以的</td>
-</tr>
-<tr>
-<td>/mnt/</td>
-<td>挂载目录。早期Linux中只有这一个挂载目录，并没有细分。现在系统建议这个目录用来挂载额外的设备，如U盘、移动硬盘和其他操作系统的分区</td>
-</tr>
-<tr>
-<td>/opt/</td>
-<td>第三方安装的软件保存位置。这个目录是放置和安装其他软件的位置，手工安装的源码包软件都可以安装到这个目录中。/usr/local/目录也可以用来安装软件</td>
-</tr>
-<tr>
-<td>/proc/</td>
-<td>虚拟文件系统。该目录中的数据并不保存在硬盘上，而是保存到内存中。主要保存系统的内核、进程、外部设备状态和网络状态等。如/proc/cpuinfo是保存CPU信息的，/proc/devices是保存设备驱动的列表的，/proc/filesystems是保存文件系统列表的，/proc/net是保存网络协议信息的…..</td>
-</tr>
-<tr>
-<td>/sys/</td>
-<td>虚拟文件系统。和/proc/目录相似，该目录中的数据都保存在内存中，主要保存与内核相关的信息</td>
-</tr>
-<tr>
-<td>/root/</td>
-<td>root的宿主目录。普通用户宿主目录在/home/下，root宿主目录直接在“/”下</td>
-</tr>
-<tr>
-<td>/run/</td>
-<td>系统运行时产生的数据，如ssid，pid等相关数据。/var/run/是此目录的软链接</td>
-</tr>
-<tr>
-<td>/srv/</td>
-<td>服务数据目录。一些系统服务启动之后，可以在这个目录中保存所需要的数据</td>
-</tr>
-<tr>
-<td>/tmp/</td>
-<td>临时目录。系统存放临时文件的目录，在该目录下，所有用户都可以访问和写入。我们建议此目录中不能保存重要数据，最好每次开机都把该目录清空</td>
-</tr>
-<tr>
-<td>/usr/</td>
-<td>系统软件资源目录。注意usr不是user的缩写，而是“UNIX Software Resource”的缩写，所以不是存放用户数据的目录，而是存放系统软件资源的目录。系统中安装的软件大多数保存在这里</td>
-</tr>
-<tr>
-<td>/usr/lib/</td>
-<td>应用程序调用的函数库保存位置</td>
-</tr>
-<tr>
-<td>/usr/local/</td>
-<td>手工安装的软件保存位置。我们一般建议源码包软件安装在这个位置</td>
-</tr>
-<tr>
-<td>/usr/share/</td>
-<td>应用程序的资源文件保存位置，如帮助文档、说明文档和字体目录</td>
-</tr>
-<tr>
-<td>/usr/src/</td>
-<td>源码包保存位置。我们手工下载的源码包和内核源码包都可以保存到这里。不过我更习惯把手工下载的源码包保存到/usr/local/src/目录中，把内核源码保存到/usr/src/kernels/目录中</td>
-</tr>
-<tr>
-<td>/usr/src/kernels/</td>
-<td>内核源码保存位置</td>
-</tr>
-<tr>
-<td>/var/</td>
-<td>动态数据保存位置。主要保存缓存、日志以及软件运行所产生的文件</td>
-</tr>
-<tr>
-<td>/var/www/html/</td>
-<td>RPM包安装的Apache的网页主目录</td>
-</tr>
-<tr>
-<td>/var/lib/</td>
-<td>程序运行中需要调用或改变的数据保存位置。如MySQL的数据库保存在/var/lib/mysql/目录中</td>
-</tr>
-<tr>
-<td>/var/log/</td>
-<td>系统日志保存位置</td>
-</tr>
-<tr>
-<td>/var/run/</td>
-<td>一些服务和程序运行后，它们的PID（进程ID）保存位置。是/run/目录的软链接</td>
-</tr>
-<tr>
-<td>/var/spool/</td>
-<td>放置队列数据的目录。就是排队等待其他程序使用的数据，比如邮件队列和打印队列</td>
-</tr>
-<tr>
-<td>/var/spool/mail/</td>
-<td>新收到的邮件队列保存位置。系统新收到的邮件会保存在此目录中</td>
-</tr>
-<tr>
-<td>/var/spool/cron/</td>
-<td>系统的定时任务队列保存位置。系统的计划任务会保存在这里</td>
-</tr>
-</tbody></table>
-<h3 id="2-远程服务器关机及重启时的注意事项"><a href="#2-远程服务器关机及重启时的注意事项" class="headerlink" title="2.远程服务器关机及重启时的注意事项"></a>2.远程服务器关机及重启时的注意事项</h3><p>为什么远程服务器不能关机呢？很简单，远程服务器没有放置在本地，关机后，谁可以帮你按开机电源键启动服务器？虽然计算机技术日新月异，但是像插入电源和开机这样的工作还是需要手工进行的。如果服务器在远程，一旦关机，就只能求助托管机房的管理人员帮你开机了。远程服务器重启时需要注意两点。</p>
-<h4 id="2-1远程服务器在重启前，要中止正在执行的服务"><a href="#2-1远程服务器在重启前，要中止正在执行的服务" class="headerlink" title="2.1远程服务器在重启前，要中止正在执行的服务"></a>2.1远程服务器在重启前，要中止正在执行的服务</h4><p>计算机的硬盘最怕在高速存储时断电或重启，非常容易造成硬盘损坏。所以，在重启前先中止你的服务，甚至可以考虑暂时断开对外提供服务的网络。可能你会觉得服务器有这么娇贵吗？我的笔记本电脑经常强行关机，也没有发现硬盘损坏啊？这是因为你的个人计算机没有很多人访问，强制断电时硬盘并没有进行数据交换。小心驶得万年船！</p>
-<h4 id="2-2重启命令的选用"><a href="#2-2重启命令的选用" class="headerlink" title="2.2重启命令的选用"></a>2.2重启命令的选用</h4><p>Linux可以识别的重启命令有很多条，但是建议大家使用“shutdown -r now”命令重启。这条命令在重启时会正常保存和中止服务器中正在运行的程序，是安全重启命令。而且最好在重启前执行几次“sync”命令，这条命令是数据同步命令，可以让暂时保存在内存中的数据同步到硬盘上。</p>
-<h3 id="3．不要在服务器访问高峰运行高负载命令"><a href="#3．不要在服务器访问高峰运行高负载命令" class="headerlink" title="3．不要在服务器访问高峰运行高负载命令"></a>3．不要在服务器访问高峰运行高负载命令</h3><p>这一点大家很好理解，在服务器访问高峰，如果使用一些对服务器压力较大的命令，则有可能会造成服务器响应缓慢甚至死机。哪些命令是高负载命令呢？其实，如果大家使用过Windows操作系统，则也会留意到一些操作会给计算机带来较大的运算压力，道理都是一样的，如复制大量的数据、压缩或者解压缩大文件、大范围的硬盘搜索等。什么时间算作访问高峰期呢？我们一般认为17:00—24:00算作访问高峰期。当然，每台服务器具体提供的服务不同，访问高峰期有时也会有所出入。比如，服务器主要是供美国人民访问的，那就要考虑时差的问题；或者服务器提供的服务很特殊，访问高峰期可能也不同。一般我们建议在凌晨4:00—5:00执行这些命令。那是不是说我们需要在凌晨上班？当然不是，这谁受得了啊？我们可以使用系统的计划任务，让操作自动在指定的时间段执行。</p>
-<h3 id="4．远程配置防火墙时不要把自己踢出服务器"><a href="#4．远程配置防火墙时不要把自己踢出服务器" class="headerlink" title="4．远程配置防火墙时不要把自己踢出服务器"></a>4．远程配置防火墙时不要把自己踢出服务器</h3><p>简单来讲，防火墙就是根据数据包自身的参数来判断是否允许数据包通过的网络设备。我们的服务器要想在公网中安全地使用，就需要使用防火墙过滤有害的数据包。但是在配置防火墙时，如果管理员对防火墙不是很熟悉，则有可能把自己的正常访问数据包和有害数据包全部过滤掉，导致自己也无法正常登录服务器，如防火墙关闭了远程连接的SSH服务的端口。防火墙配置完全是靠手工命令完成的，配置规则和配置命令相对也比较复杂，万一设置的时候心不在焉，悲剧就发生了。如何避免这种尴尬的情况发生呢？最好的方法当然是在服务器本地配置防火墙，这样就算不小心把自己的远程登录给过滤了，还可以通过本机登录来进行恢复。如果服务器已经在远程登录了，要配置防火墙，那么最好在本地测试完善后再进行上传，这样会把发生故障的概率降到最低。虽然在本地测试好了，但是传到远程服务器上时仍有可能发生问题。这里想到一个笨办法：如果需要远程配置防火墙，那么先写一个系统定时任务，让它每5分钟清空一下防火墙规则，就算写错了也还有反悔的机会，等测试没有问题了再删除这个系统定时任务</p>
-<h3 id="5．指定合理的密码规范并定期更新"><a href="#5．指定合理的密码规范并定期更新" class="headerlink" title="5．指定合理的密码规范并定期更新"></a>5．指定合理的密码规范并定期更新</h3><p>前面我们介绍了设置密码需要遵守复杂性、易记忆性和时效性的三原则，这里就不再重复解释了。</p>
-<h3 id="6．合理分配权限"><a href="#6．合理分配权限" class="headerlink" title="6．合理分配权限"></a>6．合理分配权限</h3><p>服务器管理有一个最简单的原则：给予用户最小的权限。</p>
-<h3 id="7．定期备份重要数据和日志"><a href="#7．定期备份重要数据和日志" class="headerlink" title="7．定期备份重要数据和日志"></a>7．定期备份重要数据和日志</h3><p>备份的基本原则：不要把鸡蛋放在同一个篮子里</p>
-]]></content>
       <tags>
         <tag>linux运维基础</tag>
       </tags>
