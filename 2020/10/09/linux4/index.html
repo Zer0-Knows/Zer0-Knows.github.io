@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="ch" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>linux用户管理 - Zer0 Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Zer0,"> 
+    <meta name="description" content="一、用户相关文件1. /etc/passwd用户信息文件root:X:0:0:root:/root:/bin/bash
+第一列：用户名
+第二列：密码位
+第三列：用户ID     
+
+0     超级,"> 
+    <meta name="author" content="Zer0_Nos"> 
+    <link rel="alternative" href="atom.xml" title="Zer0 Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Zer0 Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">linux用户管理</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">linux用户管理</h1>
+        <div class="stuff">
+            <span>十月 09, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux%E8%BF%90%E7%BB%B4%E5%9F%BA%E7%A1%80/" rel="tag">linux运维基础</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="一、用户相关文件"><a href="#一、用户相关文件" class="headerlink" title="一、用户相关文件"></a>一、用户相关文件</h2><h3 id="1-etc-passwd用户信息文件"><a href="#1-etc-passwd用户信息文件" class="headerlink" title="1. /etc/passwd用户信息文件"></a>1. /etc/passwd用户信息文件</h3><p>root:X:0:0:root:/root:/bin/bash</p>
+<p>第一列：用户名</p>
+<p>第二列：密码位</p>
+<p>第三列：用户ID     </p>
+<ul>
+<li>0     超级用户UID。如果用户UID为0，代表这个账号是管理员账号。那Linux中如何把普通用户升级成为管理员呢？就是把其他用户的UID修改为0就可以了，这点和Windows是不同的。不过不建议建立多个管理员账号。</li>
+<li>1-499系统用户（伪用户）UID。这些UID账号是系统保留给系统用户的UID，也就是说UID是1-499范围内的用户是不能登录系统的，而是用来运行系统或服务的。其中1-99是系统保留的账号，系统自动创建。100-   499 是预留给用户创建系统账号的。</li>
+<li>500-60000普通用户UID。建立的普通用户UID从500开始，最大到60000。这些用户足够使用了，但是如果不够也不用害怕，2.6.x内核以后的Linux系统用户UID已经可以支持232这么多了。</li>
+</ul>
+<p>第四列：组ID   GID 添加用户时，如果不指定用户所属的初始组，那么会建立和用户名相同的组</p>
+<p>第五列：用户说明</p>
+<p>第六列：用户家目录  ~ </p>
+<p>第七列：登录shell  /bin/bash</p>
+<p>如何把普通用户变成超级用户：把用户UID改为0  </p>
+<h3 id="2-etc-shadow-影子文件"><a href="#2-etc-shadow-影子文件" class="headerlink" title="2. /etc/shadow    影子文件"></a>2. /etc/shadow    影子文件</h3><p>root:$6$9w5Td6lg$bgpsy3olsq9WwWvS5Sst2W3ZiJpuCGDY.4w4MRk3ob/i85fI38RH15wzVoomff9isV1PzdcXmixzhnMVhMxbv0:15775:0:99999:7:::</p>
+<p>第一列：用户名</p>
+<p>第二列：加密密码</p>
+<p>我们也可以在密码前人为的加入“！”或“<em>”改变加密值让密码暂时失效，使这个用户无法登陆，达到暂时禁止用户登录的效果。</em></p>
+<p><em>注意所有伪用户的密码都是“！！”或“</em>”，代表没有密码是不能登录的。当然我新创建的用户如果不设定密码，它的密码项也是“！！”，代表这个用户没有密码，不能登录</p>
+<p>第三列：密码最近更改时间, 1970年1月1日作为标准时间</p>
+<p>时间戳转日期</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# date -d &quot;1970-01-   01 15775 days&quot;</span><br><span class="line">2013年 03月 11日星期一 00:00:00 CST</span><br></pre></td></tr></table></figure>
+
+<p>日期转时间戳</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# echo $(($(date --date&#x3D;&quot;2013&#x2F;03&#x2F;11&quot; +%s)&#x2F;86400+1))</span><br><span class="line">15775</span><br></pre></td></tr></table></figure>
+
+<p>第四列：两次密码的修改间隔时间（和第3字段相比）</p>
+<p>第五例：密码有效期（和第3字段相比）</p>
+<p>第六列：密码修改到期前的警告天数（和第5字段相比）</p>
+<p>第七列：密码过期后的宽限天数（和第5字段相比）</p>
+<p>第八列：密码失效时间这里同样要写时间戳，也就是用1970年1月1日进行时间换算。如果超过了失效时间，就算密码没有过期，用户也就失效无法使用了</p>
+<p>第九列：保留</p>
+<h3 id="3-etc-group组信息文件"><a href="#3-etc-group组信息文件" class="headerlink" title="3. /etc/group组信息文件"></a>3. /etc/group组信息文件</h3><p>root:X:0:root</p>
+<p>第一列：组名</p>
+<p>第二列：组密码位</p>
+<p>第三列：    GID </p>
+<p>第四列：此组中支持的其他用户.附加组是此组的用户</p>
+<p>初始组：每个用户初始组只能有一个，初始组只能有一个，一般都是和用户名相同的组作为初始组</p>
+<p>附加组：每个用户可以属于多个附加组。要把用户加入组，都是加入附加组    </p>
+<h3 id="4-组密码文件-etc-gshadow"><a href="#4-组密码文件-etc-gshadow" class="headerlink" title="4. 组密码文件/etc/gshadow"></a>4. 组密码文件/etc/gshadow</h3><p>如果我给用户组设定了组管理员，并给该用户组设定了组密码，组密码就保存在这个文件当中。组管理员就可以利用这个密码管理这个用户组了。    </p>
+<h3 id="5-用户的家目录"><a href="#5-用户的家目录" class="headerlink" title="5. 用户的家目录"></a>5. 用户的家目录</h3><h3 id="6-用户邮箱目录"><a href="#6-用户邮箱目录" class="headerlink" title="6. 用户邮箱目录"></a>6. 用户邮箱目录</h3><p>这个邮箱在/var/spool/mail目录当中，例如user1用户的邮箱就是/var/spool/mail/user1文件    </p>
+<h3 id="7-用户模板目录"><a href="#7-用户模板目录" class="headerlink" title="7. 用户模板目录"></a>7. 用户模板目录</h3><p> /etc/skel/</p>
+<h2 id="二、用户管理命令"><a href="#二、用户管理命令" class="headerlink" title="二、用户管理命令"></a>二、用户管理命令</h2><h3 id="1-添加用户"><a href="#1-添加用户" class="headerlink" title="1. 添加用户"></a>1. 添加用户</h3><h4 id="1-1-手工删除用户"><a href="#1-1-手工删除用户" class="headerlink" title="1.1 手工删除用户"></a>1.1 手工删除用户</h4><p>手工删除用户试验：手工删除，如果可以正常建立用户，证明用户删除干净。</p>
+<p>​                /etc/passwd</p>
+<p>​                /etc/shadow</p>
+<p>​                /etc/group</p>
+<p>​                /etc/gshadow</p>
+<p>​                /home/user1</p>
+<p>​                /var/spool/mail/user1    邮箱</p>
+<h4 id="1-2-useradd命令"><a href="#1-2-useradd命令" class="headerlink" title="1.2 useradd命令"></a>1.2 useradd命令</h4><p>​    useradd  选项    用户名</p>
+<p>选项：</p>
+<p>​        -u  550指定UID</p>
+<p>​         -g  组名指定初始组    不要手工指定</p>
+<p>​        -G  组名指定附加组，把用户加入组，使用附加组</p>
+<p>​        -c  说明添加说明</p>
+<p>​        -d  目录手工指定家目录，目录不需要事先建立</p>
+<p>​        -s  shell   /bin/bash.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">例如：</span><br><span class="line">[root@localhost ~]# groupadd lamp1</span><br><span class="line">#先手工添加lamp1用户组，因为我一会要把lamp1用户的初始组指定过来，如果不事先建立，会报错用户组不存在</span><br><span class="line">[root@localhost ~]# useradd -u 550 -g lamp1 -G root -d &#x2F;home&#x2F;lamp1  \ </span><br><span class="line">-c &quot;test user&quot; -s &#x2F;bin&#x2F;bash lamp1 </span><br><span class="line">#建立用户lamp1的同时指定了UID（550），初始组（lamp1），附加组（root），家目录（&#x2F;home&#x2F;lamp1），用户说明(test user)和用户登录shell（&#x2F;bin&#x2F;bash）</span><br><span class="line">[root@localhost ~]# grep &quot;lamp1&quot; &#x2F;etc&#x2F;passwd &#x2F;etc&#x2F;shadow &#x2F;etc&#x2F;group</span><br><span class="line">#同时查看三个文件&#x2F;etc&#x2F;passwd:lamp1:x:550:502:test user:&#x2F;home&#x2F;lamp1:&#x2F;bin&#x2F;bash#用户的UID、初始组、用户说明、家目录和登录shell都和命令手工指定的一致</span><br><span class="line">&#x2F;etc&#x2F;shadow:lamp1:!!:15710:0:99999:7:::</span><br><span class="line">#lamp1用户还没有设定密码</span><br><span class="line">&#x2F;etc&#x2F;group:root:x:0:lamp1 </span><br><span class="line">#lamp1用户加入了root组，root组是lamp1用户的附加组</span><br><span class="line">&#x2F;etc&#x2F;group:lamp1:x:502:</span><br><span class="line">#GID502的组是lamp1组</span><br><span class="line">[root@localhost ~]# ll -d &#x2F;home&#x2F;lamp1&#x2F;</span><br><span class="line">drwx------ 3 lamp1 lamp1 4096 1月    6 01:13 &#x2F;home&#x2F;lamp1&#x2F; </span><br><span class="line">#家目录也建立了啊。不需要手工建立家目录</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-useradd默认值"><a href="#1-3-useradd默认值" class="headerlink" title="1.3 useradd默认值"></a>1.3 useradd默认值</h4><p>useradd添加用户时参考的默认值文件主要有两个，分别是/etc/default/useradd和/etc/login.defs    </p>
+<p>1)/etc/default/useradd</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vi &#x2F;etc&#x2F;default&#x2F;useradd</span><br><span class="line"># useradd defaults file</span><br><span class="line">GROUP&#x3D;100</span><br><span class="line">HOME&#x3D;&#x2F;home</span><br><span class="line">INACTIVE&#x3D;-1 </span><br><span class="line">EXPIRE&#x3D;</span><br><span class="line">SHELL&#x3D;&#x2F;bin&#x2F;bash</span><br><span class="line">SKEL&#x3D;&#x2F;etc&#x2F;skel</span><br><span class="line">CREATE_MAIL_SPOOL&#x3D;yes</span><br></pre></td></tr></table></figure>
+
+<p>挨个解释下：</p>
+<ul>
+<li>GROUP=100</li>
+</ul>
+<p>这个选项是建立用户的默认组，也就是说添加每个用户时，用户的初始组就是GID为100的这个用户组。目前我们采用的机制私有用户组机制。</p>
+<ul>
+<li>HOME=/home</li>
+</ul>
+<p>这个选项是用户的家目录的默认位置，所以所有的新建用户的家目录默认都在/home/下。</p>
+<ul>
+<li>INACTIVE=-1 </li>
+</ul>
+<p>这个选项就是密码过期后的宽限天数，也就是/etc/shadow文件的第七个字段。如果是天数，比如10代表密码过期后10天后失效；如果是0，代表密码过期后立即失效；如果是-1，则代表密码永远不会失效。这里默认值是-1，所以所有新建立的用户密码都不会失效。</p>
+<ul>
+<li>EXPIRE=</li>
+</ul>
+<p>这个选项是密码失效时间，也就是/etc/shadow文件的第八个字段。也就说用户到达这个日期后就会直接失效。当然这里也是使用时间戳来表示日期的。默认值是空，所以所有新建用户没有失效时间，永久有效。</p>
+<ul>
+<li>SHELL=/bin/bash</li>
+</ul>
+<p>这个选项是用户的默认shell的。/bin/bash是Linux的标志shell，所以所有新建立的用户默认都具备shell赋予的权限。</p>
+<ul>
+<li>SKEL=/etc/skel</li>
+</ul>
+<p>这个选项就是定义用户的模板目录的位置，/etc/skel/目录中的文件都会复制到新建用户的家目录当中。</p>
+<ul>
+<li>CREATE_MAIL_SPOOL=yes</li>
+</ul>
+<p>这个选项定义是否给新建用户建立邮箱，默认是创建，也就是说所有的新建用户系统都会新建一个邮箱，放在/var/spool/mail/下和用户名相同。   </p>
+<p> 2）/etc/login.defs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# vi &#x2F;etc&#x2F;login.defs</span><br><span class="line">#这个文件有些注释，把注释删除掉，文件内容就变成下面这个样子了</span><br><span class="line">MAIL_DIR        &#x2F;var&#x2F;spool&#x2F;mail</span><br><span class="line">PASS_MAX_DAYS   99999</span><br><span class="line">PASS_MIN_DAYS   0</span><br><span class="line">PASS_MIN_LEN    5</span><br><span class="line">PASS_WARN_AGE   7</span><br><span class="line">UID_MIN                   500</span><br><span class="line">UID_MAX                 60000</span><br><span class="line">GID_MIN                   500</span><br><span class="line">GID_MAX                 60000</span><br><span class="line">CREATE_HOME     yes</span><br><span class="line">UMASK           077</span><br><span class="line">USERGROUPS_ENAB yes</span><br><span class="line">ENCRYPT_METHOD SHA512</span><br></pre></td></tr></table></figure>
+
+<p>我们一行一行解释下文件内容：</p>
+<ul>
+<li>MAIL_DIR    </li>
+</ul>
+<p>/var/spool/mail这行指定了新建用户的默认邮箱位置。比如user1用户的邮箱是就是/var/spool/mail/user1。</p>
+<ul>
+<li>PASS_MAX_DAYS   </li>
+</ul>
+<p>99999这行指定的是密码的有效期，也就是/etc/shadow文件的第五字段。代表多少天之后必须修改密码，默认值是99999。</p>
+<ul>
+<li>PASS_MIN_DAYS   0 </li>
+</ul>
+<p>这行指定的是两次密码的修改间隔时间，也就是/etc/shadow文件的第四字段。代表第一次修改密码之后，几天后才能再次修改密码。默认值是0。</p>
+<ul>
+<li>PASS_MIN_LEN    5 </li>
+</ul>
+<p>这行代表密码的最小长度，默认不小于5位。但是我们现在用户登录时验证已经被PAM模块取代，所以这个选项并不生效。</p>
+<ul>
+<li>PASS_WARN_AGE   7 </li>
+</ul>
+<p>这行代表密码修改到期前的警告天数，也就是/etc/shadow文件的第六字段。代表密码到底有效期前多少天开始进行警告提醒，默认值是7天。</p>
+<ul>
+<li><p>UID_MIN     500 </p>
+</li>
+<li><p>UID_MAX     60000</p>
+</li>
+</ul>
+<p>这两行代表创建用户时，最小UID和最大的UID的范围。我们2.6.x内核开始，Linux用户的UID最大可以支持232这么多，但是真正使用时最大范围是60000。还要注意如果我手工指定了一个用户的UID是550，那么下一个创建的用户的UID就会从551开始，哪怕500-   549之间的UID没有使用（小于500的UID是给伪用户预留的）。</p>
+<ul>
+<li>GID_MIN     500 </li>
+<li>GID_MAX     </li>
+</ul>
+<p>60000这两行指定了GID的最小值和最大值之间的范围。</p>
+<ul>
+<li>CREATE_HOME     </li>
+</ul>
+<p>yes 这行指定建立用户时是否自动建立用户的家目录，默认是建立</p>
+<ul>
+<li>UMASK       077</li>
+</ul>
+<p>这行指定的是建立的用户家目录的默认权限，因为umask值是077，所以新建的用户家目录的权限是700</p>
+<ul>
+<li>USERGROUPS_ENAB     yes </li>
+</ul>
+<p>这行指定的是使用命令userdel删除用户时，是否删除用户的初始组，默认是删除。</p>
+<ul>
+<li>ENCRYPT_METHOD      </li>
+</ul>
+<p>SHA512这行指定Linux用户的密码使用SHA512散列模式加密，这是新的密码加密模式，原先的Linux只能用DES或MD5方式加密</p>
+<h3 id="2-设定密码"><a href="#2-设定密码" class="headerlink" title="2. 设定密码"></a>2. 设定密码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#passwd [选项] 用户名</span><br><span class="line">选项：</span><br><span class="line">-l:   暂时锁定用户。仅root用户可用</span><br><span class="line">-u:   解锁用户。仅root用户可用</span><br><span class="line">--stdin:可以将通过管道符输出的数据作为用户的密码。主要在批量添加用户时使用</span><br><span class="line"></span><br><span class="line">[root@localhost ~]#passwd </span><br><span class="line">#passwd直接回车代表修改当前用户的密码</span><br></pre></td></tr></table></figure>
+
+<p>也可以使用字符串作为密码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# echo &quot;123&quot; | passwd --stdin user1   </span><br><span class="line">更改用户 user1的密码。</span><br></pre></td></tr></table></figure>
+
+<p>可以通过命令，把密码修改日期归零（shadow第3字段）.这样用户一登陆就要修改密码，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# chage -d 0 user1</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-用户信息修改"><a href="#3-用户信息修改" class="headerlink" title="3. 用户信息修改"></a>3. 用户信息修改</h3><p>usermod命令是修改已经添加的用户的信息的，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">root@localhost ~]#usermod [选项] 用户名</span><br><span class="line">选项：    </span><br><span class="line">-u UID：修改用户的UID</span><br><span class="line">-d 家目录：修改用户的家目录。家目录必须写绝对路径    </span><br><span class="line">-c 用户说明：修改用户的说明信息，就是&#x2F;etc&#x2F;passwd文件的第五个字段</span><br><span class="line">-g 组名：修改用户的初始组，就是&#x2F;etc&#x2F;passwd文件的第四个字段</span><br><span class="line">-G 组名：修改用户的附加组，其实就是把用户加入其他用户组</span><br><span class="line">-s shell：修改用户的登录Shell。默认是&#x2F;bin&#x2F;bash</span><br><span class="line">-e 日期：修改用户的失效日期，格式为“YYYY-MM-   DD”。也就是&#x2F;etc&#x2F;shadow文件的第八个字段    -L：临时锁定用户（Lock）</span><br><span class="line">-U：解锁用户（Unlock）</span><br></pre></td></tr></table></figure>
+
+<p>那用户可以修改用户名吗？当然可以：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# usermod  -l  新名 旧名</span><br><span class="line">#改名</span><br></pre></td></tr></table></figure>
+
+<p>但是真不建议改名，这样及其容易把管理员自己搞晕菜，建议删除旧用户，再建立新用户！</p>
+<h3 id="4-删除用户"><a href="#4-删除用户" class="headerlink" title="4. 删除用户"></a>4. 删除用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# userdel [-r] 用户名</span><br><span class="line">选项：    </span><br><span class="line">-r：在删除用户的同时删除用户的家目录</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-切换用户身份"><a href="#5-切换用户身份" class="headerlink" title="5. 切换用户身份"></a>5. 切换用户身份</h3><p>su命令可以切换成不同的用户身份，命令格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# su [选项] 用户名</span><br><span class="line">选项：</span><br><span class="line">-: 选项只使用“-”代表连带用户的环境变量一起切换</span><br><span class="line">-c 命令：仅执行一次命令，而不切换用户身份</span><br></pre></td></tr></table></figure>
+
+<p>“-”不能省略，它代表切换用户身份时，用户的环境变量也要切换成新用户的环境变量。</p>
+<h2 id="三、组管理命令"><a href="#三、组管理命令" class="headerlink" title="三、组管理命令"></a>三、组管理命令</h2><h3 id="1-添加用户组：groupadd"><a href="#1-添加用户组：groupadd" class="headerlink" title="1. 添加用户组：groupadd"></a>1. 添加用户组：groupadd</h3><p>添加用户组的命令是groupadd，命令格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# groupadd [选项] 组名</span><br><span class="line">选项：</span><br><span class="line">-g GID：指定组ID</span><br></pre></td></tr></table></figure>
+
+<p>添加用户组的命令比较简单，举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# groupadd group1 </span><br><span class="line">#添加group1组</span><br><span class="line">[root@localhost ~]# grep &quot;group1&quot; &#x2F;etc&#x2F;group</span><br><span class="line">group1:x:502:</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-删除用户组：groupdel"><a href="#2-删除用户组：groupdel" class="headerlink" title="2. 删除用户组：groupdel"></a>2. 删除用户组：groupdel</h3><p>groupdel命令用于删除用户组，命令格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]#groupdel 组名</span><br><span class="line">例子：</span><br><span class="line">[root@localhost ~]#groupdel testgrp </span><br><span class="line">#删除testgrp组</span><br></pre></td></tr></table></figure>
+
+<p>不过大家要注意，要删除的组不能是其他用户的初始组，也就是说这个组中没有初始用户才可以删除。如果组中有附加用户，则删除组时不受影响。</p>
+<h3 id="4-把用户添加进组或从组中删除：gpasswd"><a href="#4-把用户添加进组或从组中删除：gpasswd" class="headerlink" title="4. 把用户添加进组或从组中删除：gpasswd"></a>4. 把用户添加进组或从组中删除：gpasswd</h3><p>其实gpasswd命令是用来设定组密码并指定组管理员的，不过我们在前面已经说了，组密码和组管理员功能很少使用，而且完全可以被sudo命令取代，所以gpasswd命令现在主要用于把用户添加进组或从组中删除。命令格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# gpasswd [选项] 组名</span><br><span class="line">选项：</span><br><span class="line">-a 用户名：把用户加入组</span><br><span class="line">-d 用户名：把用户从组中删除</span><br></pre></td></tr></table></figure>
+
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# groupadd grouptest </span><br><span class="line">#添加组grouptest  </span><br><span class="line">[root@localhost ~]# gpasswd -a user1 grouptest </span><br><span class="line">Adding user user1 to group grouptest</span><br><span class="line">#把用户user1加入grouptest组</span><br><span class="line">[root@localhost ~]# grep &quot;user1&quot; &#x2F;etc&#x2F;group </span><br><span class="line">user1:x:501: </span><br><span class="line">grouptest:x:505:user1 </span><br><span class="line">#查看一下，user1用户已经作为附加用户加入grouptest组</span><br><span class="line">[root@localhost ~]# gpasswd -d user1 grouptest </span><br><span class="line">Removing user user1 from group grouptest</span><br><span class="line">#把用户user1从组中删除</span><br><span class="line">[root@localhost ~]# grep &quot;grouptest&quot; &#x2F;etc&#x2F;group </span><br><span class="line">grouptest:x:505:</span><br><span class="line">#组中没有user1用户了</span><br></pre></td></tr></table></figure>
+
+<p>大家注意，也可以使用usermod命令把用户加入某个组，不过usermod命令的操作对象是用户，命令是“usermod -G grouptest user1”，把用户名作为参数放在最后；而gpasswd命令的操作对象是组，命令是“gpasswd -a user1 grouptest”，把组名作为参数放在最后。</p>
+<h3 id="5-改变有效组：newgrp"><a href="#5-改变有效组：newgrp" class="headerlink" title="5. 改变有效组：newgrp"></a>5. 改变有效组：newgrp</h3><p>我们说过，每个用户可以属于一个初始组（用户是这个组的初始用户），也可以属于多个附加组（用户是这个组的附加用户）。既然用户可以属于这么多用户组，那么用户在创建文件后，默认生效的组身份是哪个呢？当然是初始用户组的组身份生效了，因为初始组是用户一旦登录就直接获得的组身份。也就是说，用户在创建文件后，文件的属组是用户的初始组，因为用户的有效组默认是初始组。既然用户属于多个用户组，那么能不能改变用户的有效组呢？使用命令newgrp就可以切换用户的有效组。命令格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# newgrp 组名</span><br></pre></td></tr></table></figure>
+
+<p>举个例子，我们已经有了普通用户user1，默认会建立user1用户组，user1组是user1用户的初始组。我们再把user1用户加入group1组，那么group1组就是user1用户的附加组。当user1用户创建文件test1时，test1文件的属组是user1组，因为user1组是user1用户的有效组。通过newgrp命令就可以把user1用户的有效组变成group1组，当user1用户创建文件test2时，就会发现test2文件的属组就是group1组。命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# groupadd group1 </span><br><span class="line">#添加组group1 </span><br><span class="line">[root@localhost ~]# gpasswd -a user1 group1 </span><br><span class="line">Adding user user1 to group group1</span><br><span class="line">#把user1用户加入group1组</span><br><span class="line">[root@localhost ~]# grep &quot;user1&quot; &#x2F;etc&#x2F;group </span><br><span class="line">user1:x:501: group1:x:503:user1 </span><br><span class="line">#user1用户既属于user1组，也属于group1组</span><br><span class="line">[root@localhost ~]# su – user1 </span><br><span class="line">#切换成user1身份，超级用户切换成普通用户不用密码</span><br><span class="line">[user1@localhost ~]$ touch test1</span><br><span class="line">#创建文件test1 </span><br><span class="line">[user1@localhost ~]$ ll </span><br><span class="line">test1-rw-rw-r-- 1 user1 user1 0 1月    14 05:43 test1</span><br><span class="line">#test1文件的默认属组是user1组</span><br><span class="line">[user1@localhost ~]$ newgrp group1</span><br><span class="line">#切换user1用户的有效组为group1组</span><br><span class="line">[user1@localhost ~]$ touch test2</span><br><span class="line">#创建文件test2 </span><br><span class="line">[user1@localhost ~]$ ll </span><br><span class="line">test2-rw-r--r-- 1 user1 group1 0 1月  14 05:44 test2 </span><br><span class="line">#test2文件的默认属组是group1组</span><br></pre></td></tr></table></figure>
+
+<p>通过这个例子明白有效组的作用了吗？其实就是当用户属于多个组时，在创建文件时哪个组身份生效。使用newgrp命令可以在多个组身份之间切换。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
