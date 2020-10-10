@@ -2435,7 +2435,7 @@
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例2：</span><br><span class="line">[root@localhost ~]# mkdir -p &#x2F;back&#x2F;log</span><br><span class="line">#建立备份目录</span><br><span class="line">[root@localhost ~]# chattr +a &#x2F;back&#x2F;log&#x2F;</span><br><span class="line">#赋予a属性</span><br><span class="line">[root@localhost ~]# cp &#x2F;var&#x2F;log&#x2F;messages &#x2F;back&#x2F;log&#x2F;</span><br><span class="line">#可以复制文件和新建文件到指定目录</span><br><span class="line">[root@localhost ~]# rm -rf &#x2F;back&#x2F;log&#x2F;messages </span><br><span class="line">rm: 无法删除&quot;&#x2F;back&#x2F;log&#x2F;messages&quot;: 不允许的操作</span><br><span class="line">#但是不允许删除</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>linux基础运维</tag>
+        <tag>linux运维基础</tag>
       </tags>
   </entry>
 </search>
