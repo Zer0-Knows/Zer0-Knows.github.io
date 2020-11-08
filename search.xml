@@ -6138,9 +6138,350 @@
       </tags>
   </entry>
   <entry>
-    <title>linux日志管理（空）</title>
-    <url>/2020/10/30/linux13/</url>
-    <content><![CDATA[]]></content>
+    <title>linux日志管理</title>
+    <url>/2020/11/05/linux13/</url>
+    <content><![CDATA[<h2 id="一、日志简介"><a href="#一、日志简介" class="headerlink" title="一、日志简介"></a>一、日志简介</h2><h3 id="1、日志相关服务"><a href="#1、日志相关服务" class="headerlink" title="1、日志相关服务"></a>1、日志相关服务</h3><p>在CentOS 6.x中日志服务已经由rsyslogd取代了原先的syslogd服务。Redhat认为syslogd已经不能满足在工作中的需求，rsyslogd相比syslogd具有一些新的特点：</p>
+<ul>
+<li>基于TCP网络协议传输日志信息；</li>
+<li>更安全的网络传输方式；</li>
+<li>有日志消息的及时分析框架；</li>
+<li>后台数据库；</li>
+<li>配置文件中可以写简单的逻辑判断；</li>
+<li>与syslog配置文件相兼容。</li>
+</ul>
+<h3 id="2、系统中常见的日志文件"><a href="#2、系统中常见的日志文件" class="headerlink" title="2、系统中常见的日志文件"></a>2、系统中常见的日志文件</h3><table>
+<thead>
+<tr>
+<th align="center">日志文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">/var/log/cron</td>
+<td>记录了系统定时任务相关的日志。</td>
+</tr>
+<tr>
+<td align="center">/var/log/cups</td>
+<td>记录打印信息的日志</td>
+</tr>
+<tr>
+<td align="center">/var/log/dmesg</td>
+<td>记录了系统在开机时内核自检的信息。也可以使用dmesg命令直接查看内核自检信息。</td>
+</tr>
+<tr>
+<td align="center">/var/log/btmp</td>
+<td>记录错误登录的日志。这个文件是二进制文件，不能直接vi查看，而要使用lastb命令查看，命令如下：[root@localhost log]# lastb  root     tty1                          Tue Jun  4 22:38 - 22:38  (00:00) #有人在6月4日22:38使用root用户，在本地终端1登录错误</td>
+</tr>
+<tr>
+<td align="center">/var/log/lastlog</td>
+<td>记录系统中所有用户最后一次的登录时间的日志。这个文件也是二进制文件，不能直接vi，而要使用lastlog命令查看。</td>
+</tr>
+<tr>
+<td align="center">/var/log/mailog</td>
+<td>记录邮件信息。</td>
+</tr>
+<tr>
+<td align="center">/var/log/messag</td>
+<td>记录系统重要信息的日志。这个日志文件中会记录Linux系统的绝大多数重要信息，如果系统出现问题时，首先要检查的就应该是这个日志文件。</td>
+</tr>
+<tr>
+<td align="center">/var/log/secure</td>
+<td>记录验证和授权方面的信息，只要涉及账户和密码的程序都会记录。比如说系统的登录，ssh的登录，su切换用户，sudo授权，甚至添加用户和修改用户密码都会记录在这个日志文件中。</td>
+</tr>
+<tr>
+<td align="center">/var/log/wtmp</td>
+<td>永久记录所有用户的登录、注销信息，同时记录系统的启动、重启、关机事件。同样这个文件也是一个二进制文件，不能直接vi，而需要使用last命令来查看。</td>
+</tr>
+<tr>
+<td align="center">/var/run/utmp</td>
+<td>记录当前已经登录的用户的信息。这个文件会随着用户的登录和注销而不断变化，只记录当前登录用户的信息。同样这个文件不能直接vi，而要使用w，who，users等命令来查询。</td>
+</tr>
+</tbody></table>
+<p>除了系统默认的日志之外，采用RPM方式安装的系统服务也会默认把日志记录在/var/log/目录中（源码包安装的服务日志是在源码包指定目录中）。不过这些日志不是由rsyslogd服务来记录和管理的，而是各个服务使用自己的日志管理文档来记录自身日志。</p>
+<table>
+<thead>
+<tr>
+<th align="center">日志文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">/var/log/httpd/</td>
+<td>RPM包安装的apache服务的默认日志目录</td>
+</tr>
+<tr>
+<td align="center">/var/log/mail/</td>
+<td>RPM包安装的邮件服务的额外日志目录</td>
+</tr>
+<tr>
+<td align="center">/var/log/samba/</td>
+<td>RPM包安装的samba服务的日志目录</td>
+</tr>
+<tr>
+<td align="center">/var/log/sssd/</td>
+<td>守护进程安全服务目录</td>
+</tr>
+</tbody></table>
+<h2 id="二、日志服务rsyslogd"><a href="#二、日志服务rsyslogd" class="headerlink" title="二、日志服务rsyslogd"></a>二、日志服务rsyslogd</h2><h3 id="1、日志文件格式"><a href="#1、日志文件格式" class="headerlink" title="1、日志文件格式"></a>1、日志文件格式</h3><p>只要是由日志服务rsyslogd记录的日志文件，他们的格式是一样的。基本日志格式包含以下四列：</p>
+<ul>
+<li>事件产生的时间；</li>
+<li>发生事件的服务器的主机名；</li>
+<li>产生事件的服务名或程序名；</li>
+<li>事件的具体信息。</li>
+</ul>
+<h3 id="2、rsyslogd服务的配置文件"><a href="#2、rsyslogd服务的配置文件" class="headerlink" title="2、rsyslogd服务的配置文件"></a>2、rsyslogd服务的配置文件</h3><p>1）、   /etc/rsyslog.conf配置文件格式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">authpriv.*                          &#x2F;var&#x2F;log&#x2F;secure</span><br><span class="line">#服务名称[连接符号]日志等级				日志记录位置</span><br><span class="line">#认证相关服务.所有日志等级				记录在&#x2F;var&#x2F;log&#x2F;secure日志中</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>服务名称</li>
+</ul>
+<p>我们首先需要确定rsyslogd服务可以识别哪些服务的日志，也可以理解为以下这些服务委托了rsyslogd服务来代为管理日志。这些服务如表所示：</p>
+<table>
+<thead>
+<tr>
+<th align="center">服务名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">auth（LOG_AUTH）</td>
+<td>安全和认证相关消息（不推荐使用authpriv替代）</td>
+</tr>
+<tr>
+<td align="center">authpriv（LOG_AUTHPRIV）</td>
+<td>安全和认证相关消息（私有的）</td>
+</tr>
+<tr>
+<td align="center">cron（LOG_CRON）</td>
+<td>系统定时任务cront和at产生的日志</td>
+</tr>
+<tr>
+<td align="center">daemon（LOG_DAEMON）</td>
+<td>和各个守护进程相关的日志</td>
+</tr>
+<tr>
+<td align="center">ftp（LOG_FTP）</td>
+<td>ftp守护进程产生的日志</td>
+</tr>
+<tr>
+<td align="center">kern（LOG_KERN）</td>
+<td>内核产生的日志（不是用户进程产生的）</td>
+</tr>
+<tr>
+<td align="center">local0-local7（LOG_LOCAL0-7）</td>
+<td>为本地使用预留的服务</td>
+</tr>
+<tr>
+<td align="center">lpr（LOG_LPR）</td>
+<td>打印产生的日志</td>
+</tr>
+<tr>
+<td align="center">mail（LOG_MAIL）</td>
+<td>邮件收发信息</td>
+</tr>
+<tr>
+<td align="center">news（LOG_NEWS）</td>
+<td>与新闻服务器相关的日志</td>
+</tr>
+<tr>
+<td align="center">syslog（LOG_SYSLOG）</td>
+<td>有syslogd服务产生的日志信息（虽然服务名称已经改为rsyslogd，但是很多配置都还是沿用了syslogd的，这里并没有修改服务名）。</td>
+</tr>
+<tr>
+<td align="center">user（LOG_USER）</td>
+<td>用户等级类别的日志信息</td>
+</tr>
+<tr>
+<td align="center">uucp（LOG_UUCP）</td>
+<td>uucp子系统的日志信息，uucp是早期linux系统进行数据传递的协议，后来也常用在新闻组服务中。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>连接符号</li>
+</ul>
+<p>日志服务连接日志等级的格式是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">日志服务[连接符号]日志等级			日志记录位置</span><br></pre></td></tr></table></figure>
+
+<p>在这里连接符号可以识别为：</p>
+<ul>
+<li><ul>
+<li>“.”代表只要比后面的等级高的（包含该等级）日志都记录下来。比如：“cron.info”代表cron服务产生的日志，只要日志等级大于等于info级别，就记录</li>
+<li>“.=”代表只记录所需等级的日志，其他等级的都不记录。比如：“*.=emerg”代表任何日志服务产生的日志，只要等级是emerg等级就记录。这种用法及少见，了解就好</li>
+<li>“.!”代表不等于，也就是除了该等级的日志外，其他等级的日志都记录。</li>
+</ul>
+</li>
+<li><p>日志等级</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">等级名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">debug（LOG_DEBUG）</td>
+<td>一般的调试信息说明</td>
+</tr>
+<tr>
+<td align="center">info（LOG_INFO）</td>
+<td>基本的通知信息</td>
+</tr>
+<tr>
+<td align="center">notice（LOG_NOTICE）</td>
+<td>普通信息，但是有一定的重要性</td>
+</tr>
+<tr>
+<td align="center">warning（LOG_WARNING）</td>
+<td>警告信息，但是还不回影响到服务或系统的运行</td>
+</tr>
+<tr>
+<td align="center">err（LOG_ERR）</td>
+<td>错误信息，一般达到err等级的信息以及可以影响到服务或系统的运行了。</td>
+</tr>
+<tr>
+<td align="center">crit（LOG_CRIT)</td>
+<td>临界状况信息，比err等级还要严重</td>
+</tr>
+<tr>
+<td align="center">alert（LOG_ALERT）</td>
+<td>警告状态信息，比crit还要严重。必须立即采取行动</td>
+</tr>
+<tr>
+<td align="center">emerg（LOG_EMERG）</td>
+<td>疼痛等级信息，系统已经无法使用了</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td>代表所有日志等级，比如：“authpriv.*”代表authpriv认证信息服务产生的日志，所有的日志等级都记录</td>
+</tr>
+</tbody></table>
+<p>日志等级这里还可以识别“none”，如果日志等级是none，就说明忽略这个日志服务，该服务的所有日志都不再记录。</p>
+<ul>
+<li><p>日志记录位置</p>
+<p>日志记录位置就是当前日志输出到哪个日志文件中保存，当然也可以把日志输出到打印机打印，或者输出到远程日志服务器上（当然日志服务器要允许接收才行）。日志的记录位置也是固定的：</p>
+<ul>
+<li>日志文件的绝对路径。这是最常见的日志保存方法，如“/var/log/secure”就是保存系统验证和授权信息日志的。</li>
+<li>系统设备文件。如“/dev/lp0”代表第一台打印机，如果日志保存位置是打印机设备的话，当有日志时就会在打印机打印（不太符合可持续发展战略哦-_-!）。</li>
+<li>转发给远程主机。因为可以选择使用TCP协议和UDP协议传输日志信息，所以有两种发送格式。如使用“@192.168.0.210:514”，就会把日志内容使用UDP协议发送到192.168.0.210的UDP 514端口上；如果使用“@@192.168.0.210:514”就会把日志内容使用TCP协议发送到192.168.0.210的TCP 514端口上，其中514是日志服务默认端口。当然只要192.168.0.210同意接收此日志，就可以把日志内容保存在日志服务器上。</li>
+<li>用户名。如“root”，就会把日志发送给root用户，当然root要在在线，否则就收不到日志信息了。发送日志给用户时，可以使用“<em>”代表发送给所有在线用户，如“mail.</em>  *”就会把mail服务产生的所有级别的日志发送给所有在线用户。如果需要把日志发送给多个在线用户，用户名之间用“，”分隔。</li>
+</ul>
+</li>
+</ul>
+<p>忽略或丢弃日志。如果接受日志的对象是“~”，代表这个日志不会记录，而被直接丢弃。如“local3.*  ~”代表忽略local3服务类型所有的日志都不记录。    </p>
+<p>2）、/etc/rsyslog.conf配置文件的内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# vi &#x2F;etc&#x2F;rsyslog.conf</span><br><span class="line">#查看配置文件的内容</span><br><span class="line"># rsyslog v5 configuration file</span><br><span class="line"></span><br><span class="line"># For more information see &#x2F;usr&#x2F;share&#x2F;doc&#x2F;rsyslog-*&#x2F;rsyslog_conf.html</span><br><span class="line"># If you experience problems, see http:&#x2F;&#x2F;www.rsyslog.com&#x2F;doc&#x2F;troubleshoot.html</span><br><span class="line"></span><br><span class="line">#### MODULES ####</span><br><span class="line">#加载模块</span><br><span class="line"></span><br><span class="line">$ModLoad imuxsock # provides support for local system logging (e.g. via logger command)</span><br><span class="line">#加载imuxsock模块，为本地系统登录提供支持</span><br><span class="line">$ModLoad imklog   # provides kernel logging support (previously done by rklogd)</span><br><span class="line">#加载imklog模块，为内核登录提供支持</span><br><span class="line">#$ModLoad immark  # provides --MARK-- message capability</span><br><span class="line">#加载immark模块，提供标记信息的能力</span><br><span class="line"></span><br><span class="line"># Provides UDP syslog reception</span><br><span class="line">#$ModLoad imudp</span><br><span class="line">#$UDPServerRun 514</span><br><span class="line">#加载UPD模块，允许使用UDP的514端口接收采用UDP协议转发的日志</span><br><span class="line"></span><br><span class="line"># Provides TCP syslog reception</span><br><span class="line">#$ModLoad imtcp</span><br><span class="line">#$InputTCPServerRun 514</span><br><span class="line">#加载TCP模块，允许使用TCP的514端口接收采用TCP协议转发的日志</span><br><span class="line"></span><br><span class="line">#### GLOBAL DIRECTIVES ####</span><br><span class="line">#定义全局设置</span><br><span class="line"></span><br><span class="line"># Use default timestamp format</span><br><span class="line">$ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat</span><br><span class="line">#定义日志的时间使用默认的时间戳格式</span><br><span class="line"></span><br><span class="line"># File syncing capability is disabled by default. This feature is usually not required,</span><br><span class="line"># not useful and an extreme performance hit</span><br><span class="line">#$ActionFileEnableSync on </span><br><span class="line">#文件同步功能。默认没有开启，是注释的。</span><br><span class="line"></span><br><span class="line"># Include all config files in &#x2F;etc&#x2F;rsyslog.d&#x2F;</span><br><span class="line">$IncludeConfig &#x2F;etc&#x2F;rsyslog.d&#x2F;*.conf</span><br><span class="line">#包含&#x2F;etc&#x2F;rsyslog.d&#x2F;目录中所有的“.conf”子配置文件。也就是说这个目录中的所有</span><br><span class="line">#子配置文件也同时生效。</span><br><span class="line"></span><br><span class="line">#### RULES ####</span><br><span class="line">#日志文件保存规则</span><br><span class="line"></span><br><span class="line"># Log all kernel messages to the console.</span><br><span class="line"># Logging much else clutters up the screen.</span><br><span class="line">#kern.*                                                 &#x2F;dev&#x2F;console</span><br><span class="line">#kern服务.所有日志级别									保存在&#x2F;dev&#x2F;console </span><br><span class="line">#这个日志默认没有开启，如果需要，则取消注释</span><br><span class="line"></span><br><span class="line"># Log anything (except mail) of level info or higher.</span><br><span class="line"># Don&#39;t log private authentication messages!</span><br><span class="line">*.info;mail.none;authpriv.none;cron.none                &#x2F;var&#x2F;log&#x2F;messages</span><br><span class="line">#所有服务.info以上级别的日志保存在&#x2F;var&#x2F;log&#x2F;messages日志中。</span><br><span class="line">#mail，authpriv，cron的日志不记录在&#x2F;var&#x2F;log&#x2F;messages日志文件中，因为它们都有自己的日志文件。</span><br><span class="line">#所以&#x2F;var&#x2F;log&#x2F;messages日志是最重要的系统日志文件，需要经常查看！</span><br><span class="line"></span><br><span class="line"># The authpriv file has restricted access.</span><br><span class="line">authpriv.*                                              &#x2F;var&#x2F;log&#x2F;secure </span><br><span class="line">#用户认证服务所有级别的日志保存在&#x2F;var&#x2F;log&#x2F;secure日志中</span><br><span class="line"></span><br><span class="line"># Log all the mail messages in one place.</span><br><span class="line">mail.*                                                  -&#x2F;var&#x2F;log&#x2F;maillog</span><br><span class="line">#mail服务的所有级别的日志保存在&#x2F;var&#x2F;log&#x2F;maillog日志中。</span><br><span class="line">#“-”号的含义是日志先在内存之中保存，当日志够多之后，再向文件中保存。</span><br><span class="line"></span><br><span class="line"># Log cron stuff</span><br><span class="line">cron.*                 &#x2F;var&#x2F;log&#x2F;cron</span><br><span class="line">#计划任务的所有日志保存在&#x2F;var&#x2F;log&#x2F;cron日志中</span><br><span class="line"></span><br><span class="line"># Everybody gets emergency messages</span><br><span class="line">*.emerg                                                 *</span><br><span class="line">#所有日志服务的疼痛等级日志对所有在线用户广播。</span><br><span class="line"></span><br><span class="line"># Save news errors of level crit and higher in a special file.</span><br><span class="line">uucp,news.crit                                          &#x2F;var&#x2F;log&#x2F;spooler</span><br><span class="line">#uucp和news日志服务的crit以上的日志保存在&#x2F;var&#x2F;log&#x2F;sppoler日志文件中。</span><br><span class="line"></span><br><span class="line"># Save boot messages also to boot.log</span><br><span class="line">local7.*                                                &#x2F;var&#x2F;log&#x2F;boot.log</span><br><span class="line">#loacl7日志服务的所有日志写入&#x2F;var&#x2F;log&#x2F;boot.log日志中。</span><br><span class="line">#会把开机时的检测信息在显示到屏幕的同时，写入&#x2F;var&#x2F;log&#x2F;boot.log日志中</span><br><span class="line"></span><br><span class="line"># ### begin forwarding rule ###</span><br><span class="line">#定义转发规则</span><br><span class="line"># The statement between the begin ... end define a SINGLE forwarding</span><br><span class="line"># rule. They belong together, do NOT split them. If you create multiple </span><br><span class="line"># forwarding rules, duplicate the whole block!</span><br><span class="line"># Remote Logging (we use TCP for reliable delivery)</span><br><span class="line"># </span><br><span class="line"># An on-disk queue is created for this action. If the remote host is</span><br><span class="line"># down, messages are spooled to disk and sent when it is up again.</span><br><span class="line">#$WorkDirectory &#x2F;var&#x2F;lib&#x2F;rsyslog # where to place spool files</span><br><span class="line">#$ActionQueueFileName fwdRule1 </span><br><span class="line"># unique name prefix for spool files</span><br><span class="line">#$ActionQueueMaxDiskSpace 1g   </span><br><span class="line"># 1gb space limit (use as much as possible)</span><br><span class="line">#$ActionQueueSaveOnShutdown on # save messages to disk on shutdown</span><br><span class="line">#$ActionQueueType LinkedList   </span><br><span class="line"># run asynchronously</span><br><span class="line">#$ActionResumeRetryCount -1    </span><br><span class="line"># infinite retries if host is down</span><br><span class="line"># remote host is: name&#x2F;ip:port, e.g. 192.168.0.1:514, port optional</span><br><span class="line">#*.* @@remote-host:514</span><br><span class="line"># ### end of the forwarding rule ##</span><br></pre></td></tr></table></figure>
+
+<p>3）、定义自己的日志</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# vi &#x2F;etc&#x2F;rsyslog.conf</span><br><span class="line">#写入一下一句话</span><br><span class="line">*.crit                  &#x2F;var&#x2F;log&#x2F;alert.log</span><br><span class="line">#把所有服务的“临界点”以上的错误都保存在&#x2F;var&#x2F;log&#x2F;alert.log日志中</span><br><span class="line"></span><br><span class="line">[root@localhost ~]# service rsyslog restart  </span><br><span class="line">关闭系统日志记录器：                                       [确定] </span><br><span class="line">启动系统日志记录器：                                       [确定] </span><br><span class="line">#重启rsyslog服务</span><br><span class="line">[root@localhost ~]# ll &#x2F;var&#x2F;log&#x2F;alert.log </span><br><span class="line">-rw-------. 1 root root 0 6月5 10:33 &#x2F;var&#x2F;log&#x2F;alert.log</span><br><span class="line"># alert.log日志就生成了</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、日志轮替"><a href="#三、日志轮替" class="headerlink" title="三、日志轮替"></a>三、日志轮替</h2><p>1、日志文件的命名规则</p>
+<p>日志轮替最主要的作用就是把旧的日志文件移动并改名，同时建立新的空日志文件，当旧日志文件超出保存的范围之后，就会进行删除。那么旧的日志文件改名之后，如何命名呢？主要依靠/etc/logrotate.conf配置文件中“dateext”参数：</p>
+<ul>
+<li>如果配置文件中拥有“dateext”参数，那么日志会用日期来作为日志文件的后缀，例如“secure-20180605”。这样的话日志文件名不会重叠，所以也就不需要日志文件的改名，只需要保存指定的日志个数，删除多余的日志文件即可。</li>
+<li>如果配置文件中没有“dateext”参数，那么日志文件就需要进行改名了。当第一次进行日志轮替时，当前的“secure”日志会自动改名为“secure.1”，然后新建“secure”日志，用来保存新的日志。当第二次进行日志轮替时，“secure.1”会自动改名为“secure.2”，当前的“secure”日志会自动改名为“secure.1”，然后也会新建“secure”日志，用来保存新的日志，以此类推。</li>
+</ul>
+<p>2、logrotate配置文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# vi &#x2F;etc&#x2F;logrotate.conf</span><br><span class="line"># see &quot;man logrotate&quot; for details</span><br><span class="line"># rotate log files weekly </span><br><span class="line">weekly</span><br><span class="line">#每周对日志文件进行一次轮替</span><br><span class="line"></span><br><span class="line"># keep 4 weeks worth of backlogs</span><br><span class="line">rotate 4</span><br><span class="line">#保存4个日志文件，也就是说如果进行了5次日志轮替，就会删除第一个备份日志</span><br><span class="line"></span><br><span class="line"># create new (empty) log files after rotating old ones</span><br><span class="line">create</span><br><span class="line">#在日志轮替时，自动创建新的日志文件</span><br><span class="line"></span><br><span class="line"># use date as a suffix of the rotated file</span><br><span class="line">dateext</span><br><span class="line">#使用日期作为日志轮替文件的后缀</span><br><span class="line"></span><br><span class="line"># uncomment this if you want your log files compressed</span><br><span class="line">#compress</span><br><span class="line">#日志文件是否压缩。如果取消注释，则日志会在转储的同时进行压缩</span><br><span class="line"></span><br><span class="line">#以上日志日志配置为默认配置，如果需要轮替的日志没有设定独立的参数，那么都会遵守以上参数。</span><br><span class="line">#如果轮替日志配置了独立参数，那么独立参数优先级更高。</span><br><span class="line"></span><br><span class="line"># RPM packages drop log rotation information into this directory</span><br><span class="line">include &#x2F;etc&#x2F;logrotate.d </span><br><span class="line">#包含&#x2F;etc&#x2F;logrotate.d&#x2F;目录中所有的子配置文件。也就是说会把这个目录中所有子配置文件读取进来，进行日志轮替。</span><br><span class="line"></span><br><span class="line"># no packages own wtmp and btmp -- we&#39;ll rotate them here</span><br><span class="line">#以下两个轮替日志有自己的独立参数，如果和默认的参数冲突，则独立参数生效。</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;wtmp &#123;</span><br><span class="line">#以下参数仅对此目录有效</span><br><span class="line">	monthly</span><br><span class="line">	#每月对日志文件进行一次轮替</span><br><span class="line">	create 0664 root utmp</span><br><span class="line">	#建立的新日志文件，权限是0664，所有者是root，所属组是utmp组        </span><br><span class="line">		minsize 1M</span><br><span class="line">		#日志文件最小轮替大小是1MB。也就是日志一定要超过1MB才会轮替，否则就算时间达到一个月，也不进行日志转储</span><br><span class="line">	rotate 1</span><br><span class="line">	#仅保留一个日志备份。也就是只有wtmp和wtmp.1日志保留而已</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">&#x2F;var&#x2F;log&#x2F;btmp &#123;</span><br><span class="line">#以下参数只对&#x2F;var&#x2F;log&#x2F;btmp生效</span><br><span class="line">	missingok</span><br><span class="line">	#如果日志不存在，则忽略该日志的警告信息   </span><br><span class="line">    monthly    </span><br><span class="line">    create 0600 root utmp     </span><br><span class="line">    rotate 1</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"># system-specific logs may be also be configured here.</span><br></pre></td></tr></table></figure>
+
+<p>logrotate配置文件的主要参数，我们通过下表来说明：</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">daily</td>
+<td>日志的轮替周期是每天</td>
+</tr>
+<tr>
+<td align="center">weekly</td>
+<td>日志的轮替周期是每周</td>
+</tr>
+<tr>
+<td align="center">monthly</td>
+<td>日志的轮替周期是每月</td>
+</tr>
+<tr>
+<td align="center">rotate 数字</td>
+<td>保留的日志文件的个数。0指没有备份</td>
+</tr>
+<tr>
+<td align="center">compress</td>
+<td>日志轮替时，旧的日志进行压缩</td>
+</tr>
+<tr>
+<td align="center">create mode owner group</td>
+<td>建立新日志，同时指定新日志的权限与所有者和所属组。如create 0600 root utmp</td>
+</tr>
+<tr>
+<td align="center">mail address</td>
+<td>当日志轮替时，输出内容通过邮件发送到指定的邮件地址。</td>
+</tr>
+<tr>
+<td align="center">missingok</td>
+<td>如果日志不存在，则忽略该日志的警告信息</td>
+</tr>
+<tr>
+<td align="center">notifempty</td>
+<td>如果日志为空文件，则不进行日志轮替</td>
+</tr>
+<tr>
+<td align="center">minsize 大小</td>
+<td>日志轮替的最小值。也就是日志一定要达到这个最小值才会轮替，否则就算时间达到也不轮替</td>
+</tr>
+<tr>
+<td align="center">size 大小</td>
+<td>日志只有大于指定大小才进行日志轮替，而不是按照时间轮替。如size 100k</td>
+</tr>
+<tr>
+<td align="center">dateext</td>
+<td>使用日期作为日志轮替文件的后缀。如secure-20180605</td>
+</tr>
+<tr>
+<td align="center">sharedscripts</td>
+<td>在此关键字之后的脚本只执行一次</td>
+</tr>
+<tr>
+<td align="center">prerotate/endscript</td>
+<td>在日志轮替之前执行脚本命令。endscript标示prerotate脚本结束。</td>
+</tr>
+<tr>
+<td align="center">postrotate/endscript</td>
+<td>在日志轮替之后执行脚本命令。endscript标示postrotate脚本结束</td>
+</tr>
+</tbody></table>
+<p>这些参数中较为不好理解的应该就是prerotate/endscript和postrotate/endscript参数了，我们利用“man logrotate”中的列子来解释下这两个参数。例如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">"/var/log/httpd/access.log" /var/log/httpd/error.log &#123;</span><br><span class="line"><span class="meta">	#</span><span class="bash">日志轮替的是/var/<span class="built_in">log</span>/httpd/中RPM包安装的apache正确访问日志和错误日志           	</span></span><br><span class="line">		rotate 5     </span><br><span class="line"><span class="meta">		#</span><span class="bash">轮替5次           </span></span><br><span class="line">		mail www@my.org   </span><br><span class="line"><span class="meta">		#</span><span class="bash">信息发送到指定邮箱           </span></span><br><span class="line">		size 100k</span><br><span class="line"><span class="meta">		#</span><span class="bash">日志大于100KB时才进行日志轮替，不再按照时间轮替           </span></span><br><span class="line">		sharedscripts </span><br><span class="line"><span class="meta">		#</span><span class="bash">以下脚本只执行一次           </span></span><br><span class="line">		postrotate</span><br><span class="line"><span class="meta">		#</span><span class="bash">在日志轮替结束之后，执行以下脚本               </span></span><br><span class="line">			/usr/bin/killall -HUP httpd</span><br><span class="line"><span class="meta">			#</span><span class="bash">重启apache服务           </span></span><br><span class="line">		endscript</span><br><span class="line"><span class="meta">		#</span><span class="bash">脚本结束      </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>rerotate和postrotate主要用于在日志轮替的同时，执行指定的脚本，一般用于日志轮替之后重启服务。这里强调，如果你的日志是写入rsyslog服务的配置文件的，那么把新日志加入logrotate后，一定要重启rsyslog服务，否则你会发现虽然新日志建立了，但是数据还是写入了旧的日志当中。那是因为虽然logrotate知道日志轮替了，但是rsyslog服务却并不知道。同理，如果你的日志不是被rsyslog管理，如源码包安装的Apache、Nginx等服务，则需要重启Apache或Nginx服务，否则日志也不能正常轮替。</p>
+<p>3、把自己的日志加入日志轮替</p>
+<p>这里有两个方法：第一种方法是直接在/etc/logrotate.conf配置文件中写入该日志的轮替策略，从而把日志加入轮替；第二种方法是在/etc/logrotate.d/目录中新建立该日志的轮替文件，在该轮替文件中写入正确的轮替策略，因为该目录中的文件都会被“include”到主配置文件中，所以也可以把日志加入轮替。我们这里推荐第二种方法，因为系统中需要轮替的日志非常多，如果全都直接写入/etc/logrotate.conf配置文件，那么这个文件的可管理性就会非常差，不利于此文件的维护。</p>
+<p>说起来很复杂，我们举个例子吧，还记得我们自己生产的/var/log/alert.log日志吗？这个日志不是系统默认日志，而是我们通过/etc/rsyslog.conf配置文件自己生成的日志，所以默认这个日志是不会轮替的。那么我们需要把这个日志加入日志轮替的策略，该怎么实现呢？我们采用第二种方法，也就是在/etc/logrotate.d/目录中建立此日志的轮替文件。具体步骤如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# chattr +a &#x2F;var&#x2F;log&#x2F;alert.log </span><br><span class="line">#先给日志文件赋予chattr的a属性，保证日志的安全</span><br><span class="line">[root@localhost ~]# vi &#x2F;etc&#x2F;logrotate.d&#x2F;alter</span><br><span class="line">#创建alter轮替文件，把&#x2F;var&#x2F;log&#x2F;alert.log加入轮替</span><br><span class="line">&#x2F;var&#x2F;log&#x2F;alert.log &#123;        </span><br><span class="line">	weekly					#每周轮替一次        </span><br><span class="line">	rotate 6				#保留6个轮替日志        </span><br><span class="line">	sharedscripts			#以下命令只执行一次        </span><br><span class="line">	prerotate				#在日志轮替之前执行                </span><br><span class="line">		&#x2F;usr&#x2F;bin&#x2F;chattr -a &#x2F;var&#x2F;log&#x2F;alert.log</span><br><span class="line">		#在日志轮替之前取消a属性，以便让日志可以轮替        </span><br><span class="line">	endscript				#脚本结束        </span><br><span class="line">	sharedscripts        </span><br><span class="line">	postrotate				#在日志轮替之后执行                </span><br><span class="line">		&#x2F;usr&#x2F;bin&#x2F;chattr +a &#x2F;var&#x2F;log&#x2F;alert.log</span><br><span class="line">		#日志轮替之后，重新加入a属性        </span><br><span class="line">	endscript        </span><br><span class="line">	</span><br><span class="line">	sharedscripts        </span><br><span class="line">	postrotate        </span><br><span class="line">	&#x2F;bin&#x2F;kill -HUP $(&#x2F;bin&#x2F;cat &#x2F;var&#x2F;run&#x2F;syslogd.pid 2&gt;&#x2F;dev&#x2F;null) &amp;&gt;&#x2F;dev&#x2F;null        </span><br><span class="line">	endscript        </span><br><span class="line">	#重启rsyslog服务，保证日志轮替正常</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再举个例子，我们如果需要把Nginx服务的日志加入日志轮替，则也需要重启Nginx服务，例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;date&#x2F;logs&#x2F;nginx&#x2F;access&#x2F;access.log &#x2F;date&#x2F;logs&#x2F;nginx&#x2F;access&#x2F;default.log &#123;</span><br><span class="line">#假设Nginx的日志放在&#x2F;date目录下    </span><br><span class="line">	daily    </span><br><span class="line">	rotate 15    </span><br><span class="line">	sharedscripts   </span><br><span class="line">    postrotate        </span><br><span class="line">    	&#x2F;bin&#x2F;kill -HUP $(&#x2F;bin&#x2F;cat &#x2F;var&#x2F;run&#x2F;syslogd.pid) &amp;&gt;&#x2F;dev&#x2F;null        </span><br><span class="line">    	#重启rsyslog服务        </span><br><span class="line">    	&#x2F;bin&#x2F;kill -HUP $(&#x2F;bin&#x2F;cat &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;logs&#x2F;nginx.pid) &amp;&gt;&#x2F;dev&#x2F;null        </span><br><span class="line">    	#重启Nginx服务    </span><br><span class="line">    endscript</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、logrotate命令</p>
+<p>我们日志轮替之所以可以在指定的时间备份日志，其实也要依赖系统定时任务。如果大家还记得/etc/cron.daily/目录，就会发现这个目录中是有logrotate文件，logrotate通过这个文件依赖定时任务执行的。</p>
+<p>不过logrotate命令的格式是什么样的呢？我们来学习下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# logrotate [选项] 配置文件名</span><br><span class="line">选项：(如果此命令没有选项，则会按照配置文件中的条件进行日志轮替)    </span><br><span class="line">	-v：显示日志轮替过程。加了-v选项，会显示日志的轮替的过程    </span><br><span class="line">	-f：强制进行日志轮替。不管日志轮替的条件是否已经符合，强制配置文件中所有的日志进行轮替</span><br></pre></td></tr></table></figure>
+
+<p>我们执行logrotate命令，并查看下执行过程：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# logrotate -v &#x2F;etc&#x2F;logrotate.conf</span><br><span class="line">#查看日志轮替的流程</span><br><span class="line">...省略部分输出... </span><br><span class="line">rotating pattern: &#x2F;var&#x2F;log&#x2F;alert.log  weekly (6 rotations)</span><br><span class="line">#这就是我们自己加入轮替的alert.log日志。</span><br><span class="line">empty log files are rotated, old logs are removed</span><br><span class="line">considering log &#x2F;var&#x2F;log&#x2F;alert.log  </span><br><span class="line">log does not need rotating			#时间不够一周，所以不进行日志轮替</span><br><span class="line">...省略部分输出...</span><br></pre></td></tr></table></figure>
+
+<p>我们发现/var/log/alert.log加入了日志轮替，已经被logrotate识别，并调用了。只是时间没有达到轮替的标准，所以没有进行轮替。那我们强制进行一次日志轮替，看看有什么结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# logrotate -vf &#x2F;etc&#x2F;logrotate.conf</span><br><span class="line">#强制进行日志轮替，不管是否符合轮替条件</span><br><span class="line">...省略部分输出... </span><br><span class="line">rotating pattern: &#x2F;var&#x2F;log&#x2F;alert.log  forced from command line (6 rotations)</span><br><span class="line">empty log files are rotated, old logs are removed</span><br><span class="line">considering log &#x2F;var&#x2F;log&#x2F;alert.log  </span><br><span class="line">log needs rotating		#日志需要轮替</span><br><span class="line">rotating log &#x2F;var&#x2F;log&#x2F;alert.log, log-&gt;rotateCount is 6</span><br><span class="line">dateext suffix &#39;-20180607&#39; 		#提取日期参数</span><br><span class="line">glob pattern &#39;-[0-   9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]&#39;  </span><br><span class="line">glob finding old rotated logs failed</span><br><span class="line">running prerotate script </span><br><span class="line">fscreate context set to unconfined_u:object_r:var_log_t:s0</span><br><span class="line">renaming &#x2F;var&#x2F;log&#x2F;alert.log to &#x2F;var&#x2F;log&#x2F;alert.log-20180607</span><br><span class="line">#旧的日志被重命名</span><br><span class="line">creating new &#x2F;var&#x2F;log&#x2F;alert.log mode &#x3D; 0600 uid &#x3D; 0 gid &#x3D; 0</span><br><span class="line">#创建新日志文件，同时制定权限、所有者和属组</span><br><span class="line">running postrotate script </span><br><span class="line">...省略部分输出...</span><br></pre></td></tr></table></figure>
+
+<p>我们发现alert.log日志已经完成了日志轮替。我们查看下新产生的日志和旧日志：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# ll &#x2F;var&#x2F;log&#x2F;alert.log*</span><br><span class="line">-rw-------. 1 root root   0 6月7 10:07 &#x2F;var&#x2F;log&#x2F;alert.log</span><br><span class="line">-rw-------. 1 root root 237 6月7 09:58 &#x2F;var&#x2F;log&#x2F;alert.log-20180607</span><br><span class="line">#旧日志文件已经转储</span><br><span class="line">[root@localhost ~]# lsattr &#x2F;var&#x2F;log&#x2F;alert.log</span><br><span class="line">-----a-------e- &#x2F;var&#x2F;log&#x2F;alert.log</span><br><span class="line">#新的日志文件被自动加入了chattr的a属性。</span><br></pre></td></tr></table></figure>
+
+<p>logrotate命令使用“-f”选项之后，就不管日志是否已经符合了日志轮替条件，而强制把所有的日志都进行了轮替。</p>
+]]></content>
       <tags>
         <tag>linux运维基础</tag>
       </tags>
